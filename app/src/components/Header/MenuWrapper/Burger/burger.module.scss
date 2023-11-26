@@ -1,0 +1,17 @@
+.burger, .open_icon{
+    height: 84px;
+    aspect-ratio: 1/1;
+    background-color: rgba(34, 49, 170, 1);
+    border: none;
+    border-right: 1px solid rgba(83, 96, 205, 1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all ease-in-out .3s;
+
+    &:hover{
+        background-color: rgba(83, 96, 205, 1);
+    }
+}

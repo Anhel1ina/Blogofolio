@@ -1,0 +1,26 @@
+.primary_button{
+    width: 132px;
+    height: 56px;
+    padding: 16px 32px;
+    background-color: rgba(34, 49, 170, 1);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 2px;
+
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 600;
+
+    transition: all ease-in-out .4s;
+    cursor: pointer;
+
+    &:hover{
+        background-color: rgba(83, 96, 205, 1);
+    }
+
+    &:disabled{
+        background-color: rgba(232, 232, 232, 1);
+        color: rgba(141, 142, 151, 1);
+        cursor: not-allowed;
+    }
+}

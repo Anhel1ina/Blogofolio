@@ -1,0 +1,29 @@
+.post{
+    width: 100%;
+    display: grid;
+    grid-template-columns: calc(63% - 16px) calc(37% - 16px);
+    column-gap: 32px;
+    font-family: Inter;
+
+    & h4{
+        margin: 0 0 8px;
+        font-size: 16px;
+        font-weight: 400;
+        color: rgba(141, 142, 151, 1);
+    }
+
+    & h2{
+        margin: 0;
+        font-size: 32px;
+        font-weight: 700;
+        color: rgba(49, 48, 55, 1);
+    }
+
+    & p{
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+        color: rgba(141, 142, 151, 1);
+        margin: 24px 0 31px;
+    }
+}

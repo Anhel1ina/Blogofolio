@@ -1,0 +1,42 @@
+.button_block{
+    display: flex;
+    align-items: center;
+
+    & p{
+        margin: 0;
+    }
+}
+
+.like_button, .dislike_button{
+    width: 36px;
+    aspect-ratio: 1/1;
+    // padding: 16px 32px;
+    padding: 0;
+    border-radius: 2px;
+    border: none;
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    transition: all ease-in-out .4s;
+
+    & img{
+        width: 22px;
+        aspect-ratio: 1/1;
+    }
+
+    &:hover{
+        background-color: rgba(83, 96, 205, 1);
+        & path{
+            fill: white;
+            transition: all ease-in-out .4s;
+        }
+    }
+}
+
+.dislike_button:hover{
+    background-color: rgba(253, 52, 25, 1);
+}

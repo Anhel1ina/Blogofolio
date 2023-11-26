@@ -1,0 +1,19 @@
+.mode_button{
+    border: none;
+    border-top: 1px solid rgba(232, 232, 232, 1);
+    background-color: transparent;
+    cursor: pointer;
+
+    width: 50%;
+    height: 80px;
+
+    &:nth-child(n + 1){
+        border-left: 1px solid rgba(232, 232, 232, 1);
+    }
+}
+
+.non_chosen{
+    & path{
+        fill: rgb(217, 217, 217)
+    }
+}
