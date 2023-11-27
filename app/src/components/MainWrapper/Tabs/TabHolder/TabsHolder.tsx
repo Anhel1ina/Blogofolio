@@ -2,8 +2,22 @@ import { useState } from 'react'
 import styles from './tabs-holder.module.scss'
 import { TabContent } from '../TabContent/TabContent';
 
+type Posts = {
+    id: number
+    date: string
+    title: string
+    description: string
+    image: string
+}
 
-export const TabsHolder = ({ items }: { items: string[] }) => {
+
+type Props = {
+    items: string[]
+    posts: Posts[]
+}
+
+export const TabsHolder = (props: Props) => {
+    const {items, posts} = props
     const [active, setActive] = useState<number>(0)
     const openTab = (e: React.MouseEvent<HTMLButtonElement>) => {
         const indexButton = e.currentTarget.dataset.index;
@@ -26,7 +40,7 @@ export const TabsHolder = ({ items }: { items: string[] }) => {
                         key={index}>{item}</button>
                 ))
             }
-            <TabContent data_type={active}/>
+            <TabContent data_type={active} posts={posts}/>
         </div>
         
     )

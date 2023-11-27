@@ -11,8 +11,13 @@
     border: none;
     border-bottom: 2px solid transparent;
     background-color: transparent;
+    cursor: pointer;
 
     transition: all ease-in-out .2s;
+
+    &:hover{
+        border-bottom: 2px solid rgba(144, 143, 143, 0.502);
+    }
 
     &.active {
         border-bottom: 2px solid black;

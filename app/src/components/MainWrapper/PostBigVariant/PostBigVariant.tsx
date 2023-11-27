@@ -1,26 +1,45 @@
 import styles from './post.module.scss'
-import cosmo1 from '../../../images/cosmo1.png'
-// import { LikeButton } from './LikeButton/LikeButton'
-// import { DislikeButton } from './DislikeButton/DislikeButton'
+// import cosmo1 from '../../../images/cosmo1.png'
+import { LikeButton } from './LikeButton/LikeButton'
+import { DislikeButton } from './DislikeButton/DislikeButton'
+import { Bookmark } from './Bookmark/Bookmark'
+import { More } from './More/More'
 
-export const PostBigVariant = () => {
+type Post = {
+    id: number
+    date: string
+    title: string
+    description: string
+    image: string
+}
+
+type Props = {
+    post: Post
+}
+
+export const PostBigVariant = (props: Props) => {
+    const {post} = props
     return (
         <div className={styles.post}>
             <div>
-                <h4>April 20, 2023</h4>
-                <h2>Astronauts prep for new solar arrays on nearly seven-hour spacewalk</h2>
-                <p>Astronauts Kayla Barron and Raja Chari floated out of the International Space Station airlock for a spacewalk Tuesday, installing brackets and struts to support new solar arrays to upgrade the research lab’s power system on the same day that crewmate Mark Vande Hei marked his 341st day in orbit, a U.S. record for a single spaceflight.</p>
+                <h4>{post.date}</h4>
+                <h2>{post.title}</h2>
+                <p className={styles.body_text}>{post.description}</p>
             </div>
             <div>
-                <img src={cosmo1} alt="Astronaut" />
+                <img src={post.image} alt="Astronaut" />
             </div>
-            <div>
-                {/* <div className={styles.like_buttons}>
+            <div className={styles.like_dis}>
+                <div className={styles.like_buttons}>
                     <LikeButton/>
                 </div>
                 <div className={styles.like_buttons}>
                     <DislikeButton/>
-                </div> */}
+                </div>
+            </div>
+            <div className={`${styles.like_dis} ${styles.dop_buttons}`}>
+                <Bookmark/>
+                <More/>
             </div>
         </div>
     )

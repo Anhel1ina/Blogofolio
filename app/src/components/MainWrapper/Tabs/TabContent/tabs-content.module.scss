@@ -7,3 +7,15 @@
     grid-template-columns: calc(67% - 16px) calc(33% - 16px);
     column-gap: 32px;
 }
+
+.middle_posts{
+    grid-column: 1/2;
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.small_posts{
+    grid-column: 2/3;
+    grid-row: 1/3;
+}

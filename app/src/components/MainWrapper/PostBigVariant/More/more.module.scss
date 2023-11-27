@@ -1,0 +1,22 @@
+.more{
+    width: 36px;
+    aspect-ratio: 1/1;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    margin: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    transition: all ease-in-out .4s;
+
+    &:hover{
+        & path{
+            fill: rgba(83, 96, 205, 1);
+            transition: all ease-in-out .4s;
+        }
+    }
+}
