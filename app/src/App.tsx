@@ -5,7 +5,7 @@ import { MainWrapper } from './components/MainWrapper/MainWrapper';
 
 function App() {
   return (
-    <>
+    <>    
     <Header/>
     <MainWrapper/>
     </>

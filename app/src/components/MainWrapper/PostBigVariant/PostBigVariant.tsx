@@ -1,46 +1,48 @@
 import styles from './post.module.scss'
-// import cosmo1 from '../../../images/cosmo1.png'
 import { LikeButton } from './LikeButton/LikeButton'
 import { DislikeButton } from './DislikeButton/DislikeButton'
 import { Bookmark } from './Bookmark/Bookmark'
 import { More } from './More/More'
 
-type Post = {
-    id: number
-    date: string
+
+type Posts = {
     title: string
     description: string
     image: string
+    date: Date
+    id: number
 }
 
-type Props = {
-    post: Post
-}
+export const PostBigVariant: React.FC<{ posts: Posts[] }> = ({ posts }) => {
+    if (posts.length === 0) {
+        return null; 
+    }
 
-export const PostBigVariant = (props: Props) => {
-    const {post} = props
     return (
         <div className={styles.post}>
-            <div>
-                <h4>{post.date}</h4>
-                <h2>{post.title}</h2>
-                <p className={styles.body_text}>{post.description}</p>
-            </div>
-            <div>
-                <img src={post.image} alt="Astronaut" />
-            </div>
-            <div className={styles.like_dis}>
-                <div className={styles.like_buttons}>
-                    <LikeButton/>
+            <>
+                <div>
+                    <h4>{new Date(posts[0].date).toLocaleDateString()}</h4>
+                    <h2>{posts[0].title}</h2>
+                    <p className={styles.body_text}>{posts[0].description}</p>
                 </div>
-                <div className={styles.like_buttons}>
-                    <DislikeButton/>
+                <div className={styles.post_image}>
+                    <img src={posts[0].image} alt="post" />
                 </div>
-            </div>
-            <div className={`${styles.like_dis} ${styles.dop_buttons}`}>
-                <Bookmark/>
-                <More/>
-            </div>
+                <div className={styles.like_dis}>
+                    <div className={styles.like_buttons}>
+                        <LikeButton />
+                    </div>
+                    <div className={styles.like_buttons}>
+                        <DislikeButton />
+                    </div>
+                </div>
+                <div className={`${styles.like_dis} ${styles.dop_buttons}`}>
+                    <Bookmark />
+                    <More />
+                </div>
+            </>
         </div>
-    )
-}
+    );
+};
+

@@ -16,6 +16,7 @@
     & h2{
         margin: 0;
         font-size: 32px;
+        text-transform: capitalize;
         font-weight: 700;
         color: rgba(49, 48, 55, 1);
 
@@ -28,7 +29,19 @@
     }
 }
 
+.post_image{
+    grid-column: 2/3;
+    height: 244px;
+    & img{
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
 .body_text{
+    width: 100%;
+    max-height: 168px;
+    overflow: hidden;
     font-size: 16px;
     font-weight: 400;
     line-height: 28px;

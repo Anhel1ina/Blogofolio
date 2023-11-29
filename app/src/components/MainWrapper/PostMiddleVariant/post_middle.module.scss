@@ -18,6 +18,12 @@
         font-size: 18px;
         font-weight: 600;
         margin: 8px 0 28px;
+        text-transform: capitalize;
+
+        &:hover{
+            color: rgba(34, 49, 170, 1);
+            cursor: pointer;
+        }
     }
 
     &:nth-child(2n - 1){

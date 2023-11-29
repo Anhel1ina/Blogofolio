@@ -8,6 +8,10 @@
     column-gap: 32px;
 }
 
+.big_post{
+    grid-column: 1/2;
+}
+
 .middle_posts{
     grid-column: 1/2;
     margin-top: 40px;

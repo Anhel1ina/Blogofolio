@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './post_small.module.scss'
 import { LikeButton } from '../PostBigVariant/LikeButton/LikeButton'
 import { DislikeButton } from '../PostBigVariant/DislikeButton/DislikeButton'
@@ -7,7 +6,7 @@ import { More } from '../PostBigVariant/More/More'
 
 type Post = {
     id: number
-    date: string
+    date: Date
     title: string
     description: string
     image: string
@@ -22,7 +21,7 @@ export const PostSmallVariant = (props: Props) => {
     return (
         <div className={styles.small_post}>
             <div>
-                <h4>{post.date}</h4>
+                <h4>{new Date(post.date).toLocaleDateString()}</h4>
                 <h3>{post.title}</h3>
             </div>
             <div className={styles.small_post_img}>
