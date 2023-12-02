@@ -1,5 +1,5 @@
 .menu{
-    position: absolute;
+    position: fixed;
     height: calc(100vh - 84px);
     width: 236px;
     bottom: 0;
@@ -40,10 +40,7 @@
     
 }
 
+
 .user_style{
     border-top: 1px solid rgba(83, 96, 205, 1);
-}
-
-.menu_bottom_part{
-
 }

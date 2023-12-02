@@ -3,6 +3,7 @@
     display: grid;
     grid-template-rows: 57% calc(43% - 24px);
     row-gap: 24px;
+    column-gap: 34px;
     border-bottom: 2px solid rgba(218, 218, 218, 1);
     margin-bottom: 40px;
 
@@ -25,6 +26,7 @@
         grid-column: 1/2;
         grid-row: 1/2;
         text-transform: capitalize;
+        color: rgba(49, 48, 55, 1);
 
         &:hover{
             color: rgba(34, 49, 170, 1);
@@ -69,5 +71,14 @@
 
     & button:first-child{
         margin-right: 8px;
+    }
+}
+
+:global(.dark) .small_post h3{
+    color: rgba(255, 255, 255, 1);
+
+    &:hover{
+        color: rgba(34, 49, 170, 1);
+        cursor: pointer;
     }
 }

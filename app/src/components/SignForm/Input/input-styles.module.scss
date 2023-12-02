@@ -1,0 +1,39 @@
+.box{
+    width: 100%;
+    &:not(:last-child){
+        margin-bottom: 40px;
+    }
+
+    &:last-child{
+        margin-bottom: 48px;
+    }
+}
+
+p {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+.input{
+    width: 100%;
+    height: 56px;
+    border-radius: 2px;
+    border: 0;
+    outline: none;
+    padding-left: 20px;
+    box-sizing: border-box;
+
+    border: 2px solid transparent;
+    transition: all ease-in-out .2s;
+
+    &:focus{
+        border: 2px solid rgba(218, 218, 218, 1);
+    }
+}
+
+input::placeholder{
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+}

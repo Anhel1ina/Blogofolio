@@ -10,10 +10,15 @@
     &:nth-child(n + 1){
         border-left: 1px solid rgba(232, 232, 232, 1);
     }
+
+    &:disabled{
+        & path{
+            fill: rgb(217, 217, 217)
+        }
+    }
 }
 
-.non_chosen{
-    & path{
-        fill: rgb(217, 217, 217)
-    }
+.inner_button{
+    border: none;
+    background-color: transparent;
 }

@@ -1,7 +1,7 @@
 .main{
     width: 1120px;
     margin: 0 auto;
-    margin-top: 72px;
+    padding-top: 156px;
 
     & h1{
         font-family: Inter;
@@ -9,4 +9,8 @@
         font-weight: 700;
         margin-bottom: 40px;
     }
+}
+
+:global(.dark) .main h1{
+    color: #ffffff;
 }

@@ -4,10 +4,15 @@ import styles from './header.module.scss'
 import { HeaderInput } from './HeaderInput/HeaderInput'
 import { NonAutorized } from './User/NonAutorized/NonAutorized'
 
-export const Header = () => {
+type Props = {
+    theme: string
+    changeTheme: (theme: string) => void
+}
+
+export const Header = ({theme, changeTheme}: Props) => {
     return (
         <div className={styles.header}>
-            <Wrapper/>
+            <Wrapper theme={theme} changeTheme={changeTheme}/>
             <HeaderInput/>
             <Search/>
             {/* <User name='Artem Malkin' abbr='AM'/> */}

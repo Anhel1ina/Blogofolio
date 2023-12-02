@@ -22,15 +22,17 @@ export const TabsHolder = (props: Props) => {
     };
     return (
         <div className={styles.tabs_holder}>
+            <div className={styles.tabs_links}>
             {
                 items.map((item, index) => (
-                        <button
-                        className={`${styles.tabs_holder__button} ${index === active ? styles.active : ''}`}
-                        onClick={openTab}
-                        data-index={index}
-                        key={index}>{item}</button>
+                    <button
+                    className={`${styles.tabs_holder__button} ${index === active ? styles.active : ''}`}
+                    onClick={openTab}
+                    data-index={index}
+                    key={index}>{item}</button>
                 ))
             }
+            </div>
             <TabContent data_type={active}/>
         </div>
         
