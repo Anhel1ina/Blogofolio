@@ -10,4 +10,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    margin-bottom: 20px;
+
+}
+
+.sign_text{
+    margin-top: 24px;
+    & p{
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 500;
+        color: rgba(141, 142, 151, 1);
+    }
+
+    & a{
+        text-decoration: none;
+        color: rgba(34, 49, 170, 1);
+    }
 }

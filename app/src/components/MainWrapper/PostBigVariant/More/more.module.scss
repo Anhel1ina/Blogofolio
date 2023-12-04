@@ -20,3 +20,9 @@
         }
     }
 }
+
+:global(.dark) .more{
+    & path{
+        fill: #ffffff;
+    }
+}

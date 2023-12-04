@@ -76,6 +76,7 @@
 
 :global(.dark) .small_post h3{
     color: rgba(255, 255, 255, 1);
+    transition: all .3s ease-in-out;
 
     &:hover{
         color: rgba(34, 49, 170, 1);

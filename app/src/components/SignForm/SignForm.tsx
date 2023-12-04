@@ -6,37 +6,43 @@ import { SignLogButton } from './SignLogButton/SignLogButton'
 type InputType = {
     title: string
     text: string
+    type: string
 }
 
 export const SignForm = () => {
     const inputs: InputType[] = [
         {
             title: 'Name',
-            text: 'Your name'
+            text: 'Your name',
+            type: 'text'
         },
         {
             title: 'Email',
-            text: 'Your email'
+            text: 'Your email',
+            type: 'email'
         },
         {
             title: 'Password',
-            text: 'Your password'
+            text: 'Your password',
+            type: 'password'
         },
         {
             title: 'Confirm passwod',
-            text: 'Confirm password'
+            text: 'Confirm password',
+            type: 'password'
         }
     ]
-    const titles = ['Name', 'Email', 'Password', 'Confirm password']
-    const placeholders = ['Your name', 'Your email', 'Your password', 'Confirm password']
     return (
         <div className={styles.sign_form}>
             {
                 inputs.map((item, i) => (
-                    <Input key={i} label={item.title} placeholder={item.text}/>
+                    <Input key={i} label={item.title} placeholder={item.text} type={item.type}/>
                 ))
             }
             <SignLogButton name='Sign In'/>
+            <div className={styles.sign_text}>
+                <p>Already have an account? <a href="#">Sing In</a></p>
+            </div>
         </div>
     )
 }

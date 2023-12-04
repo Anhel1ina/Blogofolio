@@ -21,6 +21,8 @@
         text-transform: capitalize;
         color: rgba(49, 48, 55, 1);
 
+        min-height: 66px;
+
         &:hover{
             color: rgba(34, 49, 170, 1);
             cursor: pointer;
@@ -57,11 +59,14 @@
     margin-right: 24px;
 }
 
-:global(.dark) .middle_post h3{
-    color: rgba(255, 255, 255, 1);
+:global(.dark) .middle_post{
+    & h3{
+        color: rgba(255, 255, 255, 1);
+        transition: all .3s ease-in-out;
 
-    &:hover{
-        color: rgba(34, 49, 170, 1);
-        cursor: pointer;
+        &:hover{
+            color: rgba(34, 49, 170, 1);
+            cursor: pointer;
+        }
     }
 }

@@ -31,3 +31,9 @@
         }
     }
 }
+
+:global(.dark) .bookmark{
+    & path{
+        fill: #ffffff;
+    }
+}

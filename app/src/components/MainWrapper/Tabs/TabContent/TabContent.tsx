@@ -3,6 +3,7 @@ import { PostBigVariant } from '../../PostBigVariant/PostBigVariant'
 import { PostMiddleVariant } from "../../PostMiddleVariant/PostMiddleVariant"
 import { PostSmallVariant } from "../../PostSmallVariant/PostSmallVariant"
 import { useState, useEffect } from "react"
+import { SignForm } from "../../../SignForm/SignForm"
 
 
 type Posts = {
@@ -62,7 +63,10 @@ export const TabContent = (props: Props) => {
                     
                 ) : (
                     data_type === 1 ? (
-                        <div>ЛЮБИМЫЕ ПОСТЫ</div>
+                        <div>
+                            {/* ЛЮБИМЫЕ ПОСТЫ */}
+                            <SignForm/>
+                        </div>
                     ) : (
                         <div>ПОПУЛЯРНЫЕ ПОСТЫ</div>
                     )

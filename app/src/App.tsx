@@ -10,9 +10,10 @@ function App() {
   const changeTheme = (theme: string) => {
       setTheme(theme)
   }
+  const baseStyle = 'base_style'
 
   return (
-    <div className={theme}>    
+    <div className={`${theme} ${baseStyle}`}>    
       <Header theme={theme} changeTheme={changeTheme}/>
       <MainWrapper/>
     </div>
