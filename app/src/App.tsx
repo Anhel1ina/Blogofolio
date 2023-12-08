@@ -2,6 +2,9 @@ import './App.css'
 import { useState } from 'react';
 import { Header } from './components/Header/Header';
 import { MainWrapper } from './components/MainWrapper/MainWrapper';
+import { Footer } from './components/Footer/Footer';
+import { SignInPage } from './pages/SignInPage/SIgnInPage';
+import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 
 
 function App() {
@@ -15,7 +18,10 @@ function App() {
   return (
     <div className={`${theme} ${baseStyle}`}>    
       <Header theme={theme} changeTheme={changeTheme}/>
-      <MainWrapper/>
+      {/* <MainWrapper/> */}
+      {/* <SignInPage/> */}
+      <SignUpPage/>
+      <Footer/>
     </div>
   );
 }

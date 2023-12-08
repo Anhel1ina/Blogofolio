@@ -50,7 +50,7 @@
     }
 }
 
-:global(.dark) .like_button, .dislike_button{
+:global(.dark) .like_button, :global(.dark) .dislike_button{
     & path{
         fill: #ffffff;
     }

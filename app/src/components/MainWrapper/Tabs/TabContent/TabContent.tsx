@@ -65,10 +65,11 @@ export const TabContent = (props: Props) => {
                     data_type === 1 ? (
                         <div>
                             {/* ЛЮБИМЫЕ ПОСТЫ */}
-                            <SignForm/>
                         </div>
                     ) : (
-                        <div>ПОПУЛЯРНЫЕ ПОСТЫ</div>
+                        <div>
+                            {/* ПОПУЛЯРНЫЕ ПОСТЫ */}
+                        </div>
                     )
                 )
             }

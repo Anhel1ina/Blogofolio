@@ -1,4 +1,4 @@
-import React from 'react'
+import { useRef, useEffect } from 'react'
 import styles from './sign_form.module.scss'
 import { Input } from './Input/Input'
 import { SignLogButton } from './SignLogButton/SignLogButton'
@@ -9,39 +9,31 @@ type InputType = {
     type: string
 }
 
-export const SignForm = () => {
-    const inputs: InputType[] = [
-        {
-            title: 'Name',
-            text: 'Your name',
-            type: 'text'
-        },
-        {
-            title: 'Email',
-            text: 'Your email',
-            type: 'email'
-        },
-        {
-            title: 'Password',
-            text: 'Your password',
-            type: 'password'
-        },
-        {
-            title: 'Confirm passwod',
-            text: 'Confirm password',
-            type: 'password'
-        }
-    ]
+type Props = {
+    innerItems: InputType[]
+    buttonName: string
+    underTitle: string
+    underLink: string
+}
+
+export const SignForm = ({innerItems, buttonName, underTitle, underLink}: Props) => {
+
+    const inputRef = useRef<HTMLInputElement>(null)
+    useEffect(() => {
+        console.log(inputRef.current)
+        inputRef.current?.focus()
+    })
+
     return (
         <div className={styles.sign_form}>
             {
-                inputs.map((item, i) => (
-                    <Input key={i} label={item.title} placeholder={item.text} type={item.type}/>
+                innerItems.map((item, i) => (
+                    <Input key={i} index={i} reference={inputRef} label={item.title} placeholder={item.text} type={item.type}/>
                 ))
             }
-            <SignLogButton name='Sign In'/>
+            <SignLogButton name={buttonName}/>
             <div className={styles.sign_text}>
-                <p>Already have an account? <a href="#">Sing In</a></p>
+                <p>{underTitle}<a href="#">{underLink}</a></p>
             </div>
         </div>
     )
