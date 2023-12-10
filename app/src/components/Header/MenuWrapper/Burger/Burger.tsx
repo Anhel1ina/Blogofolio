@@ -2,27 +2,26 @@ import React from 'react'
 import { BurgerIcon } from './BurgerIcon'
 import { OpenMenuIcon } from './OpenMenuIcon'
 import styles from './burger.module.scss'
+import { useReducer, useContext, createContext, ReactNode} from 'react'
+import { useBurgerContext } from '../../../helpers/BurgerContext'
 
-type Props = {
-    open: boolean
-    onClick: () => void
-}
+export const Burger = () => {
+    const { state, dispatch } = useBurgerContext()
 
-export const Burger = (props: Props) => {
+    const open = () => dispatch({ type: 'open' })
+    const close = () => dispatch({ type: 'close' })
 
     return (
-        <div onClick={props.onClick}>
-        {
-            props.open ? (
+        <div onClick={state.isOpened ? close : open}>
+            {state.isOpened ? (
                 <button className={styles.open_icon}>
-                    <OpenMenuIcon/>
+                    <OpenMenuIcon />
                 </button>
             ) : (
                 <button className={styles.burger}>
-                    <BurgerIcon/>
+                    <BurgerIcon />
                 </button>
-            )
-        }
+            )}
         </div>
     )
 }

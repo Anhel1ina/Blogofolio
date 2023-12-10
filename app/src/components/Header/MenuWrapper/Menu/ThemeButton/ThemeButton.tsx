@@ -3,24 +3,27 @@ import styles from './theme.module.scss'
 import { DayMode } from '../DayMode/DayMode'
 import { NightMode } from '../NightMode/NightMode'
 
+import { useThemeContext } from '../../../../helpers/ThemeContext'
 
-//onClick={() => changeTheme('dark)} - add function to button
-//disabled={theme === 'light}
-//добавить props
 
-type Props = {
-    theme: string
-    changeTheme: (theme: string) => void
-}
+export const ThemeButton = () => {
 
-export const ThemeButton = ({theme, changeTheme}: Props) => {
+    const themeState = useThemeContext()
     return (
         <div>
-            <button onClick={() => changeTheme('light')} disabled={theme === 'light'} className={styles.mode_button}>
-                <DayMode disabled={theme !== 'light'}/>
+            <button 
+                onClick={() => themeState.setState('light')} 
+                disabled={themeState.state === 'light'}
+                className={styles.mode_button}
+            >
+                <DayMode disabled={themeState.state !== 'light'}/>
             </button>
-            <button onClick={() => changeTheme('dark')} disabled={theme !== 'light'} className={styles.mode_button}>
-                <NightMode disabled={theme === 'light'}/>
+            <button 
+                onClick={() => themeState.setState('dark')} 
+                disabled={themeState.state !== 'light'}
+                className={styles.mode_button}
+            >
+                <NightMode disabled={themeState.state === 'light'}/>
             </button>
         </div>
     )

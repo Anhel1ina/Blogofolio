@@ -12,15 +12,14 @@ type InputType = {
 type Props = {
     innerItems: InputType[]
     buttonName: string
-    underTitle: string
-    underLink: string
+    underTitle?: string
+    underLink?: string
 }
 
 export const SignForm = ({innerItems, buttonName, underTitle, underLink}: Props) => {
 
     const inputRef = useRef<HTMLInputElement>(null)
     useEffect(() => {
-        console.log(inputRef.current)
         inputRef.current?.focus()
     })
 
@@ -32,9 +31,15 @@ export const SignForm = ({innerItems, buttonName, underTitle, underLink}: Props)
                 ))
             }
             <SignLogButton name={buttonName}/>
-            <div className={styles.sign_text}>
-                <p>{underTitle}<a href="#">{underLink}</a></p>
-            </div>
+            {
+                underTitle && underLink ? (
+                    <div className={styles.sign_text}>
+                        <p>{underTitle}<a href="#">{underLink}</a></p>
+                    </div>
+                ) : (
+                    null
+                )
+            }
         </div>
     )
 }
