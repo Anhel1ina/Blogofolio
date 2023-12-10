@@ -3,7 +3,7 @@ import { BurgerIcon } from './BurgerIcon'
 import { OpenMenuIcon } from './OpenMenuIcon'
 import styles from './burger.module.scss'
 import { useReducer, useContext, createContext, ReactNode} from 'react'
-import { useBurgerContext } from '../../../helpers/BurgerContext'
+import { useBurgerContext } from '../../../../helpers/BurgerContext'
 
 export const Burger = () => {
     const { state, dispatch } = useBurgerContext()

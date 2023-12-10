@@ -33,6 +33,7 @@ export const SignInPage = () => {
                     underTitle="Don't have an account?"
                     underLink='Sign Up'
                     buttonName='Sign In'
+                    forgetLink='Forgot password?'
                 />
             </div>
         </div>

@@ -3,7 +3,7 @@ import styles from './theme.module.scss'
 import { DayMode } from '../DayMode/DayMode'
 import { NightMode } from '../NightMode/NightMode'
 
-import { useThemeContext } from '../../../../helpers/ThemeContext'
+import { useThemeContext } from '../../../../../helpers/ThemeContext'
 
 
 export const ThemeButton = () => {

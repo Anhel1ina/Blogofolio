@@ -4,7 +4,7 @@ import { ThemeButton } from './ThemeButton/ThemeButton'
 import styles from './menu.module.scss'
 import { DayMode } from './DayMode/DayMode'
 import { NightMode } from './NightMode/NightMode'
-import { useBurgerContext } from '../../../helpers/BurgerContext'
+import { useBurgerContext } from '../../../../helpers/BurgerContext'
 
 
 const data = ["Home"]

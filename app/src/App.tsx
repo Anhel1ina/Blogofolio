@@ -8,7 +8,7 @@ import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 import { ResetPasswordPage } from './pages/ResetPasswordPage/ResetPasswordPage';
 import { NewPasswordPage } from './pages/NewPasswordPage/NewPasswordPage';
 import { SearchResultsPage } from './pages/SearchResultsPage/SearchResultsPage';
-import { useThemeContext } from './components/helpers/ThemeContext';
+import { useThemeContext } from './helpers/ThemeContext';
 
 
 function App() {
@@ -24,12 +24,12 @@ function App() {
   return (
     <div className={`${themeCtx.state} ${baseStyle}`}>    
       <Header/>
-      <MainWrapper/>
+      {/* <MainWrapper/> */}
       {/* <SignInPage/> */}
       {/* <SignUpPage/> */}
       {/* <ResetPasswordPage/> */}
       {/* <NewPasswordPage/> */}
-      {/* <SearchResultsPage/> */}
+      <SearchResultsPage/>
       <Footer/>
     </div>
   );

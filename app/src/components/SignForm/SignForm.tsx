@@ -14,9 +14,11 @@ type Props = {
     buttonName: string
     underTitle?: string
     underLink?: string
+
+    forgetLink?: string
 }
 
-export const SignForm = ({innerItems, buttonName, underTitle, underLink}: Props) => {
+export const SignForm = ({innerItems, buttonName, underTitle, underLink, forgetLink}: Props) => {
 
     const inputRef = useRef<HTMLInputElement>(null)
     useEffect(() => {
@@ -24,22 +26,31 @@ export const SignForm = ({innerItems, buttonName, underTitle, underLink}: Props)
     })
 
     return (
-        <div className={styles.sign_form}>
+        <form className={styles.sign_form}>
             {
                 innerItems.map((item, i) => (
                     <Input key={i} index={i} reference={inputRef} label={item.title} placeholder={item.text} type={item.type}/>
                 ))
             }
+            {
+                forgetLink ? (
+                    <p className={styles.forget_link} >
+                        <a href="#">{forgetLink}</a>
+                    </p>
+                ) : (
+                    null
+                )
+            }
             <SignLogButton name={buttonName}/>
             {
                 underTitle && underLink ? (
                     <div className={styles.sign_text}>
-                        <p>{underTitle}<a href="#">{underLink}</a></p>
+                        <p>{underTitle + " "}<a href="#">{underLink}</a></p>
                     </div>
                 ) : (
                     null
                 )
             }
-        </div>
+        </form>
     )
 }

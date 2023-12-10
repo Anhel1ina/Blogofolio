@@ -4,10 +4,6 @@ import styles from './header.module.scss'
 import { HeaderInput } from './HeaderInput/HeaderInput'
 import { NonAutorized } from './User/NonAutorized/NonAutorized'
 
-// type Props = {
-//     theme: string
-//     changeTheme: (theme: string) => void
-// }
 
 export const Header = () => {
     return (

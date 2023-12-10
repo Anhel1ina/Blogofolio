@@ -4,13 +4,18 @@
     background-color: rgba(243, 243, 243, 1);
 
     box-sizing: border-box;
-    padding: 40px;
+    padding: 0 40px 40px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     
-    margin: 0 auto 20px;
+    margin: 0 auto;
+}
+
+:global(.dark) .sign_form{
+    border: 1px solid rgba(141, 142, 151, 1);
+    background: transparent;
 }
 
 .sign_text{
@@ -20,10 +25,41 @@
         font-size: 16px;
         font-weight: 500;
         color: rgba(141, 142, 151, 1);
+        margin: 0;
     }
 
     & a{
         text-decoration: none;
         color: rgba(34, 49, 170, 1);
     }
+}
+
+:global(.dark) .sign_text{
+    & p{
+        color: rgba(255, 255, 255, 1);
+    }
+
+    & a{
+        color: rgba(83, 96, 205, 1)
+    }
+}
+
+
+.forget_link{
+    text-align: left;
+    width: 100%;
+    margin: 16px 0 0;
+    & a{
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 400;
+        color: rgba(49, 48, 55, 1);
+        text-decoration: none;
+    
+        text-align: left;
+    }
+}
+
+:global(.dark) .forget_link a{
+    color: rgba(255, 255, 255, 1);
 }

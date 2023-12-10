@@ -1,7 +1,7 @@
 .wrapper{
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 92px);
+    min-height: calc(100vh - 92px);
 }
 
 .sign_page{
