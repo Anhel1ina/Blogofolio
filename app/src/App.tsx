@@ -24,12 +24,12 @@ function App() {
   return (
     <div className={`${themeCtx.state} ${baseStyle}`}>    
       <Header/>
-      {/* <MainWrapper/> */}
+      <MainWrapper/>
       {/* <SignInPage/> */}
       {/* <SignUpPage/> */}
       {/* <ResetPasswordPage/> */}
       {/* <NewPasswordPage/> */}
-      <SearchResultsPage/>
+      {/* <SearchResultsPage/> */}
       <Footer/>
     </div>
   );
