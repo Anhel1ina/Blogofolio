@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react';
+import styles from './app.module.scss'
 import { Header } from './components/Header/Header';
 import { MainWrapper } from './components/MainWrapper/MainWrapper';
 import { Footer } from './components/Footer/Footer';
@@ -12,24 +12,23 @@ import { useThemeContext } from './helpers/ThemeContext';
 
 
 function App() {
-  // const [theme, setTheme] = useState<string>('light')//переместить в App
-
-  // const changeTheme = (theme: string) => {
-  //     setTheme(theme)
-  // }
-
   const baseStyle = 'base_style'
   const themeCtx = useThemeContext()
 
   return (
     <div className={`${themeCtx.state} ${baseStyle}`}>    
       <Header/>
-      <MainWrapper/>
-      {/* <SignInPage/> */}
-      {/* <SignUpPage/> */}
-      {/* <ResetPasswordPage/> */}
-      {/* <NewPasswordPage/> */}
-      {/* <SearchResultsPage/> */}
+      <div style={{
+        minHeight: 'calc(100vh - 164px)'
+      }
+      } >
+        <MainWrapper/>
+        {/* <SignInPage/> */}
+        {/* <SignUpPage/> */}
+        {/* <ResetPasswordPage/> */}
+        {/* <NewPasswordPage/> */}
+        {/* <SearchResultsPage/> */}
+      </div>
       <Footer/>
     </div>
   );
