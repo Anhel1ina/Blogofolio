@@ -1,0 +1,32 @@
+.add_to_fav_button{
+    width: 237px;
+    height: 56px;
+    padding: 16px 32px;
+    border-radius: 2px;
+    background-color: rgba(232, 232, 232, 1);
+    border: none;
+
+    display: flex;
+    align-items: center;
+    transition: all .4s ease-in-out;
+
+    & p{
+        font-family: Inter;
+        font-size: 18px;
+        font-weight: 600;
+        color: rgba(49, 48, 55, 1);
+        margin-left: 10px;
+    }
+
+    &:hover{
+        background-color: rgba(83, 96, 205, 1);
+        & path{
+            fill: rgba(255, 255, 255, 1);
+            transition: all .4s ease-in-out ;
+        }
+
+        & p{
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+}

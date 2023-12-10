@@ -9,6 +9,7 @@ import { ResetPasswordPage } from './pages/ResetPasswordPage/ResetPasswordPage';
 import { NewPasswordPage } from './pages/NewPasswordPage/NewPasswordPage';
 import { SearchResultsPage } from './pages/SearchResultsPage/SearchResultsPage';
 import { useThemeContext } from './helpers/ThemeContext';
+import { OpenPostPage } from './pages/OpenPostPage/OpenPostPage';
 
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
         {/* <ResetPasswordPage/> */}
         {/* <NewPasswordPage/> */}
         {/* <SearchResultsPage/> */}
+
+        {/* <OpenPostPage/> */}
       </div>
       <Footer/>
     </div>

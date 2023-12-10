@@ -5,7 +5,7 @@ import { PageHeader } from '../../components/PageHeader/PageHeader'
 export const SearchResultsPage = () => {
     return (
         <div className={styles.wrapper}>
-            <div className={styles.sign_page}>
+            <div className={styles.page}>
                 <PageHeader title="Search results"/>
             </div>
         </div>

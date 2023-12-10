@@ -22,7 +22,7 @@ export const ResetPasswordPage = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.sign_page}>
+            <div className={styles.page}>
                 <BackToHome/>
                 <PageHeader title="Reset password"/>
                 <SignForm 

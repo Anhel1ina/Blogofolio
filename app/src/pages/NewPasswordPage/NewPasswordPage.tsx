@@ -26,7 +26,7 @@ export const NewPasswordPage = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.sign_page}>
+            <div className={styles.page}>
                 <BackToHome/>
                 <PageHeader title="New password"/>
                 <SignForm 

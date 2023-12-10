@@ -36,7 +36,7 @@ export const SignUpPage = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.sign_page}>
+            <div className={styles.page}>
                 <BackToHome/>
                 <PageHeader title="Sign Up"/>
                 <SignForm 
