@@ -14,12 +14,13 @@ type Post = {
 
 type Props = {
     post: Post
+    searchRes?: boolean
 }
 
 export const PostSmallVariant = (props: Props) => {
-    const {post} = props
+    const {post, searchRes = false} = props
     return (
-        <div className={styles.small_post}>
+        <div className={`${styles.small_post} ${searchRes ? styles.search_results : null}`}>
             <div>
                 <h4>{new Date(post.date).toLocaleDateString()}</h4>
                 <h3>{post.title}</h3>

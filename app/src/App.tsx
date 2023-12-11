@@ -10,6 +10,8 @@ import { NewPasswordPage } from './pages/NewPasswordPage/NewPasswordPage';
 import { SearchResultsPage } from './pages/SearchResultsPage/SearchResultsPage';
 import { useThemeContext } from './helpers/ThemeContext';
 import { OpenPostPage } from './pages/OpenPostPage/OpenPostPage';
+import { SuccessPage } from './pages/SuccessPage/SuccessPage';
+import { RegistrationConfirmationPage } from './pages/RegistrationConfirmationPage/RegistrationConfirmationPage';
 
 
 function App() {
@@ -31,6 +33,9 @@ function App() {
         {/* <SearchResultsPage/> */}
 
         {/* <OpenPostPage/> */}
+
+        {/* <SuccessPage/> */}
+        {/* <RegistrationConfirmationPage/> */}
       </div>
       <Footer/>
     </div>

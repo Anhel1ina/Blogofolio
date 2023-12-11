@@ -1,4 +1,4 @@
-import styles from './sign_in_page.module.scss'
+import styles from '../sign_in_page.module.scss'
 import { SignForm } from '../../components/SignForm/SignForm'
 import { BackToHome } from '../../components/BackToHome/BackToHome'
 import { PageHeader } from '../../components/PageHeader/PageHeader'

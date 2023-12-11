@@ -1,4 +1,4 @@
-import styles from './sign_log_button.module.scss';
+import styles from './form_button.module.scss';
 
 type Props = {
     name: string

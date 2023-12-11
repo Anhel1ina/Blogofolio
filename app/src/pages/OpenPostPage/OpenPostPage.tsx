@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
 
-import mainStyles from '../SignInPage/sign_in_page.module.scss' 
+import mainStyles from '../sign_in_page.module.scss' 
 import styles from './open_post.module.scss'
 import { LikeFullButton } from '../../components/LikeFullButton/LikeFullButton'
 import { DislikeFullButton } from '../../components/DislikeFullButton/DislikeFullButton'
