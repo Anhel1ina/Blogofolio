@@ -42,6 +42,7 @@ export const SignUpPage = () => {
                     innerItems={inputs}
                     underTitle='Already have an account?'
                     underLink='Sign In'
+                    linkTo='signin'
                     buttonName='Sign Up'
                 />
             </div>

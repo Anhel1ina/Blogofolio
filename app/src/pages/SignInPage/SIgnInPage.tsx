@@ -32,6 +32,7 @@ export const SignInPage = () => {
                     innerItems={inputs}
                     underTitle="Don't have an account?"
                     underLink='Sign Up'
+                    linkTo='signup'
                     buttonName='Sign In'
                     forgetLink='Forgot password?'
                 />

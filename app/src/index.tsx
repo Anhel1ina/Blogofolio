@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeContextProvider } from './helpers/ThemeContext';
 import { AuthContextProvider } from './helpers/AuthContext';
 import { BrowserRouter } from 'react-router-dom';
+import { SearchTextProvider } from './helpers/SearchResultsContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,7 +17,9 @@ root.render(
     <BrowserRouter>
       <AuthContextProvider>
         <ThemeContextProvider>
-          <App />
+          <SearchTextProvider>
+            <App />
+          </SearchTextProvider>
         </ThemeContextProvider>
       </AuthContextProvider>
     </BrowserRouter>

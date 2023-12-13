@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import styles from './header_input.module.scss'
 import { DelIcon } from './DelIcon'
+import { createContext, useContext } from 'react'
+
+import { useSearchText } from '../../../helpers/SearchResultsContext'
+
 
 export const HeaderInput = () => {
-    const [searchText, setSearchText] = useState('')
+    const {searchText, setSearchText} = useSearchText()
 
     const inputChange = (e: React.FormEvent<HTMLInputElement>) => {
         setSearchText(e.currentTarget.value);
@@ -22,3 +26,4 @@ export const HeaderInput = () => {
         </div>
     )
 }
+

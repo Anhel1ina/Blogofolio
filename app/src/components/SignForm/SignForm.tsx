@@ -2,6 +2,8 @@ import { useRef, useEffect } from 'react'
 import styles from './sign_form.module.scss'
 import { Input } from './Input/Input'
 import { SignLogButton } from './SignLogButton/SignLogButton'
+import { Link } from 'react-router-dom'
+import { link } from 'fs'
 
 type InputType = {
     title: string
@@ -16,9 +18,10 @@ type Props = {
     underLink?: string
 
     forgetLink?: string
+    linkTo?: string
 }
 
-export const SignForm = ({innerItems, buttonName, underTitle, underLink, forgetLink}: Props) => {
+export const SignForm = ({innerItems, buttonName, underTitle, underLink, forgetLink, linkTo}: Props) => {
 
     const inputRef = useRef<HTMLInputElement>(null)
     useEffect(() => {
@@ -45,7 +48,15 @@ export const SignForm = ({innerItems, buttonName, underTitle, underLink, forgetL
             {
                 underTitle && underLink ? (
                     <div className={styles.sign_text}>
-                        <p>{underTitle + " "}<a href="#">{underLink}</a></p>
+                        <p>{underTitle + " "}
+                            {
+                                linkTo ? (
+                                    <Link to={linkTo}>{underLink}</Link>
+                                ) : (
+                                    null
+                                )
+                            }
+                        </p>
                     </div>
                 ) : (
                     null
