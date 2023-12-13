@@ -12,6 +12,10 @@ import { useThemeContext } from './helpers/ThemeContext';
 import { OpenPostPage } from './pages/OpenPostPage/OpenPostPage';
 import { SuccessPage } from './pages/SuccessPage/SuccessPage';
 import { RegistrationConfirmationPage } from './pages/RegistrationConfirmationPage/RegistrationConfirmationPage';
+import { RequireAuth } from './helpers/RequireAuth';
+import { AuthContextProvider } from './helpers/AuthContext';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './components/Layouts/Layout';
 
 
 function App() {
@@ -19,26 +23,35 @@ function App() {
   const themeCtx = useThemeContext()
 
   return (
-    <div className={`${themeCtx.state} ${baseStyle}`}>    
-      <Header/>
-      <div style={{
-        minHeight: 'calc(100vh - 164px)'
-      }
-      } >
-        <MainWrapper/>
-        {/* <SignInPage/> */}
-        {/* <SignUpPage/> */}
-        {/* <ResetPasswordPage/> */}
-        {/* <NewPasswordPage/> */}
-        {/* <SearchResultsPage/> */}
+    // <div className={`${themeCtx.state} ${baseStyle}`}>  
+    // <AuthContextProvider>
+    //     <Header/>
+    // </AuthContextProvider>  
+    //   <div style={{
+    //     minHeight: 'calc(100vh - 164px)'
+    //   }
+    //   } >
+    //     <MainWrapper/>
+    //     {/* <SignInPage/> */}
+    //     {/* <SignUpPage/> */}
+    //     {/* <ResetPasswordPage/> */}
+    //     {/* <NewPasswordPage/> */}
+    //     {/* <SearchResultsPage/> */}
 
-        {/* <OpenPostPage/> */}
+    //     {/* <OpenPostPage/> */}
 
-        {/* <SuccessPage/> */}
-        {/* <RegistrationConfirmationPage/> */}
-      </div>
-      <Footer/>
-    </div>
+    //     {/* <SuccessPage/> */}
+    //     {/* <RegistrationConfirmationPage/> */}
+    //   </div>
+    //   <Footer/>
+    // </div>
+
+    <Routes>
+      <Route path='/' element={<Layout/>}>
+        <Route index element={<MainWrapper/>}/>
+        <Route path='signin' element={<SignInPage/>}/>
+      </Route>
+    </Routes>
   );
 }
 

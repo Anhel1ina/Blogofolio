@@ -1,9 +1,8 @@
-import React, { useState } from "react";
 import styles from './user-styles.module.scss';
 
 type Props = {
-    name: string
-    abbr: string
+    name: string | undefined
+    abbr: string | undefined
 }
 
 export const User = (props: Props) => {

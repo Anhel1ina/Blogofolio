@@ -5,6 +5,7 @@ import styles from './menu.module.scss'
 import { DayMode } from './DayMode/DayMode'
 import { NightMode } from './NightMode/NightMode'
 import { useBurgerContext } from '../../../../helpers/BurgerContext'
+import { MenuButton } from '../../../MenuButton/MenuButton'
 
 
 const data = ["Home"]
@@ -28,6 +29,7 @@ export const Menu = () => {
             </div>
             <div>
                 <ThemeButton/>
+                <MenuButton title='Sign In'/>
             </div>
         </div>
     )
