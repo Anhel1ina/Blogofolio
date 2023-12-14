@@ -3,6 +3,7 @@ import { LikeButton } from '../PostBigVariant/LikeButton/LikeButton'
 import { DislikeButton } from '../PostBigVariant/DislikeButton/DislikeButton'
 import { Bookmark } from '../PostBigVariant/Bookmark/Bookmark'
 import { More } from '../PostBigVariant/More/More'
+import { Link } from 'react-router-dom'
 
 type Post = {
     id: number
@@ -20,10 +21,12 @@ type Props = {
 export const PostSmallVariant = (props: Props) => {
     const {post, searchRes = false} = props
     return (
-        <div className={`${styles.small_post} ${searchRes ? styles.search_results : null}`}>
+        <div className={`${styles.small_post} ${searchRes ? styles.search_results : null}`} id={post.id.toString()}>
             <div>
                 <h4>{new Date(post.date).toLocaleDateString()}</h4>
-                <h3>{post.title}</h3>
+                <Link to={`openpost/${post.id}`}>
+                    <h3>{post.title}</h3>
+                </Link>
             </div>
             <div className={styles.small_post_img}>
                 <img src={post.image} alt="Astronaut"/>

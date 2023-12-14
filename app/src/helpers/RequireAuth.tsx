@@ -10,7 +10,6 @@ export const RequireAuth = ({children}: Props) => {
     const { state } = useAuthContext()
 
     if(!state.isLoged){
-        //redirect to sign in page
         return (
             null
         )

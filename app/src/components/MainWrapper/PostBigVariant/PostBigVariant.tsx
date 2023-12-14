@@ -3,6 +3,7 @@ import { LikeButton } from './LikeButton/LikeButton'
 import { DislikeButton } from './DislikeButton/DislikeButton'
 import { Bookmark } from './Bookmark/Bookmark'
 import { More } from './More/More'
+import { Link } from 'react-router-dom'
 
 
 type Posts = {
@@ -19,11 +20,13 @@ export const PostBigVariant: React.FC<{ posts: Posts[] }> = ({ posts }) => {
     }
 
     return (
-        <div className={styles.post}>
+        <div className={styles.post} id={posts[0].id.toString()}>
             <>
                 <div>
                     <h4>{new Date(posts[0].date).toLocaleDateString()}</h4>
-                    <h2>{posts[0].title}</h2>
+                    <Link to={`openpost/${posts[0].id}`}>
+                        <h2>{posts[0].title}</h2>
+                    </Link>
                     <p className={styles.body_text}>{posts[0].description}</p>
                 </div>
                 <div className={styles.post_image}>

@@ -1,3 +1,30 @@
+.open_post_backlink{
+    display: flex;
+    align-items: center;
+
+    & p, span{
+        margin: 0 8px 32px 0;
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 400;
+        color: rgba(141, 142, 151, 1);
+        cursor: default;
+    }
+
+    & p:first-child{
+        color: rgba(49, 48, 55, 1);
+        cursor: pointer;
+    }
+
+    & span{
+        font-size: 18px;
+    }
+
+    & a{
+        text-decoration: none;
+    }
+}
+
 .open_post_header{
     font-family: Inter;
     font-size: 56px;

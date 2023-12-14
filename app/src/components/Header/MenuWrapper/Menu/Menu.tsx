@@ -31,7 +31,7 @@ export const Menu = () => {
                             <li>Home</li>
                         </NavLink>
                         <RequireAuth>
-                            <NavLink to='/'>
+                            <NavLink to='addpost'>
                                 <li>Add post</li>
                             </NavLink>
                         </RequireAuth>

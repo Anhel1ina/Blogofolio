@@ -49,6 +49,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Layout/>}>
         <Route index element={<MainWrapper/>}/>
+        <Route path='openpost/:id' element={<OpenPostPage/>}/>
         <Route path='signin' element={<SignInPage/>}/>
         <Route path='signup' element={<SignUpPage/>}/>
         <Route path='search' element={<SearchResultsPage/>}/>

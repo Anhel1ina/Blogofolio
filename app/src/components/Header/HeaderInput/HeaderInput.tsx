@@ -19,7 +19,7 @@ export const HeaderInput = () => {
 
     return (
         <div className={styles.header_input}>
-            <input placeholder='Search...' type="text" value={searchText} onChange={inputChange} id="header-input" />
+            <input autoComplete='off' placeholder='Search...' type="text" value={searchText} onChange={inputChange} id="header-input" />
             <button onClick={clearInput}>
                 {<DelIcon />}
             </button>

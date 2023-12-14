@@ -6,6 +6,9 @@
     font-family: Inter;
     border-bottom: 1px solid rgba(218, 218, 218, 1);
 
+    & a{
+        text-decoration: none;
+    }
 
     & h4{
         margin: 0 0 8px;

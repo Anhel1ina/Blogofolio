@@ -6,7 +6,7 @@ import { useSearchText } from '../../../helpers/SearchResultsContext'
 
 export const Search = () => {
     return (
-        <Link to='search' >
+        <Link to='search'>
             <button className={styles.search}>
                 <SearchIcon/>
             </button>
