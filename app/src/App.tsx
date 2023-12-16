@@ -17,45 +17,37 @@ import { AuthContextProvider } from './helpers/AuthContext';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layouts/Layout';
 
+import { useNavigate } from 'react-router-dom';
+
 
 function App() {
   const baseStyle = 'base_style'
   const themeCtx = useThemeContext()
 
   return (
-    // <div className={`${themeCtx.state} ${baseStyle}`}>  
-    // <AuthContextProvider>
-    //     <Header/>
-    // </AuthContextProvider>  
-    //   <div style={{
-    //     minHeight: 'calc(100vh - 164px)'
-    //   }
-    //   } >
-    //     <MainWrapper/>
-    //     {/* <SignInPage/> */}
-    //     {/* <SignUpPage/> */}
-    //     {/* <ResetPasswordPage/> */}
-    //     {/* <NewPasswordPage/> */}
-    //     {/* <SearchResultsPage/> */}
-
-    //     {/* <OpenPostPage/> */}
-
-    //     {/* <SuccessPage/> */}
-    //     {/* <RegistrationConfirmationPage/> */}
-    //   </div>
-    //   <Footer/>
-    // </div>
-
     <Routes>
       <Route path='/' element={<Layout/>}>
         <Route index element={<MainWrapper/>}/>
         <Route path='openpost/:id' element={<OpenPostPage/>}/>
-        <Route path='signin' element={<SignInPage/>}/>
-        <Route path='signup' element={<SignUpPage/>}/>
+
+        <Route path='signup'>
+          <Route index element={<SignUpPage/>}/>
+          <Route path='signin' element={<SignInPage/>}/>
+          <Route path='success' element={<SuccessPage/>}/>
+        </Route>      
+
+        <Route path='signin'>
+          <Route index element={<SignInPage/>}/>
+          <Route path='signup' element={<SignUpPage/>}/>
+          <Route path='registrationconfirm' element={<RegistrationConfirmationPage/>}/>
+          <Route path='forgotpassword' element={<ResetPasswordPage/>}/>
+        </Route>
+
         <Route path='search' element={<SearchResultsPage/>}/>
       </Route>
     </Routes>
   );
 }
+
 
 export default App;

@@ -1,17 +1,15 @@
-import React from 'react'
 import { Header } from '../Header/Header';
-import { useThemeContext } from '../../helpers/ThemeContext';
-import { AuthContextProvider } from '../../helpers/AuthContext';
 import { Footer } from '../Footer/Footer';
-import { MainWrapper } from '../MainWrapper/MainWrapper';
-
 import { Outlet } from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../../store/theme/selectors';
 
 export const Layout = () => {
     const baseStyle = 'base_style'
-    const themeCtx = useThemeContext()
+    const state = useSelector(selectTheme)
     return (
-        <div className={`${themeCtx.state} ${baseStyle}`}>
+        <div className={`${state.theme} ${baseStyle}`}>
             <Header />
             <div style={{
                 minHeight: 'calc(100vh - 164px)'

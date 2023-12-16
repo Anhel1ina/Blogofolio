@@ -11,6 +11,10 @@
     align-items: center;
     
     margin: 0 auto;
+
+    & a{
+        width: 100%;
+    }
 }
 
 :global(.dark) .sign_form{
@@ -34,6 +38,34 @@
     }
 }
 
+.primary_button{
+    width: 100%;
+    height: 56px;
+    padding: 16px 32px;
+    background-color: rgba(34, 49, 170, 1);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 2px;
+    margin-top: 48px;
+
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 600;
+
+    transition: all ease-in-out .4s;
+    cursor: pointer;
+
+    &:hover{
+        background-color: rgba(83, 96, 205, 1);
+    }
+
+    &:disabled{
+        background-color: rgba(232, 232, 232, 1);
+        color: rgba(141, 142, 151, 1);
+        cursor: not-allowed;
+    }
+}
+
 :global(.dark) .sign_text{
     & p{
         color: rgba(255, 255, 255, 1);
@@ -49,17 +81,15 @@
     text-align: left;
     width: 100%;
     margin: 16px 0 0;
-    & a{
-        font-family: Inter;
-        font-size: 16px;
-        font-weight: 400;
-        color: rgba(49, 48, 55, 1);
-        text-decoration: none;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(49, 48, 55, 1);
+    text-decoration: none;
     
-        text-align: left;
-    }
+    text-align: left;
 }
 
-:global(.dark) .forget_link a{
+:global(.dark) .forget_link{
     color: rgba(255, 255, 255, 1);
 }

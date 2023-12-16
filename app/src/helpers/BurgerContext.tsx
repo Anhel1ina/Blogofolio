@@ -1,36 +1,13 @@
 import React from 'react'
 import { useReducer, useContext, createContext, ReactNode} from 'react'
-
-type BurgerState = {
-    isOpened: boolean;
-}
-
-const burgerInitState: BurgerState = {//burger inintial state
-    isOpened: false
-}
-
-type BurgerAction = {
-    type: 'open' | 'close'
-}
-
-const burgerReducer = (state: BurgerState, action: BurgerAction): BurgerState => {
-    switch (action.type) {
-        case 'open':
-            return {
-                isOpened: true
-            }
-        case 'close':
-            return {
-                isOpened: false
-            }
-        default:
-            return state
-    }
-}
+import { setOpenAction, setCloseAction } from '../store/burgerMenu/action'
+import { BurgerState, BurgerAction } from '../store/burgerMenu/types'
+import { burgerReducer, burgerInitState } from '../store/burgerMenu/reducer'
 
 type BurgerStateContextType = {// type for content
     state: BurgerState
-    dispatch: React.Dispatch<BurgerAction>
+    setOpen: () => void
+    setClose: () => void
 }
 
 const BurgerContext = createContext<BurgerStateContextType> ({} as BurgerStateContextType)//content creation
@@ -39,11 +16,19 @@ type BurgerProviderProps = {
     children: ReactNode
 }
 
+
+
 export const BurgerProvider = ({ children }: BurgerProviderProps) => {
     const [state, dispatch] = useReducer(burgerReducer, burgerInitState)
 
+    const value = {
+        state: state,
+        setOpen: () => dispatch(setOpenAction()),
+        setClose: () => dispatch(setCloseAction())
+    }
+
     return (
-        <BurgerContext.Provider value={{ state, dispatch }}>
+        <BurgerContext.Provider value={value}>
             {children}
         </BurgerContext.Provider>
     )

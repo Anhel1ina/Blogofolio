@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
 
 import mainStyles from '../sign_in_page.module.scss' 
@@ -20,17 +20,22 @@ export const OpenPostPage = () => {
     const [data, setData] = useState<Posts>()
     const {id} = useParams()
 
+    const focusRef = useRef<HTMLDivElement>(null)
+
     useEffect(() => {
         fetch(`https://65670f6864fcff8d730fa806.mockapi.io/posts/${id}`)
             .then(res => res.json())
-            .then(res => setData(res))
-    }, [])
+            .then(res => {
+                setData(res)
+                window.scrollTo(0, 0)
+            })
+    }, [id])
 
     if(!data){
         return null
     }
     return (
-        <div className={mainStyles.wrapper}>
+        <div className={mainStyles.wrapper} tabIndex={-1} ref={focusRef}>
             <div className={mainStyles.page}>
                 <div className={styles.open_post_backlink}>
                     <Link to='/'><p>Home</p></Link>

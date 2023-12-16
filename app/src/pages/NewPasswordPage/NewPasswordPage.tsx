@@ -32,6 +32,7 @@ export const NewPasswordPage = () => {
                 <SignForm 
                     innerItems={inputs}
                     buttonName='Set password'
+                    submitLink='/'
                 />
             </div>
         </div>

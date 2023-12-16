@@ -33,8 +33,9 @@ export const SignInPage = () => {
                     underTitle="Don't have an account?"
                     underLink='Sign Up'
                     linkTo='signup'
+                    submitLink='registrationconfirm'
                     buttonName='Sign In'
-                    forgetLink='Forgot password?'
+                    forgetLink='forgotpassword'
                 />
             </div>
         </div>

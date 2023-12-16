@@ -1,10 +1,13 @@
-import React, { ReactNode, createContext, useContext, useState } from 'react'
+import React, { ReactNode, createContext, useContext, useReducer } from 'react'
+import { ThemeState, ThemeAction } from '../store/theme/types'
+import { setLightAction, setDarkAction } from '../store/theme/action'
+import { themeReducer, themeInitState } from '../store/theme/reducer'
 
-type ThemeState = 'light' | 'dark'
 
 type ThemeContextType = {
     state: ThemeState
-    setState: React.Dispatch<React.SetStateAction<ThemeState>>
+    setLightMode: () => void
+    setDarkMode: () => void
 }
 
 export const ThemeContext = createContext<ThemeContextType>({} as ThemeContextType)
@@ -14,11 +17,13 @@ type ProviderProps = {
 }
 
 export const ThemeContextProvider = ({children}: ProviderProps) => {
-    const [state, setState] = useState<ThemeState>('light')
+    const [state, dispatch] = useReducer(themeReducer, themeInitState)
+    
 
     const value = {
-        state,
-        setState
+        state: state,
+        setLightMode: () => dispatch(setLightAction()),
+        setDarkMode: () => dispatch(setDarkAction())
     }
 
     return (

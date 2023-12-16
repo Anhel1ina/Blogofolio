@@ -4,10 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { ThemeContextProvider } from './helpers/ThemeContext';
-import { AuthContextProvider } from './helpers/AuthContext';
 import { BrowserRouter } from 'react-router-dom';
 import { SearchTextProvider } from './helpers/SearchResultsContext';
+import { Provider } from 'react-redux';
+import { appStore } from './store/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,13 +15,15 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthContextProvider>
-        <ThemeContextProvider>
-          <SearchTextProvider>
-            <App />
-          </SearchTextProvider>
-        </ThemeContextProvider>
-      </AuthContextProvider>
+
+      <Provider store={appStore}>
+
+            <SearchTextProvider>
+              <App />
+            </SearchTextProvider>
+
+      </Provider>
+
     </BrowserRouter>
   </React.StrictMode>
 );

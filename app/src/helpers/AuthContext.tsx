@@ -1,20 +1,8 @@
 import { ReactNode, createContext, useContext, useReducer } from 'react'
+import { AuthState, AuthAction } from '../store/auth/types'
+import { loginAction, logoutAction } from '../store/auth/actions'
+import { authReducer, authInitState } from '../store/auth/reducer'
 
-type AuthState = {
-    isLoged: boolean
-    userName?: string
-    initials?: string
-}
-
-const authInitState: AuthState = {
-    isLoged: false,
-}
-
-type AuthAction = {
-    type: string
-    userName?: string
-    initials?: string
-}
 
 type AuthContextType = {//value for provider
     state: AuthState
@@ -28,40 +16,14 @@ type ProviderProps = {
     children: ReactNode
 }
 
-const authReducer = (state: AuthState, action: AuthAction): AuthState => {
-    switch(action.type){
-        case 'login':
-            return { // type loginState
-                isLoged: true,
-                userName: action.userName,
-                initials: action.initials
-            }
-        case 'logout':
-            return {
-                isLoged: false
-            }
-        default:
-            return state
-    }
-}
 
 export const AuthContextProvider = ({children}: ProviderProps) => {
     const [state, dispatch] = useReducer(authReducer, authInitState)
 
-    const login = () => dispatch({
-        type: 'login',
-        userName: 'Artem Malkin',
-        initials: 'AM'
-    })
-
-    const logout = () => dispatch({
-        type: 'logout'
-    })
-
     const value = {
         state: state,
-        login: login,
-        logout: logout
+        login: () => dispatch(loginAction()),
+        logout: () => dispatch(logoutAction())
     }
 
     return (

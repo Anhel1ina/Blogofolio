@@ -1,9 +1,7 @@
 import { useRef, useEffect } from 'react'
 import styles from './sign_form.module.scss'
 import { Input } from './Input/Input'
-import { SignLogButton } from './SignLogButton/SignLogButton'
 import { Link } from 'react-router-dom'
-import { link } from 'fs'
 
 type InputType = {
     title: string
@@ -13,15 +11,18 @@ type InputType = {
 
 type Props = {
     innerItems: InputType[]
+
+    disabled?: boolean
     buttonName: string
     underTitle?: string
     underLink?: string
+    submitLink: string
 
     forgetLink?: string
     linkTo?: string
 }
 
-export const SignForm = ({innerItems, buttonName, underTitle, underLink, forgetLink, linkTo}: Props) => {
+export const SignForm = ({innerItems, buttonName, underTitle, underLink, forgetLink, linkTo, submitLink, disabled=false}: Props) => {
 
     const inputRef = useRef<HTMLInputElement>(null)
     useEffect(() => {
@@ -37,14 +38,16 @@ export const SignForm = ({innerItems, buttonName, underTitle, underLink, forgetL
             }
             {
                 forgetLink ? (
-                    <p className={styles.forget_link} >
-                        <a href="#">{forgetLink}</a>
-                    </p>
+                    <Link to={forgetLink} className={styles.forget_link}>
+                        <p>Forgot password ?</p>
+                    </Link>
                 ) : (
                     null
                 )
             }
-            <SignLogButton name={buttonName}/>
+            <Link to={submitLink}>
+                <input type="submit" className={styles.primary_button} disabled={disabled} value={buttonName} />
+            </Link>
             {
                 underTitle && underLink ? (
                     <div className={styles.sign_text}>

@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './back_to_home.module.scss'
 import { Link } from 'react-router-dom'
 

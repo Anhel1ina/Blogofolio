@@ -28,6 +28,7 @@ export const ResetPasswordPage = () => {
                 <SignForm 
                     innerItems={inputs}
                     buttonName='Reset'
+                    submitLink='/'
                 />
             </div>
         </div>
