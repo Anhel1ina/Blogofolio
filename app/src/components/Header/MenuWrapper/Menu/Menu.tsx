@@ -9,10 +9,18 @@ import { User } from '../../User/User'
 import { useSelector } from 'react-redux'
 import { setMenu } from '../../../../store/burgerMenu/selectors'
 import { checkAuth } from '../../../../store/auth/selectors'
+import { useDispatch } from 'react-redux'
+
+import { setOpenAction, setCloseAction } from '../../../../store/burgerMenu/action'
 
 
 export const Menu = () => {
     const {isOpened} = useSelector(setMenu)
+
+    const dispatch = useDispatch()
+    const setOpenMenu = () => dispatch(setOpenAction())
+    const setCloseMenu = () => dispatch(setCloseAction())
+
     const {isLoged} = useSelector(checkAuth)
     if(!isOpened){
         return null
@@ -26,7 +34,7 @@ export const Menu = () => {
                         <RequireAuth>
                             <User name='Artem Malkin' abbr='AM'/> 
                         </RequireAuth>
-                        <NavLink to='/'>
+                        <NavLink to='/' onClick={() => setTimeout(setCloseMenu, 100)}>
                             <li>Home</li>
                         </NavLink>
                         <RequireAuth>
@@ -43,10 +51,10 @@ export const Menu = () => {
                 {
                     isLoged ? (
                         <RequireAuth>
-                            <MenuButton title='Log out'/>
+                            <MenuButton forMenuClosed={() => setTimeout(setCloseMenu, 100)} title='Log out'/>
                         </RequireAuth>
                     ) : (
-                        <MenuButton title='Sign In'/>
+                        <MenuButton forMenuClosed={() => setTimeout(setCloseMenu, 100)} title='Sign In'/>
                     )
                 }
             </div>

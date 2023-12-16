@@ -1,8 +1,5 @@
 import './App.css'
-import styles from './app.module.scss'
-import { Header } from './components/Header/Header';
 import { MainWrapper } from './components/MainWrapper/MainWrapper';
-import { Footer } from './components/Footer/Footer';
 import { SignInPage } from './pages/SignInPage/SIgnInPage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 import { ResetPasswordPage } from './pages/ResetPasswordPage/ResetPasswordPage';
@@ -17,13 +14,7 @@ import { AuthContextProvider } from './helpers/AuthContext';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layouts/Layout';
 
-import { useNavigate } from 'react-router-dom';
-
-
 function App() {
-  const baseStyle = 'base_style'
-  const themeCtx = useThemeContext()
-
   return (
     <Routes>
       <Route path='/' element={<Layout/>}>

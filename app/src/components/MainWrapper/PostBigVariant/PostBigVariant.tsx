@@ -4,10 +4,6 @@ import { DislikeButton } from './DislikeButton/DislikeButton'
 import { Bookmark } from './Bookmark/Bookmark'
 import { More } from './More/More'
 import { Link } from 'react-router-dom'
-
-import { useSelector, useDispatch } from 'react-redux'
-import { postImage } from '../../../store/postImage/selectors'
-import { CloseImageAction, OpenImageAction } from '../../../store/postImage/action'
 import { ImageAction } from '../../../store/postImage/types'
 
 type Props = {
