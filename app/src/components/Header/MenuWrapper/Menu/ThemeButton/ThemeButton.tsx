@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
 import styles from './theme.module.scss'
 import { DayMode } from '../DayMode/DayMode'
 import { NightMode } from '../NightMode/NightMode'
-
-import { useThemeContext } from '../../../../../helpers/ThemeContext'
 
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../../../../store/theme/selectors'
@@ -12,7 +9,6 @@ import { setLightAction, setDarkAction } from '../../../../../store/theme/action
 
 
 export const ThemeButton = () => {
-    // const themeState = useThemeContext()
     const state = useSelector(selectTheme)
     const dispatch = useDispatch()
 

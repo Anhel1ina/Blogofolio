@@ -20,8 +20,6 @@ export const OpenPostPage = () => {
     const [data, setData] = useState<Posts>()
     const {id} = useParams()
 
-    const focusRef = useRef<HTMLDivElement>(null)
-
     useEffect(() => {
         fetch(`https://65670f6864fcff8d730fa806.mockapi.io/posts/${id}`)
             .then(res => res.json())
@@ -35,7 +33,7 @@ export const OpenPostPage = () => {
         return null
     }
     return (
-        <div className={mainStyles.wrapper} tabIndex={-1} ref={focusRef}>
+        <div className={mainStyles.wrapper}>
             <div className={mainStyles.page}>
                 <div className={styles.open_post_backlink}>
                     <Link to='/'><p>Home</p></Link>

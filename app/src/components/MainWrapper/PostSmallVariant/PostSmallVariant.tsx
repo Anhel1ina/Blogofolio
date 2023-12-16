@@ -16,10 +16,11 @@ type Post = {
 type Props = {
     post: Post
     searchRes?: boolean
+    openImage?: () => void
 }
 
 export const PostSmallVariant = (props: Props) => {
-    const {post, searchRes = false} = props
+    const {post, searchRes = false, openImage} = props
     return (
         <div className={`${styles.small_post} ${searchRes ? styles.search_results : null}`} id={post.id.toString()}>
             <div>
@@ -29,7 +30,7 @@ export const PostSmallVariant = (props: Props) => {
                 </Link>
             </div>
             <div className={styles.small_post_img}>
-                <img src={post.image} alt="Astronaut"/>
+                <img src={post.image} onClick={openImage}/>
             </div>
             <div className={styles.all_buttons}>
                 <div>

@@ -17,7 +17,6 @@ type BurgerProviderProps = {
 }
 
 
-
 export const BurgerProvider = ({ children }: BurgerProviderProps) => {
     const [state, dispatch] = useReducer(burgerReducer, burgerInitState)
 
