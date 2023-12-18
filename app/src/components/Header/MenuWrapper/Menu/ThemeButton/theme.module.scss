@@ -1,6 +1,8 @@
+@import '../../../../../helpers/color_variables.module.scss';
+
 .mode_button{
     border: none;
-    border-top: 1px solid rgba(232, 232, 232, 1);
+    border-top: 1px solid $light-gray;
     background-color: transparent;
     cursor: pointer;
 
@@ -8,12 +10,12 @@
     height: 80px;
 
     &:nth-child(n + 1){
-        border-left: 1px solid rgba(232, 232, 232, 1);
+        border-left: 1px solid $light-gray;
     }
 
     &:disabled{
         & path{
-            fill: rgb(217, 217, 217)
+            fill: $medium-gray;
         }
     }
 }

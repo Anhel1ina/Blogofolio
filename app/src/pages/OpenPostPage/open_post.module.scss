@@ -1,3 +1,5 @@
+@import '../../helpers/color_variables.module.scss';
+
 .open_post_backlink{
     display: flex;
     align-items: center;
@@ -7,12 +9,12 @@
         font-family: Inter;
         font-size: 16px;
         font-weight: 400;
-        color: rgba(141, 142, 151, 1);
+        color: $dark-gray;
         cursor: default;
     }
 
     & p:first-child{
-        color: rgba(49, 48, 55, 1);
+        color: $dark-mode-color;
         cursor: pointer;
     }
 
@@ -29,7 +31,7 @@
     font-family: Inter;
     font-size: 56px;
     font-weight: 700;
-    color: rgba(49, 48, 55, 1);
+    color: $dark-mode-color;
 
     margin: 0 0 48px;
 }
@@ -54,7 +56,7 @@
     font-family: Inter;
     font-size: 18px;
     font-weight: 400;
-    color: rgba(49, 48, 55, 1);
+    color: $dark-mode-color;
     line-height: 32px;
 
     margin: 0;

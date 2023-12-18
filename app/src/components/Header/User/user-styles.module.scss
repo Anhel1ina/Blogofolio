@@ -1,6 +1,8 @@
+@import '../../../helpers/color_variables.module.scss';
+
 .fullBlock{
     height: 84px;
-    background-color: #2231AA;
+    background-color: $main-color;
 
     display: flex;
     padding: 18px 32px;
@@ -22,7 +24,7 @@
             width: 48px;
             aspect-ratio: 1/1;
 
-            background-color: rgba(83, 96, 205, 1);
+            background-color: $main-hover-color;
             border-radius: 2px;
 
             display: flex;

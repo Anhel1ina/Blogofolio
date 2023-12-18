@@ -1,3 +1,5 @@
+@import '../../helpers/color_variables.module.scss';
+
 .buttons_wrapper{
     width: 100%;
     display: flex;
@@ -17,7 +19,7 @@
         font-family: Inter;
         font-size: 16px;
         font-weight: 600;
-        color: rgba(49, 48, 55, 1);
+        color: $dark-mode-color;
 
         cursor: pointer;
         transition: all .4s ease-in-out;
@@ -31,19 +33,19 @@
         }
 
         &:hover:not(:disabled){
-            color: rgba(34, 49, 170, 1);
+            color: $main-color;
 
             & path{
-                fill: rgba(34, 49, 170, 1);
+                fill: $main-color;
             }
         }
 
         &:disabled{
-            color: rgba(141, 142, 151, 1);
+            color: $dark-gray;
             cursor: not-allowed;
 
             & path{
-                fill: rgba(141, 142, 151, 1);
+                fill: $dark-gray;
             }
         }
     }

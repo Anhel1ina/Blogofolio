@@ -1,9 +1,11 @@
+@import '../../../../helpers/color_variables.module.scss';
+
 .burger, .open_icon{
     height: 84px;
     aspect-ratio: 1/1;
-    background-color: rgba(34, 49, 170, 1);
+    background-color: $main-color;
     border: none;
-    border-right: 1px solid rgba(83, 96, 205, 1);
+    border-right: 1px solid $main-hover-color;
 
     display: flex;
     align-items: center;
@@ -12,6 +14,6 @@
     transition: all ease-in-out .3s;
 
     &:hover{
-        background-color: rgba(83, 96, 205, 1);
+        background-color: $main-hover-color;
     }
 }

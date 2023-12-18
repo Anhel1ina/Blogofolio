@@ -1,3 +1,5 @@
+@import '../../../../helpers/color_variables.module.scss';
+
 .more{
     width: 36px;
     aspect-ratio: 1/1;
@@ -15,7 +17,7 @@
 
     &:hover{
         & path{
-            fill: rgba(83, 96, 205, 1);
+            fill: $main-hover-color;
             transition: all ease-in-out .4s;
         }
     }
@@ -23,6 +25,6 @@
 
 :global(.dark) .more{
     & path{
-        fill: #ffffff;
+        fill: rgb(255, 255, 255);
     }
 }

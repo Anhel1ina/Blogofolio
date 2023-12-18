@@ -1,10 +1,12 @@
+@import '../../../helpers/color_variables.module.scss';
+
 .small_post{
     width: 100%;
     display: grid;
     grid-template-rows: 57% calc(43% - 24px);
     row-gap: 24px;
     column-gap: 34px;
-    border-bottom: 1px solid rgba(218, 218, 218, 1);
+    border-bottom: 1px solid $medium-gray;
     margin-bottom: 40px;
 
     & h4{
@@ -12,7 +14,7 @@
         font-family: Inter;
         font-size: 16px;
         font-weight: 400;
-        color: rgba(141, 142, 151, 1);
+        color: $dark-gray;
         grid-row: 1/2;
         grid-column: 1/2;
     }
@@ -30,10 +32,10 @@
         grid-column: 1/2;
         grid-row: 1/2;
         text-transform: capitalize;
-        color: rgba(49, 48, 55, 1);
+        color: $dark-mode-color;
 
         &:hover{
-            color: rgba(34, 49, 170, 1);
+            color: $main-color;
             cursor: pointer;
         }
     }
@@ -83,7 +85,7 @@
     transition: all .3s ease-in-out;
 
     &:hover{
-        color: rgba(34, 49, 170, 1);
+        color: $main-color;
         cursor: pointer;
     }
 }

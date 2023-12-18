@@ -1,3 +1,5 @@
+@import '../../../../helpers/color_variables.module.scss';
+
 .button_block{
     display: flex;
     align-items: center;
@@ -12,7 +14,7 @@
 
 :global(.dark) .button_block{
     & p{
-        color: #ffffff;
+        color: rgb(255, 255, 255);
     }
 }
 
@@ -20,11 +22,9 @@
     width: 36px;
     border-radius: 50%;
     aspect-ratio: 1/1;
-    // padding: 16px 32px;
     padding: 0;
     border: none;
     background-color: transparent;
-    // margin: 8px;
 
     display: flex;
     align-items: center;
@@ -44,7 +44,7 @@
         cursor: not-allowed;
 
         & path{
-            fill: rgba(141, 142, 151, 1);
+            fill: $dark-gray;
             transition: all ease-in-out .4s;
         }
     }
@@ -52,21 +52,21 @@
 
 :global(.dark) .like_button, :global(.dark) .dislike_button{
     & path{
-        fill: #ffffff;
+        fill: rgb(255, 255, 255);
     }
 }
 
 .dis_change{
     padding-top: 6px;
     &:hover:not(:disabled){
-        background-color: rgba(253, 52, 25, 1);
+        background-color: $dislike-color;
     }
 }
 
 :global(.dark) .dis_change{
     padding-top: 6px;
     &:hover:not(:disabled){
-        background-color: rgba(253, 52, 25, 1);
+        background-color: $dislike-color;
     }
 }
 
@@ -74,27 +74,27 @@
 
 .like_change{
     &:hover:not(:disabled){
-        background-color: rgba(83, 96, 205, 1);
+        background-color: $main-hover-color;
     }
 }
 
 
 :global(.dark) .like_change{
     &:hover:not(:disabled){
-        background-color: rgba(83, 96, 205, 1);
+        background-color: $main-hover-color;
     }
 }
 
 
 .set_liked_post{
     & path{
-        fill: rgba(83, 96, 205, 1);
+        fill: $main-hover-color;
     }
 }
 
 :global(.dark) .set_liked_post{
     & path{
-        fill: rgba(83, 96, 205, 1);
+        fill: $main-hover-color;
     }
 }
 
@@ -102,12 +102,12 @@
 
 .set_disliked_post{
     & path{
-        fill: rgba(253, 52, 25, 1);
+        fill: $dislike-color;
     }
 }
 
 :global(.dark) .set_disliked_post{
     & path{
-        fill: rgba(253, 52, 25, 1);
+        fill: $dislike-color;
     }
 }

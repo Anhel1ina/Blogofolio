@@ -1,3 +1,4 @@
+@import '../../helpers/color_variables.module.scss';
 @mixin buttonSecondaryStandart{
     height: 56px;
     padding: 16px 32px;
@@ -14,16 +15,16 @@
 .button_secondary{
     @include buttonSecondaryStandart;
     width: 159px;
-    background-color: rgba(232, 232, 232, 1);
-    color: rgba(49, 48, 55, 1);
+    background-color: $light-gray;
+    color: $dark-mode-color;
 
     &:hover{
-        background-color: rgba(218, 218, 218, 1);
+        background-color: $medium-gray;
     }
 
     &:disabled{
-        background-color: rgba(232, 232, 232, 1);
-        color: rgba(141, 142, 151, 1);
+        background-color: $light-gray;
+        color: $dark-gray;
         cursor: not-allowed;
     }
 }
@@ -32,15 +33,15 @@
     @include buttonSecondaryStandart;
     width: 176px;
     background-color: transparent;
-    color: rgba(253, 52, 25, 1);
+    color: $dislike-color;
     border: 1px solid transparent;
 
     &:hover:not(:disabled){
-        border-color: rgba(218, 218, 218, 1);
+        border-color: $medium-gray;
     }
 
     &:disabled{
-        color: rgba(141, 142, 151, 1);
+        color: $dark-gray;
         cursor: not-allowed;
     }
 }

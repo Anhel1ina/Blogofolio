@@ -1,10 +1,12 @@
+@import '../../helpers/color_variables.module.scss';
+
 .like_button, .dislike_button{
     width: 88px;
     height: 56px;
     padding: 16px 32px;
     border-radius: 2px;
     border: none;
-    background-color: rgba(232, 232, 232, 1);
+    background-color: $light-gray;
     cursor: pointer;
 
     transition: all ease-in-out .4s;
@@ -17,7 +19,7 @@
 }
 
 .like_button:hover{
-    background-color: rgba(83, 96, 205, 1);
+    background-color: $main-hover-color;
     & path{
         fill: white;
         transition: all ease-in-out .4s;
@@ -25,7 +27,7 @@
 }
 
 .dislike_button:hover{
-    background-color: rgba(253, 52, 25, 1);
+    background-color: $dislike-color;
     & path{
         fill: white;
         transition: all ease-in-out .4s;

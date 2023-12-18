@@ -1,3 +1,5 @@
+@import '../../../../../helpers/color_variables.module.scss';
+
 .sign_log_button{
     width: 100%;
     height: 84px;
@@ -6,13 +8,13 @@
     font-size: 16px;
     font-weight: 600;
 
-    background-color: rgba(232, 232, 232, 1);
+    background-color: $light-gray;
     border: none;
 
     transition: all ease-in-out .4s;
     cursor: pointer;
 
     &:hover{
-        background-color: rgba(218, 218, 218, 1);
+        background-color: $medium-gray;
     }
 }

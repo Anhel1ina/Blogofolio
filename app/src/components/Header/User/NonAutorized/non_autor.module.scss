@@ -1,7 +1,8 @@
+@import '../../../../helpers/color_variables.module.scss';
 .non_author{
     height: 84px;
     aspect-ratio: 1/1;
-    background-color: rgba(34, 49, 170, 1);
+    background-color: $main-color;
     border: none;
 
     display: flex;
