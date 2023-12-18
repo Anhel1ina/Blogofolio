@@ -4,6 +4,6 @@ export type ImageState = {
 }
 
 export type ImageAction = {
-    type: 'opened' | 'closed'
+    type: 'opened' | 'closed' | 'next' | 'prev'
     idOfPost?: number
 }

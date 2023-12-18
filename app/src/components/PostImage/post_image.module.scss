@@ -37,9 +37,12 @@
 
     box-sizing: border-box;
     padding-top: 26px;
+    height: fit-content;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     &_image{
         height: 314px;

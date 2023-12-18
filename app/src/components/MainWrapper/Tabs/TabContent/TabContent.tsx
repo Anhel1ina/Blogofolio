@@ -88,7 +88,7 @@ export const TabContent = (props: Props) => {
             </div>
             {
                 isOpened ? (
-                    <PostImage idOfPost={idOfPost ? idOfPost : 1} closeImage={closeImagePost}/>
+                    <PostImage dataLength={data.length} idOfPost={idOfPost ? idOfPost : 1} closeImage={closeImagePost}/>
                 ) : (
                     null
                 )

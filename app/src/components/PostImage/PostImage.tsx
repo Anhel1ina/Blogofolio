@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import styles from './post_image.module.scss'
+import { ButtonsWrapper } from '../PrevNextButtons/ButtonsWrapper'
 
 type Posts = {
     title: string
@@ -12,9 +13,10 @@ type Posts = {
 type Props = {
     closeImage: () => void
     idOfPost: number
+    dataLength: number
 }
 
-export const PostImage = ({closeImage, idOfPost}: Props) => {
+export const PostImage = ({closeImage, idOfPost, dataLength}: Props) => {
 
     const [data, setData] = useState<Posts>()
 
@@ -22,7 +24,7 @@ export const PostImage = ({closeImage, idOfPost}: Props) => {
         fetch(`https://65670f6864fcff8d730fa806.mockapi.io/posts/${idOfPost}`)
             .then(res => res.json())
             .then(res => setData(res))
-    }, [])
+    }, [idOfPost])
     if (!data) {
         return null
     }
@@ -36,10 +38,9 @@ export const PostImage = ({closeImage, idOfPost}: Props) => {
                 </button>
                 <div className={styles.post_image_inner_content}>
                     <div className={styles.post_image_inner_content_image}>
-                        <img src={data.image} alt="" />
+                        <img src={data.image} alt={`post ${idOfPost} image`} />
                     </div>
-                    <div>
-                    </div>
+                    <ButtonsWrapper dataLength={dataLength}/>
                 </div>
             </div>
         </div>

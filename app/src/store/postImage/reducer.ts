@@ -8,7 +8,7 @@ export const ImageInitState: ImageState = {
 }
 
 export const imageReducer = (state = ImageInitState, action: ImageAction): ImageState => {
-    debugger
+    // debugger
     switch(action.type){
         case 'opened':
             return{
@@ -18,6 +18,12 @@ export const imageReducer = (state = ImageInitState, action: ImageAction): Image
         case 'closed':
             return{
                 isOpened: false
+            }
+        case 'next':
+        case 'prev':
+            return{
+                isOpened: true,
+                idOfPost: action.idOfPost
             }
         default: return state
     }
