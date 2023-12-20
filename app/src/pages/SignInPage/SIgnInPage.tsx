@@ -2,6 +2,7 @@ import styles from '../sign_in_page.module.scss'
 import { SignForm } from '../../components/SignForm/SignForm'
 import { BackToHome } from '../../components/BackToHome/BackToHome'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
+import { useEffect } from 'react'
 
 type InputType = {
     title: string
@@ -22,6 +23,8 @@ export const SignInPage = () => {
             type: 'password'
         }
     ]
+
+    useEffect(() => window.scrollTo(0, 0))
 
     return (
         <div className={styles.wrapper}>

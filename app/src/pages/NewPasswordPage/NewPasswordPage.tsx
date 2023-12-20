@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '../sign_in_page.module.scss'
 import { BackToHome } from '../../components/BackToHome/BackToHome'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
@@ -23,6 +23,8 @@ export const NewPasswordPage = () => {
             type: 'password'
         }
     ]
+
+    useEffect(() => window.scrollTo(0, 0))
 
     return (
         <div className={styles.wrapper}>

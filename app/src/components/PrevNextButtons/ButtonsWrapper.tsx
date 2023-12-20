@@ -18,5 +18,3 @@ export const ButtonsWrapper = ({dataLength}: Props) => {
         </div>
     )
 }
-
-console.log(!'0')

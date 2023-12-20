@@ -28,6 +28,7 @@
         color: $dark-mode-color;
 
         min-height: 66px;
+        transition: all .3s ease-in-out;
 
         &:hover{
             color: $main-color;

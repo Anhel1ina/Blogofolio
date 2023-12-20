@@ -3,7 +3,7 @@ import styles from '../sign_in_page.module.scss'
 import { BackToHome } from '../../components/BackToHome/BackToHome'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
 import { SignForm } from '../../components/SignForm/SignForm'
-
+import { useEffect } from 'react'
 
 type InputType = {
     title: string
@@ -19,6 +19,8 @@ export const ResetPasswordPage = () => {
             type: 'email'
         }
     ]
+
+    useEffect(() => window.scrollTo(0, 0))
 
     return (
         <div className={styles.wrapper}>

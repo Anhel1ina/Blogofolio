@@ -20,7 +20,10 @@ export const SearchResultsPage = () => {
     useEffect(() => {
         fetch('https://65670f6864fcff8d730fa806.mockapi.io/posts')
             .then(res => res.json())
-            .then(res => setData(res))
+            .then(res => {
+                window.scrollTo(0, 0)
+                setData(res)
+            })
     }, [])
     if (data.length === 0) {
         return null
