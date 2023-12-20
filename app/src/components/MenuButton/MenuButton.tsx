@@ -8,7 +8,7 @@ type Props = {
 
 export const MenuButton = ({title, forMenuClosed}: Props) => {
     return (
-        <Link to='/signin' onClick={forMenuClosed}>
+        <Link to='auth/signin' onClick={forMenuClosed}>
             <button className={styles.menu_button}>
                 {title}
             </button>

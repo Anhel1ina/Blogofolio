@@ -43,7 +43,7 @@ export const SignUpPage = () => {
                     underTitle='Already have an account?'
                     underLink='Sign In'
                     linkTo='signin'
-                    submitLink='success'
+                    submitLink='signup/success'
                     buttonName='Sign Up'
                 />
             </div>

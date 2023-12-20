@@ -21,17 +21,16 @@ function App() {
         <Route index element={<MainWrapper/>}/>
         <Route path='openpost/:id' element={<OpenPostPage/>}/>
 
-        <Route path='signup'>
+        <Route path='auth'>
           <Route index element={<SignUpPage/>}/>
-          <Route path='signin' element={<SignInPage/>}/>
-          <Route path='success' element={<SuccessPage/>}/>
-        </Route>      
-
-        <Route path='signin'>
-          <Route index element={<SignInPage/>}/>
-          <Route path='signup' element={<SignUpPage/>}/>
-          <Route path='registrationconfirm' element={<RegistrationConfirmationPage/>}/>
-          <Route path='forgotpassword' element={<ResetPasswordPage/>}/>
+          <Route path='signup'>
+            <Route path='success' element={<SuccessPage/>}/>
+          </Route>   
+          <Route path='signin'>
+            <Route index element={<SignInPage/>}/>
+            <Route path='registrationconfirm' element={<RegistrationConfirmationPage/>}/>
+            <Route path='forgotpassword' element={<ResetPasswordPage/>}/>
+          </Route>
         </Route>
 
         <Route path='search' element={<SearchResultsPage/>}/>
