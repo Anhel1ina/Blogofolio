@@ -5,6 +5,7 @@ import { Bookmark } from './Bookmark/Bookmark'
 import { More } from './More/More'
 import { Link } from 'react-router-dom'
 import { ImageAction } from '../../../store/postImage/types'
+import { LikeDisButtonsWrapper } from './LikeDisButtonsWrapper/LikeDisButtonsWrapper'
 
 type Props = {
     openImage: (id: number) => ImageAction
@@ -38,12 +39,7 @@ export const PostBigVariant = ({posts, openImage}: Props) => {
                     <img src={posts[0].image} alt="post" onClick={() => openImage(posts[0].id)}/>
                 </div>
                 <div className={styles.like_dis}>
-                    <div className={styles.like_buttons}>
-                        <LikeButton />
-                    </div>
-                    <div className={styles.like_buttons}>
-                        <DislikeButton />
-                    </div>
+                    <LikeDisButtonsWrapper/>
                 </div>
                 <div className={`${styles.like_dis} ${styles.dop_buttons}`}>
                     <Bookmark />

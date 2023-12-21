@@ -12,6 +12,10 @@
     }
 }
 
+.button_block:first-child{
+    margin-right: 24px;
+}
+
 :global(.dark) .button_block{
     & p{
         color: rgb(255, 255, 255);

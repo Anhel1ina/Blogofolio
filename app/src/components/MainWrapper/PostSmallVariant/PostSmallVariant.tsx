@@ -4,6 +4,7 @@ import { DislikeButton } from '../PostBigVariant/DislikeButton/DislikeButton'
 import { Bookmark } from '../PostBigVariant/Bookmark/Bookmark'
 import { More } from '../PostBigVariant/More/More'
 import { Link } from 'react-router-dom'
+import { LikeDisButtonsWrapper } from '../PostBigVariant/LikeDisButtonsWrapper/LikeDisButtonsWrapper'
 
 type Post = {
     id: number
@@ -34,10 +35,7 @@ export const PostSmallVariant = (props: Props) => {
             </div>
             <div className={styles.all_buttons}>
                 <div>
-                    <div className={styles.like_buttons}>
-                        <LikeButton/>
-                    </div>
-                    <DislikeButton/>
+                    <LikeDisButtonsWrapper/>
                 </div>
                 <div className={styles.mark_buttons}>
                     <Bookmark/>
