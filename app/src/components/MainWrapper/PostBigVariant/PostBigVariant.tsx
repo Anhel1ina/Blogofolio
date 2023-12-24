@@ -9,7 +9,7 @@ import { LikeDisButtonsWrapper } from './LikeDisButtonsWrapper/LikeDisButtonsWra
 
 type Props = {
     openImage: (id: number) => ImageAction
-    posts: Posts[]
+    post: Posts
 }
 
 type Posts = {
@@ -20,23 +20,23 @@ type Posts = {
     id: number
 }
 
-export const PostBigVariant = ({posts, openImage}: Props) => {
-    if (posts.length === 0) {
+export const PostBigVariant = ({post, openImage}: Props) => {
+    if (!post) {
         return null; 
     }
     
     return (
-        <div className={styles.post} id={posts[0].id.toString()}>
+        <div className={styles.post} id={post.id.toString()}>
             <>
                 <div>
-                    <h4>{new Date(posts[0].date).toLocaleDateString()}</h4>
-                    <Link to={`openpost/${posts[0].id}`}>
-                        <h2>{posts[0].title}</h2>
+                    <h4>{new Date(post.date).toLocaleDateString()}</h4>
+                    <Link to={`openpost/${post.id}`}>
+                        <h2>{post.title}</h2>
                     </Link>
-                    <p className={styles.body_text}>{posts[0].description}</p>
+                    <p className={styles.body_text}>{post.description}</p>
                 </div>
                 <div className={styles.post_image}>
-                    <img src={posts[0].image} alt="post" onClick={() => openImage(posts[0].id)}/>
+                    <img src={post.image} alt="post" onClick={() => openImage(post.id)}/>
                 </div>
                 <div className={styles.like_dis}>
                     <LikeDisButtonsWrapper/>

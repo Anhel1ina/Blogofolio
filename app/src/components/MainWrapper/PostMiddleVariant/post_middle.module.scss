@@ -27,7 +27,7 @@
         text-transform: capitalize;
         color: $dark-mode-color;
 
-        min-height: 66px;
+        min-height: 61px;
         transition: all .3s ease-in-out;
 
         &:hover{
@@ -43,7 +43,7 @@
 }
 
 .middle_post_img{
-    height: 256px;
+    height: 246px;
     margin-bottom: 24px;
     & img{
         width: 100%;
@@ -59,7 +59,9 @@
 
     & div{
         display: flex;
+        height: fit-content;
     }
+
 }
 
 .button_space{

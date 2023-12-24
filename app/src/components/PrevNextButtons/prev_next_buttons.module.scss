@@ -1,12 +1,12 @@
 @import '../../helpers/color_variables.module.scss';
 
-.buttons_wrapper{
+.buttons_wrapper {
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin: 47px 0 41px;
 
-    & button{
+    & button {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
@@ -15,36 +15,36 @@
         height: 24px;
         border: none;
         background-color: transparent;
-
+    
         font-family: Inter;
         font-size: 16px;
         font-weight: 600;
         color: $dark-mode-color;
-
+    
         cursor: pointer;
         transition: all .4s ease-in-out;
-
-        & p{
+    
+        & p {
             margin: 0;
         }
-
-        & path{
+    
+        & path {
             transition: all .4s ease-in-out;
         }
-
-        &:hover:not(:disabled){
+    
+        &:hover:not(:disabled) {
             color: $main-color;
-
-            & path{
+    
+            & path {
                 fill: $main-color;
             }
         }
-
-        &:disabled{
+    
+        &:disabled {
             color: $dark-gray;
             cursor: not-allowed;
-
-            & path{
+    
+            & path {
                 fill: $dark-gray;
             }
         }

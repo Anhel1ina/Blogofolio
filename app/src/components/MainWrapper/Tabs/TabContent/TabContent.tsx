@@ -2,15 +2,17 @@ import styles from "./tabs-content.module.scss"
 import { PostBigVariant } from '../../PostBigVariant/PostBigVariant'
 import { PostMiddleVariant } from "../../PostMiddleVariant/PostMiddleVariant"
 import { PostSmallVariant } from "../../PostSmallVariant/PostSmallVariant"
-import { useState, useEffect } from "react"
-import { SignForm } from "../../../SignForm/SignForm"
+import { useEffect } from "react"
 import { PostImage } from "../../../PostImage/PostImage"
 import { useSelector, useDispatch } from "react-redux"
 import { OpenImageAction, CloseImageAction } from "../../../../store/postImage/action"
 import { postImage } from "../../../../store/postImage/selectors"
+import { selectPosts } from "../../../../store/posts/selector"
+import { LoadPostAsyncAction } from "../../../../store/posts/action"
+import { AppDispatch } from "../../../../store/store"
 
 
-type Posts = {
+export type Posts = {
     id: number
     date: Date
     title: string
@@ -20,27 +22,25 @@ type Posts = {
 
 type Props = {
     data_type: number
-    // posts: Posts[]
 }
 
 
 export const TabContent = (props: Props) => {
     const {data_type} = props
-    const [data, setData] = useState<Posts[]>([])
-
+    
+    const {amountPosts, page} = useSelector(selectPosts)
     const {isOpened, idOfPost} = useSelector(postImage)
-    const dispatch = useDispatch()
+    
+    const dispatch = useDispatch<AppDispatch>()
 
     const openImagePost = (id: number) => dispatch(OpenImageAction(id))
     const closeImagePost = () => dispatch(CloseImageAction())
 
     useEffect(() => {
-        fetch('https://65670f6864fcff8d730fa806.mockapi.io/posts')
-            .then(res => res.json())
-            .then(res => setData(res))
+        dispatch(LoadPostAsyncAction())
     }, [])
 
-    if (data.length === 0) {
+    if (amountPosts.length === 0) {
         return null
     }
     return (
@@ -49,28 +49,64 @@ export const TabContent = (props: Props) => {
             {/* тут лежат все посты */}
             {
                 data_type === 0 ? (
-                    
                     <>
-                    <div>
-                        <PostBigVariant posts={data} openImage={() => openImagePost(data[0].id)}/>
-                    </div>
-
-                    <div className={styles.middle_posts}>
-                    {data
-                    .filter((post) => post.id >= 2 && post.id <= 5)
-                    .map((filteredPost) => (
-                            <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)}/>
-                        ))}
-                    </div>
-                    <div className={styles.small_posts}>
-                        {
-                            data
-                            .filter((post) => post.id > 5)
+                    {
+                        page === 1 ? (
+                            <div className={styles.big_post}>
+                                <PostBigVariant post={amountPosts[0]} openImage={() => openImagePost(amountPosts[0].id)}/>
+                            </div>
+                        ) : (
+                            <div className={styles.middle_posts}>
+                                {amountPosts
+                                .filter((post, index) => index >= 0 && index <= 1)
+                                .map((filteredPost) => (
+                                        <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)}/>
+                                    ))}
+                            </div>
+                        )
+                    }
+                    {
+                        page === 1 ? (
+                            <div className={styles.middle_posts}>
+                            {amountPosts
+                            .filter((post, index) => index >= 1 && index <= 4)
                             .map((filteredPost) => (
-                                <PostSmallVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)}/>
-                            ))
-                        }
-                    </div>
+                                    <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)}/>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className={styles.middle_posts}>
+                            {amountPosts
+                            .filter((post, index) => index >= 2 && index <= 5)
+                            .map((filteredPost) => (
+                                    <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)}/>
+                                ))}
+                            </div>
+                        )
+                    }
+                    {
+                        page === 1 ? (
+                            <div className={styles.small_posts}>
+                            {
+                                amountPosts
+                                .filter((post, index) => index >= 5)
+                                .map((filteredPost) => (
+                                    <PostSmallVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)}/>
+                                ))
+                            }
+                            </div>
+                        ) : (
+                            <div className={styles.small_posts}>
+                            {
+                                amountPosts
+                                .filter((post, index) => index > 5)
+                                .map((filteredPost) => (
+                                    <PostSmallVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)}/>
+                                ))
+                            }
+                            </div>
+                        )
+                    }
                     </>
                     
                 ) : (
@@ -88,7 +124,7 @@ export const TabContent = (props: Props) => {
             </div>
             {
                 isOpened ? (
-                    <PostImage dataLength={data.length} idOfPost={idOfPost ? idOfPost : 1} closeImage={closeImagePost}/>
+                    <PostImage dataLength={amountPosts.length} idOfPost={idOfPost ? idOfPost : 1} closeImage={closeImagePost}/>
                 ) : (
                     null
                 )

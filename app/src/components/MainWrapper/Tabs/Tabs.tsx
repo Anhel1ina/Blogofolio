@@ -7,7 +7,7 @@ export const Tabs = () => {
 
     return (
         <div className={styles.tabs}>
-            <TabsHolder items={items}/>
+            <TabsHolder/>
         </div>
     )
 }

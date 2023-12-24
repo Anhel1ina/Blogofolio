@@ -1,6 +1,5 @@
-import { current } from "@reduxjs/toolkit"
 import { ImageState, ImageAction } from "./types"
-import { act } from "react-dom/test-utils"
+
 
 export const ImageInitState: ImageState = {
     isOpened: false,

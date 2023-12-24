@@ -12,6 +12,12 @@
     }
 }
 
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
 :global(.dark) .main h1{
     color: rgb(255, 255, 255);
 }
