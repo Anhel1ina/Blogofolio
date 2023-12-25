@@ -1,6 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import { PageHeader } from '../../components/PageHeader/PageHeader'
-
 import mainStyles from '../sign_in_page.module.scss' 
 import styles from './open_post.module.scss'
 import { LikeFullButton } from '../../components/LikeFullButton/LikeFullButton'
@@ -8,28 +6,23 @@ import { DislikeFullButton } from '../../components/DislikeFullButton/DislikeFul
 import { AddToFavoritesButton } from '../../components/AddToFavoritesButton/AddToFavoritesButton'
 import { Link, useParams } from 'react-router-dom'
 
-type Posts = {
-    title: string
-    description: string
-    image: string
-    date: Date
-    id: number
-}
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../store/store'
+import { LoadOpenPostAsyncAction } from '../../store/posts/action'
+import { useSelector } from 'react-redux'
+import { selectPosts } from '../../store/posts/selector'
+
 
 export const OpenPostPage = () => {
-    const [data, setData] = useState<Posts>()
     const {id} = useParams()
 
+    const {amountPosts} = useSelector(selectPosts)
+    const dispatch = useDispatch<AppDispatch>()
     useEffect(() => {
-        fetch(`https://65670f6864fcff8d730fa806.mockapi.io/posts/${id}`)
-            .then(res => res.json())
-            .then(res => {
-                setData(res)
-                window.scrollTo(0, 0)
-            })
-    }, [id])
+        dispatch(LoadOpenPostAsyncAction(+id!))
+    }, [])
 
-    if(!data){
+    if(!amountPosts){
         return null
     }
     return (
@@ -40,13 +33,13 @@ export const OpenPostPage = () => {
                     <span>|</span>
                     <p>Post {id}</p>
                 </div>
-                <h1 className={styles.open_post_header}>{data.title}</h1>
+                <h1 className={styles.open_post_header}>{amountPosts[0].title}</h1>
                 <div className={styles.open_page_content}>
                     <div className={styles.open_page_image}>
-                        <img src={data.image}/>
+                        <img src={amountPosts[0].image}/>
                     </div>
                     <p className={styles.open_page_text}>
-                        {data.description}
+                        {amountPosts[0].description}
                     </p>
                     <div className={styles.open_page_buttons}>
                         <div>

@@ -14,6 +14,7 @@ export const BlogNavigation = ({pages}: Props) => {
     const dispatch = useDispatch<AppDispatch>()
     const onPageClick = (page: number) => {
         dispatch(LoadPostAsyncAction(page))
+        window.scrollTo(0, 0)
     }
     
     return (

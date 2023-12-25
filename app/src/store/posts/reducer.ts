@@ -17,6 +17,11 @@ export const postReducer = (state = PostInitState, action: PostAction): PostStat
                 amountPosts: action.amountPosts!,
                 page: action.page!
             }
+        case 'OPEN_POST':
+            return{
+                ...state,
+                amountPosts: action.amountPosts!
+            }
         default: return state
     }
 }
