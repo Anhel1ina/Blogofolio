@@ -1,31 +1,29 @@
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { ThumbsUpIcon } from './ThumbsUpIcon';
 import styles from './like-styles.module.scss';
+import { setLike } from '../../../../store/likes/selector';
+import { SetLikeAction, UndoAction } from '../../../../store/likes/action';
 
 type Props = {
-    disabled?: boolean
+    setMark: boolean
+    isLiked: boolean
+    isDisliked: boolean,
+    like: () => void
+    undo: () => void
 }
 
-export const LikeButton = (props: Props) => {
-    let {disabled = false} = props
-    let [like, setLike] = useState<number>(20)
-    let [likedFlag, setLikedFlag] = useState<boolean>(false)
-    
-    const likedPost = () => {
-        return likedFlag ? (
-            setLike(like - 1),
-            setLikedFlag(!likedFlag)
-        ) : (
-            setLike(like + 1),
-            setLikedFlag(!likedFlag)
-        )
-    }
+export const LikeButton = ({setMark, isLiked, isDisliked, like, undo}: Props) => {
+    // const {isLiked, isDisliked, setMark} = useSelector(setLike)
+    // const dispatch = useDispatch()
+
+    // const like = () =>  dispatch(SetLikeAction())
+    // const undo = () => dispatch(UndoAction())
     return (
         <div className={styles.button_block}>
-            <button onClick={likedPost}  className={`${styles.like_button} ${styles.like_change} ${likedFlag ? styles.set_liked_post : ''}`} disabled={disabled}>
+            <button onClick={setMark && isLiked ? undo : like} className={`${styles.like_button} ${styles.like_change} ${isLiked ? styles.set_liked_post : ''} ${isDisliked ? styles.shadow_button : ''}`}>
                 <ThumbsUpIcon/>
             </button>
-            <p>{like ? like : ''}</p>
+            <p>{isLiked ? 21 : 20}</p>
         </div>
     )
 }

@@ -7,6 +7,7 @@ import { imageReducer } from "./postImage/reducer";
 import { tabReducer } from "./tabs/reducer";
 import { postReducer } from "./posts/reducer";
 import { ThunkAction, thunk } from "redux-thunk";
+import { likeReducer } from "./likes/reducer";
 
 //add all reducers from contexts
 const rootReducer = combineReducers({
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     auth: authReducer,
     openPostImage: imageReducer,
     tabs: tabReducer,
-    posts: postReducer
+    posts: postReducer,
+    like: likeReducer
 })
 
 const store = configureStore({

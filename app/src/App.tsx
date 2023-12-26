@@ -3,14 +3,10 @@ import { MainWrapper } from './components/MainWrapper/MainWrapper';
 import { SignInPage } from './pages/SignInPage/SIgnInPage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 import { ResetPasswordPage } from './pages/ResetPasswordPage/ResetPasswordPage';
-import { NewPasswordPage } from './pages/NewPasswordPage/NewPasswordPage';
 import { SearchResultsPage } from './pages/SearchResultsPage/SearchResultsPage';
-import { useThemeContext } from './helpers/ThemeContext';
 import { OpenPostPage } from './pages/OpenPostPage/OpenPostPage';
 import { SuccessPage } from './pages/SuccessPage/SuccessPage';
 import { RegistrationConfirmationPage } from './pages/RegistrationConfirmationPage/RegistrationConfirmationPage';
-import { RequireAuth } from './helpers/RequireAuth';
-import { AuthContextProvider } from './helpers/AuthContext';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layouts/Layout';
 

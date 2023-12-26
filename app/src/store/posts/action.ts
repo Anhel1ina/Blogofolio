@@ -11,7 +11,6 @@ export const LoadPostAction = (posts: Posts[], page?: number): PostAction => ({
     page: page
 })
 
-
 ///async action
 
 export const LoadPostAsyncAction = (page: number = 1) : AppThunk => {      
@@ -26,19 +25,5 @@ export const LoadPostAsyncAction = (page: number = 1) : AppThunk => {
             .then(res => {
                 dispatch(LoadPostAction(res, page))
             })    
-    }
-}
-
-export const LoadOpenPostAsyncAction = (id: number = 1) : AppThunk => {
-    const url = new URL(`https://65670f6864fcff8d730fa806.mockapi.io/posts/`)
-    return(dispatch) => {
-        fetch(url)
-            .then(res => res.json())
-            .then(res => {
-                const postWithId = res.find((post: Posts) => post.id === id)
-                if (postWithId) {
-                    dispatch(LoadPostAction([postWithId]))
-                }
-            })
     }
 }

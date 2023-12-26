@@ -6,23 +6,26 @@ import { DislikeFullButton } from '../../components/DislikeFullButton/DislikeFul
 import { AddToFavoritesButton } from '../../components/AddToFavoritesButton/AddToFavoritesButton'
 import { Link, useParams } from 'react-router-dom'
 
-import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../../store/store'
-import { LoadOpenPostAsyncAction } from '../../store/posts/action'
 import { useSelector } from 'react-redux'
 import { selectPosts } from '../../store/posts/selector'
 
+type Posts = {
+    title: string
+    description: string
+    image: string
+    date: Date
+    id: number
+}
 
 export const OpenPostPage = () => {
     const {id} = useParams()
 
     const {amountPosts} = useSelector(selectPosts)
-    const dispatch = useDispatch<AppDispatch>()
-    useEffect(() => {
-        dispatch(LoadOpenPostAsyncAction(+id!))
-    }, [])
+    useEffect(() => { window.scrollTo(0, 0) }, [])
 
-    if(!amountPosts){
+    const data = amountPosts.find(post => post.id == +id!)
+
+    if(!data){
         return null
     }
     return (
@@ -33,13 +36,13 @@ export const OpenPostPage = () => {
                     <span>|</span>
                     <p>Post {id}</p>
                 </div>
-                <h1 className={styles.open_post_header}>{amountPosts[0].title}</h1>
+                <h1 className={styles.open_post_header}>{data.title}</h1>
                 <div className={styles.open_page_content}>
                     <div className={styles.open_page_image}>
-                        <img src={amountPosts[0].image}/>
+                        <img src={data.image}/>
                     </div>
                     <p className={styles.open_page_text}>
-                        {amountPosts[0].description}
+                        {data.description}
                     </p>
                     <div className={styles.open_page_buttons}>
                         <div>

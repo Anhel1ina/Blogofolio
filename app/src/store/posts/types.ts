@@ -2,7 +2,7 @@ import { Posts } from "../../components/MainWrapper/Tabs/TabContent/TabContent"
 
 export type PostState = {
     amountPosts: Posts[]
-    limit: number
+    limit?: number
     //offset: number - not for API
     page?: number
 }
