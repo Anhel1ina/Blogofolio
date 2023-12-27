@@ -4,23 +4,26 @@ import { DelIcon } from './DelIcon'
 import { createContext, useContext } from 'react'
 
 import { useSearchText } from '../../../helpers/SearchResultsContext'
+import { useDispatch } from 'react-redux'
+import { ClearTextAction, SearchTextAction } from '../../../store/search/action'
+import { useSelector } from 'react-redux'
+import { searchPosts } from '../../../store/search/selector'
 
 
 export const HeaderInput = () => {
-    const {searchText, setSearchText} = useSearchText()
+    const {searchText} = useSelector(searchPosts)
+    const dispatch = useDispatch()
+    const clear = () => dispatch(ClearTextAction(''))
 
     const inputChange = (e: React.FormEvent<HTMLInputElement>) => {
-        setSearchText(e.currentTarget.value);
+        dispatch(SearchTextAction(e.currentTarget.value))
     };
 
-    const clearInput = () => {
-        setSearchText('');
-    };
 
     return (
         <div className={styles.header_input}>
-            <input autoComplete='off' placeholder='Search...' type="text" value={searchText} onChange={inputChange} id="header-input" />
-            <button onClick={clearInput}>
+            <input autoComplete='off' placeholder='Search...' type="text" onInput={inputChange} value={searchText} id="header-input" />
+            <button onClick={clear}>
                 {<DelIcon />}
             </button>
         </div>

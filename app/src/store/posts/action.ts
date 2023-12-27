@@ -27,3 +27,12 @@ export const LoadPostAsyncAction = (page: number = 1) : AppThunk => {
             })    
     }
 }
+
+export const LoadAllPostAsyncAction = (): AppThunk => {
+    const url = 'https://65670f6864fcff8d730fa806.mockapi.io/posts'
+    return (dispatch) => {
+        fetch(url)
+            .then(res => res.json())
+            .then(res => {dispatch(LoadPostAction(res))})
+    }
+}

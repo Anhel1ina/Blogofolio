@@ -5,6 +5,13 @@ import { PostSmallVariant } from '../../components/MainWrapper/PostSmallVariant/
 import { useState, useEffect } from 'react'
 import { useSearchText } from '../../helpers/SearchResultsContext'
 
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../store/store'
+import { LoadAllPostAsyncAction } from '../../store/posts/action'
+import { useSelector } from 'react-redux'
+import { selectPosts } from '../../store/posts/selector'
+import { searchPosts } from '../../store/search/selector'
+
 type Posts = {
     id: number
     date: Date
@@ -14,18 +21,16 @@ type Posts = {
 }
 
 export const SearchResultsPage = () => {
-    const [data, setData] = useState<Posts[]>([])
-    const {searchText} = useSearchText()
+    const {amountPosts} = useSelector(selectPosts)
+    const {searchText} = useSelector(searchPosts)
 
     useEffect(() => {
-        fetch('https://65670f6864fcff8d730fa806.mockapi.io/posts')
-            .then(res => res.json())
-            .then(res => {
-                window.scrollTo(0, 0)
-                setData(res)
-            })
+        dispatch(LoadAllPostAsyncAction())
     }, [])
-    if (data.length === 0) {
+    const dispatch = useDispatch<AppDispatch>()
+
+
+    if (amountPosts.length === 0) {
         return null
     }
 
@@ -35,7 +40,7 @@ export const SearchResultsPage = () => {
                 <PageHeader title={`Search results for '${searchText}'`}/>
                 <div>
                     {
-                        data
+                        amountPosts
                         .filter((post) => post.title.toLowerCase().includes(searchText.toLowerCase()) || post.description.toLowerCase().includes(searchText.toLowerCase()))
                         .map((post) => (
                             <PostSmallVariant searchRes={true} key={post.id} post={post}/>

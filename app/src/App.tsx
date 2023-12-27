@@ -28,8 +28,11 @@ function App() {
             <Route path='forgotpassword' element={<ResetPasswordPage/>}/>
           </Route>
         </Route>
-
-        <Route path='search' element={<SearchResultsPage/>}/>
+        
+        <Route path='search'>
+            <Route index element={<SearchResultsPage/>}/>
+            <Route path='openpost/:id' element={<OpenPostPage/>}/>
+        </Route>
       </Route>
     </Routes>
   );

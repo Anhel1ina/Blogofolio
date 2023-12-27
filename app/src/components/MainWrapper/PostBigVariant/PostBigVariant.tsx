@@ -39,7 +39,7 @@ export const PostBigVariant = ({post, openImage}: Props) => {
                     <img src={post.image} alt="post" onClick={() => openImage(post.id)}/>
                 </div>
                 <div className={styles.like_dis}>
-                    <LikeDisButtonsWrapper/>
+                    <LikeDisButtonsWrapper postId={post.id.toString()}/>
                 </div>
                 <div className={`${styles.like_dis} ${styles.dop_buttons}`}>
                     <Bookmark />

@@ -35,7 +35,7 @@ export const PostSmallVariant = (props: Props) => {
             </div>
             <div className={styles.all_buttons}>
                 <div>
-                    <LikeDisButtonsWrapper/>
+                    <LikeDisButtonsWrapper postId={post.id.toString()}/>
                 </div>
                 <div className={styles.mark_buttons}>
                     <Bookmark/>

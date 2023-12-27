@@ -32,7 +32,7 @@ export const PostMiddleVariant = (props: Props) => {
             </Link>
             <div className={styles.buttons_block}>
                 <div className={styles.buttons_block__inner}>
-                    <LikeDisButtonsWrapper/>
+                    <LikeDisButtonsWrapper postId={post.id.toString()}/>
                 </div>
                 <div>
                     <Bookmark/>
