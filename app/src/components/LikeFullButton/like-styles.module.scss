@@ -26,7 +26,23 @@
     }
 }
 
+.like_set_mark{
+    background-color: $main-hover-color;
+    & path{
+        fill: white;
+        transition: all ease-in-out .4s;
+    }
+}
+
 .dislike_button:hover{
+    background-color: $dislike-color;
+    & path{
+        fill: white;
+        transition: all ease-in-out .4s;
+    }
+}
+
+.dislike_set_mark{
     background-color: $dislike-color;
     & path{
         fill: white;

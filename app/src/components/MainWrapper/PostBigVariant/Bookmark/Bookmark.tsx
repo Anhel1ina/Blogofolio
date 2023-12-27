@@ -8,7 +8,7 @@ type Props = {
 export const Bookmark = (props: Props) => {
     const {disabled = false} = props
     return (
-        <button className={styles.bookmark} disabled={disabled}>
+        <button className={`${styles.bookmark}`} disabled={disabled}>
             <BookmarkIcon/>
         </button>
     )

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import mainStyles from '../sign_in_page.module.scss' 
 import styles from './open_post.module.scss'
 import { LikeFullButton } from '../../components/LikeFullButton/LikeFullButton'
@@ -6,8 +6,10 @@ import { DislikeFullButton } from '../../components/DislikeFullButton/DislikeFul
 import { AddToFavoritesButton } from '../../components/AddToFavoritesButton/AddToFavoritesButton'
 import { Link, useParams } from 'react-router-dom'
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { selectPosts } from '../../store/posts/selector'
+import { AppState } from '../../store/store'
+import { SetLikeAction, UndoAction, SetDislikeAction } from '../../store/likes/action'
 
 type Posts = {
     title: string
@@ -22,8 +24,15 @@ export const OpenPostPage = () => {
 
     const {amountPosts} = useSelector(selectPosts)
     useEffect(() => { window.scrollTo(0, 0) }, [])
-
     const data = amountPosts.find(post => post.id == +id!)
+
+    const likeState = useSelector((state: AppState) => state.like[id!])
+    const dispatch = useDispatch()
+    const {isLiked, isDisliked, setMark} = likeState || {}
+
+    const like = () =>  dispatch(SetLikeAction(id!))
+    const undo = () => dispatch(UndoAction(id!))
+    const dislike = () =>  dispatch(SetDislikeAction(id!))
 
     if(!data){
         return null
@@ -46,8 +55,8 @@ export const OpenPostPage = () => {
                     </p>
                     <div className={styles.open_page_buttons}>
                         <div>
-                            <LikeFullButton/>
-                            <DislikeFullButton/>
+                            <LikeFullButton isLiked={isLiked} isDisliked={isDisliked} setMark={setMark} like={like} undo={undo}/>
+                            <DislikeFullButton isLiked={isLiked} isDisliked={isDisliked} setMark={setMark} dislike={dislike} undo={undo}/>
                         </div>
                         <AddToFavoritesButton/>
                     </div>

@@ -1,4 +1,3 @@
-import React from 'react'
 import { LikeButton } from '../LikeButton/LikeButton'
 import { DislikeButton } from '../DislikeButton/DislikeButton'
 import { useSelector, useDispatch } from 'react-redux'

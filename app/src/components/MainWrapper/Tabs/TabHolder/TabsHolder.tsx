@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styles from './tabs-holder.module.scss'
 import { TabContent } from '../TabContent/TabContent';
 import { useSelector } from 'react-redux';
