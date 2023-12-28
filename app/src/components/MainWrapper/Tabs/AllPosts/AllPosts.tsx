@@ -19,7 +19,7 @@ export const AllPosts = () => {
 
     useEffect(() => {
         dispatch(LoadPostAsyncAction())
-    }, [])
+    }, [dispatch])
 
     if (amountPosts.length === 0) {
         return null

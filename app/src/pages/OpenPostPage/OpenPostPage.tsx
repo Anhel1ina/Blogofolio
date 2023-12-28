@@ -11,14 +11,6 @@ import { selectPosts } from '../../store/posts/selector'
 import { AppState } from '../../store/store'
 import { SetLikeAction, UndoAction, SetDislikeAction } from '../../store/likes/action'
 
-type Posts = {
-    title: string
-    description: string
-    image: string
-    date: Date
-    id: number
-}
-
 export const OpenPostPage = () => {
     const {id} = useParams()
 
@@ -48,7 +40,7 @@ export const OpenPostPage = () => {
                 <h1 className={styles.open_post_header}>{data.title}</h1>
                 <div className={styles.open_page_content}>
                     <div className={styles.open_page_image}>
-                        <img src={data.image}/>
+                        <img alt={`post ${data.id}`} src={data.image}/>
                     </div>
                     <p className={styles.open_page_text}>
                         {data.description}
@@ -58,7 +50,7 @@ export const OpenPostPage = () => {
                             <LikeFullButton isLiked={isLiked} isDisliked={isDisliked} setMark={setMark} like={like} undo={undo}/>
                             <DislikeFullButton isLiked={isLiked} isDisliked={isDisliked} setMark={setMark} dislike={dislike} undo={undo}/>
                         </div>
-                        <AddToFavoritesButton/>
+                        <AddToFavoritesButton postId={id!.toString()}/>
                     </div>
                 </div>
             </div>

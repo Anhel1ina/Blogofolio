@@ -35,6 +35,9 @@
         text-transform: capitalize;
         color: $dark-mode-color;
 
+        max-height: 84px;
+        overflow: hidden;
+
         transition: all .3s ease-in-out;
 
         &:hover{

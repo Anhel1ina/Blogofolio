@@ -2,12 +2,13 @@ import styles from "../tabs-content.module.scss"
 import { useEffect } from "react"
 import { PostImage } from "../../../PostImage/PostImage"
 import { useSelector, useDispatch } from "react-redux"
-import { OpenImageAction, CloseImageAction } from "../../../../store/postImage/action"
+import { CloseImageAction } from "../../../../store/postImage/action"
 import { postImage } from "../../../../store/postImage/selectors"
 import { selectPosts } from "../../../../store/posts/selector"
 import { LoadPostAsyncAction } from "../../../../store/posts/action"
 import { AppDispatch } from "../../../../store/store"
 import { AllPosts } from "../AllPosts/AllPosts"
+import { FavoritePosts } from "../FavoritePosts/FavoritePosts"
 
 
 export type Posts = {
@@ -33,7 +34,7 @@ export const TabContent = (props: Props) => {
 
     useEffect(() => {
         dispatch(LoadPostAsyncAction())
-    }, [])
+    }, [dispatch])
 
     if (amountPosts.length === 0) {
         return null
@@ -46,9 +47,7 @@ export const TabContent = (props: Props) => {
                     <AllPosts/>
                 ) : (
                     data_type === 1 ? (
-                        <div>
-                            {/* ЛЮБИМЫЕ ПОСТЫ */}
-                        </div>
+                        <FavoritePosts/>
                     ) : (
                         <div>
                             {/* ПОПУЛЯРНЫЕ ПОСТЫ */}

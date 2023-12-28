@@ -27,7 +27,8 @@
         text-transform: capitalize;
         color: $dark-mode-color;
 
-        min-height: 61px;
+        min-height: 35px;
+        overflow: hidden;
         transition: all .3s ease-in-out;
 
         &:hover{

@@ -1,6 +1,4 @@
 import styles from './post.module.scss'
-import { LikeButton } from './LikeButton/LikeButton'
-import { DislikeButton } from './DislikeButton/DislikeButton'
 import { Bookmark } from './Bookmark/Bookmark'
 import { More } from './More/More'
 import { Link } from 'react-router-dom'
@@ -42,7 +40,7 @@ export const PostBigVariant = ({post, openImage}: Props) => {
                     <LikeDisButtonsWrapper postId={post.id.toString()}/>
                 </div>
                 <div className={`${styles.like_dis} ${styles.dop_buttons}`}>
-                    <Bookmark />
+                    <Bookmark postId={post.id.toString()} />
                     <More />
                 </div>
             </>

@@ -1,9 +1,6 @@
-import { ReactNode, useState } from 'react'
 import styles from './header_input.module.scss'
 import { DelIcon } from './DelIcon'
-import { createContext, useContext } from 'react'
 
-import { useSearchText } from '../../../helpers/SearchResultsContext'
 import { useDispatch } from 'react-redux'
 import { ClearTextAction, SearchTextAction } from '../../../store/search/action'
 import { useSelector } from 'react-redux'

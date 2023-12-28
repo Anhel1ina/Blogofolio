@@ -1,6 +1,4 @@
 import styles from './post_middle.module.scss'
-import { LikeButton } from '../PostBigVariant/LikeButton/LikeButton'
-import { DislikeButton } from '../PostBigVariant/DislikeButton/DislikeButton'
 import { Bookmark } from '../PostBigVariant/Bookmark/Bookmark'
 import { More } from '../PostBigVariant/More/More'
 import { Link } from 'react-router-dom'
@@ -35,7 +33,7 @@ export const PostMiddleVariant = (props: Props) => {
                     <LikeDisButtonsWrapper postId={post.id.toString()}/>
                 </div>
                 <div>
-                    <Bookmark/>
+                    <Bookmark postId={post.id.toString()}/>
                     <More/>
                 </div>
             </div>

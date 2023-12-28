@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from 'react-router-dom';
-import { SearchTextProvider } from './helpers/SearchResultsContext';
 import { Provider } from 'react-redux';
 import { appStore } from './store/store';
 
@@ -17,11 +16,7 @@ root.render(
     <BrowserRouter>
 
       <Provider store={appStore}>
-
-            <SearchTextProvider>
               <App />
-            </SearchTextProvider>
-
       </Provider>
 
     </BrowserRouter>

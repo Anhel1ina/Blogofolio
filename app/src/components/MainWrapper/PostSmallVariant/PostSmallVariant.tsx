@@ -1,6 +1,4 @@
 import styles from './post_small.module.scss'
-import { LikeButton } from '../PostBigVariant/LikeButton/LikeButton'
-import { DislikeButton } from '../PostBigVariant/DislikeButton/DislikeButton'
 import { Bookmark } from '../PostBigVariant/Bookmark/Bookmark'
 import { More } from '../PostBigVariant/More/More'
 import { Link } from 'react-router-dom'
@@ -31,14 +29,14 @@ export const PostSmallVariant = (props: Props) => {
                 </Link>
             </div>
             <div className={styles.small_post_img}>
-                <img src={post.image} onClick={openImage}/>
+                <img alt={`post ${post.id}`} src={post.image} onClick={openImage}/>
             </div>
             <div className={styles.all_buttons}>
                 <div>
                     <LikeDisButtonsWrapper postId={post.id.toString()}/>
                 </div>
                 <div className={styles.mark_buttons}>
-                    <Bookmark/>
+                    <Bookmark postId={post.id.toString()}/>
                     <More/>
                 </div>
             </div>

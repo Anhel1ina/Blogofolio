@@ -32,3 +32,15 @@
         }
     }
 }
+
+.added_to_fav{
+    background-color: $main-hover-color;
+    & path{
+        fill: rgba(255, 255, 255, 1);
+        transition: all .4s ease-in-out ;
+    }
+
+    & p{
+        color: rgba(255, 255, 255, 1);
+    }
+}

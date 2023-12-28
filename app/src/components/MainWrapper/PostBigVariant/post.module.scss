@@ -27,6 +27,8 @@
         text-transform: capitalize;
         font-weight: 700;
         color: $dark-mode-color;
+        max-height: 80px;
+        overflow: hidden;
 
         transition: all .3s ease-in-out ;
 

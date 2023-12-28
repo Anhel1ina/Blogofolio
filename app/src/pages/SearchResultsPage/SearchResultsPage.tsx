@@ -1,9 +1,7 @@
-import React from 'react'
 import styles from '../sign_in_page.module.scss'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
 import { PostSmallVariant } from '../../components/MainWrapper/PostSmallVariant/PostSmallVariant'
-import { useState, useEffect } from 'react'
-import { useSearchText } from '../../helpers/SearchResultsContext'
+import { useEffect } from 'react'
 
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../store/store'
