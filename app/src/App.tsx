@@ -9,6 +9,8 @@ import { SuccessPage } from './pages/SuccessPage/SuccessPage';
 import { RegistrationConfirmationPage } from './pages/RegistrationConfirmationPage/RegistrationConfirmationPage';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layouts/Layout';
+import { error } from 'console';
+import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
             <Route path='openpost/:id' element={<OpenPostPage/>}/>
         </Route>
       </Route>
+      <Route path='*' element={<ErrorPage/>}/>
     </Routes>
   );
 }
