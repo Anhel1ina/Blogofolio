@@ -26,7 +26,7 @@ type Props = {
 
 export const TabContent = (props: Props) => {
     const {data_type} = props
-    const {amountPosts} = useSelector(selectPosts)
+    const {amountPosts, page} = useSelector(selectPosts)
     const {isOpened, idOfPost} = useSelector(postImage)   
     const dispatch = useDispatch<AppDispatch>()
 

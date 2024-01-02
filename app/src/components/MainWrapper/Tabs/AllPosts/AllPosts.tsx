@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { selectPosts } from "../../../../store/posts/selector"
 import { AppDispatch } from "../../../../store/store"
 
@@ -9,7 +9,12 @@ import { PostBigVariant } from "../../PostBigVariant/PostBigVariant"
 import { PostMiddleVariant } from "../../PostMiddleVariant/PostMiddleVariant"
 import { PostSmallVariant } from "../../PostSmallVariant/PostSmallVariant"
 
+import { getPageCount } from "../../../../helpers/getPageData"
+
 import styles from '../tabs-content.module.scss'
+
+import { Posts } from "../TabContent/TabContent"
+import { AllNavigation } from "../../../AllNavigation/AllNavigation"
 
 
 export const AllPosts = () => {
@@ -17,13 +22,26 @@ export const AllPosts = () => {
     const dispatch = useDispatch<AppDispatch>()
     const openImagePost = (id: number) => dispatch(OpenImageAction(id))
 
+    const [data, setData] = useState<Posts[]>()
+
     useEffect(() => {
         dispatch(LoadPostAsyncAction())
+
+        fetch(`https://65670f6864fcff8d730fa806.mockapi.io/posts`)
+            .then(res => res.json())
+            .then(res => setData(res))
     }, [dispatch])
 
     if (amountPosts.length === 0) {
         return null
     }
+
+    const onPageClick = (page: number) => {
+        dispatch(LoadPostAsyncAction(page))
+        window.scrollTo(0, 0)
+    }
+
+    let pages: number[] = getPageCount(data?.length ? data : amountPosts)
 
     return (
         <>
@@ -84,6 +102,7 @@ export const AllPosts = () => {
                     </div>
                 )
             }
+            <AllNavigation onPage={onPageClick} page={page!} pages={pages}/>
         </>
     )
 }

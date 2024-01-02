@@ -8,6 +8,6 @@ export type PostState = {
 
 export type PostAction = {
     type: string
-    amountPosts: Posts[]
+    amountPosts?: Posts[]
     page?: number
 }

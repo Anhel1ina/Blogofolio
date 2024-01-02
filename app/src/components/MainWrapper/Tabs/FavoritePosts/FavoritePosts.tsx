@@ -3,31 +3,43 @@ import styles from '../tabs-content.module.scss'
 import { AppDispatch } from '../../../../store/store'
 import { selectPosts } from '../../../../store/posts/selector'
 import { useEffect } from 'react'
-import { LoadAllPostAsyncAction } from '../../../../store/posts/action'
+import { LoadAllPostAsyncAction, LoadFavPosts, setPageAction } from '../../../../store/posts/action'
 import { setFavs } from '../../../../store/favs/selector'
 import { PostMiddleVariant } from '../../PostMiddleVariant/PostMiddleVariant'
 import { PostSmallVariant } from '../../PostSmallVariant/PostSmallVariant'
 import { OpenImageAction } from '../../../../store/postImage/action'
+import { AllNavigation } from '../../../AllNavigation/AllNavigation'
+
+import { getFavPageCount, getFavPostPages, getPageCount } from '../../../../helpers/getPageData'
+import { Posts } from '../TabContent/TabContent'
 
 export const FavoritePosts = () => {
-    const { amountPosts } = useSelector(selectPosts)
+    const { amountPosts, page } = useSelector(selectPosts)
     const data = useSelector(setFavs)
     const dispatch = useDispatch<AppDispatch>()
     const openImagePost = (id: number) => dispatch(OpenImageAction(id))
 
     useEffect(() => {
         dispatch(LoadAllPostAsyncAction())
+        dispatch(setPageAction())
     }, [dispatch])
 
     const favoritePosts = amountPosts.filter(post => {
         return data[post.id]?.isAdded
     })
 
+    const showedPosts = getFavPostPages(favoritePosts, page!)
+    let pages: number[] = getFavPageCount(favoritePosts)
+
+    const onFavPage = (page: number) => {
+        dispatch(setPageAction(page))
+    }
+
     return (
         <>
         {
         <div className={styles.middle_posts}>
-            {favoritePosts
+            {showedPosts
                 .filter((post, index) => index >= 0 && index <= 1)
                 .map((filteredPost) => (
                     <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
@@ -36,7 +48,7 @@ export const FavoritePosts = () => {
         }
         {
         <div className={styles.middle_posts}>
-            {favoritePosts
+            {showedPosts
                 .filter((post, index) => index >= 2 && index <= 5)
                 .map((filteredPost) => (
                     <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
@@ -46,7 +58,7 @@ export const FavoritePosts = () => {
         {
         <div className={styles.small_posts}>
             {
-                favoritePosts
+                showedPosts
                     .filter((post, index) => index > 5)
                     .map((filteredPost) => (
                         <PostSmallVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
@@ -54,6 +66,7 @@ export const FavoritePosts = () => {
             }
         </div>
         }
+        <AllNavigation onPage={onFavPage} page={page!} pages={pages}/>
         </>
     )
 }
