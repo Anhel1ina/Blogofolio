@@ -1,0 +1,117 @@
+@import '../../helpers/color_variables.module.scss';
+
+.add_post_backline {
+    display: flex;
+    align-items: center;
+
+    & p,
+    span {
+        margin: 0 8px 32px 0;
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 400;
+        color: $dark-gray;
+        cursor: default;
+    }
+
+    & p:first-child {
+        color: $dark-mode-color;
+        cursor: pointer;
+    }
+
+    & span {
+        font-size: 18px;
+    }
+
+    & a {
+        text-decoration: none;
+    }
+}
+
+.add_post_header {
+    font-family: Inter;
+    font-size: 56px;
+    font-weight: 700;
+    color: $dark-mode-color;
+
+    margin: 0 0 64px;
+}
+
+.add_post_image_container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 33px;
+}
+
+.input_file {
+    display: block;
+    position: relative;
+
+    & p{
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 40px 0 8px 0;
+        color: $dark-mode-color
+    }
+}
+
+.input_file_text {
+    display: block;
+    width: 100%;
+    height: 56px;
+    position: relative;
+
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    outline: none;
+    padding: 16px 167px 16px 22px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+}
+
+.input_file_btn {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+
+    height: 52px;
+    width: 165px;
+    background-color: $extra-light-gray;
+    border: none;
+    border-radius: 0, 2px, 2px, 0;
+
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all ease-in-out .2s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.input_file:hover .input_file_btn {
+    background-color: $light-gray;
+}
+
+
+.input_file input[type=file] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+.input_file input[type=file]:focus +.input_file_text {
+    border: 2px solid rgb(218, 218, 218);
+}
+
+.input_file input[type=file]:disabled+.input_file_btn {
+    background-color: #eee;
+}

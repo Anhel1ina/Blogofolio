@@ -38,7 +38,7 @@ export const Menu = () => {
                             <li>Home</li>
                         </NavLink>
                         <RequireAuth>
-                            <NavLink to='addpost'>
+                            <NavLink to='addpost' onClick={() => setTimeout(setCloseMenu, 100)}>
                                 <li>Add post</li>
                             </NavLink>
                         </RequireAuth>

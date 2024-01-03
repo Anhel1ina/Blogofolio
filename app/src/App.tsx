@@ -11,6 +11,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layouts/Layout';
 import { error } from 'console';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
+import { AddPostPage } from './pages/AddPostPage/AddPostPage';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route index element={<SearchResultsPage/>}/>
             <Route path='openpost/:id' element={<OpenPostPage/>}/>
         </Route>
+        <Route path='addpost' element={<AddPostPage/>}/>
       </Route>
       <Route path='*' element={<ErrorPage/>}/>
     </Routes>

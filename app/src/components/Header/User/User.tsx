@@ -6,7 +6,7 @@ type Props = {
 }
 
 export const User = (props: Props) => {
-    const {name, abbr} = props// деструктуризация
+    const {name = 'Artem Malkin', abbr = 'AM'} = props// деструктуризация
 
     return (
         <div className={styles.fullBlock}>
