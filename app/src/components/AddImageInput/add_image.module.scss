@@ -1,0 +1,86 @@
+@import '../../helpers/color_variables.module.scss';
+
+.input_file {
+    display: block;
+    position: relative;
+
+    & p{
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 40px 0 8px 0;
+        color: $dark-mode-color
+    }
+
+    & button{
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        height: 24px;
+
+        z-index: 1;
+        position: absolute;
+        top: 43px;
+        right: 177px;
+
+        cursor: pointer;
+    }
+}
+
+.input_file_text {
+    display: block;
+    width: 100%;
+    height: 56px;
+    position: relative;
+
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    outline: none;
+    padding: 16px 202px 16px 22px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+}
+
+.input_file_btn {
+    position: absolute;
+    right: 2px;
+    top: 30px;
+
+    height: 51px;
+    width: 165px;
+    background-color: $extra-light-gray;
+    border: none;
+    border-radius: 0 2px 2px 0;
+
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all ease-in-out .2s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    z-index: 1;
+}
+
+.input_file_btn:hover{
+    background-color: $light-gray;
+}
+
+
+.input_file input[type=file] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+
+.input_file input[type=file]:disabled+.input_file_btn {
+    background-color: rgb(238, 238, 238);
+}

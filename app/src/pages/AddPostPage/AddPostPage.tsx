@@ -2,18 +2,15 @@ import { Link } from "react-router-dom"
 import baseStyle from '../sign_in_page.module.scss'
 import styles from './add_post.module.scss'
 import { Input } from "../../components/SignForm/Input/Input"
-import { useState } from "react"
+import { useEffect, useRef } from "react"
+import { AddImageInput } from "../../components/AddImageInput/AddImageInput"
+import { ButtonSecondary } from "../../components/ButtonSecondary/ButtonSecondary"
 
 export const AddPostPage = () => {
-    const [selectedFile, setSelectedFile] = useState('');
-
-    const showFile = (e: React.FormEvent<HTMLInputElement>) => {
-        if (e.currentTarget.files?.length){
-            const file = e.currentTarget.files[0]
-            file.name ? setSelectedFile(file.name) : setSelectedFile('')
-            
-        }
-    };
+    const inputRef = useRef<HTMLInputElement>(null)
+    useEffect(() => {
+        inputRef.current?.focus()
+    }, [])
 
     return (
         <div className={baseStyle.wrapper}>
@@ -25,15 +22,21 @@ export const AddPostPage = () => {
                 </div>
                 <h1 className={styles.add_post_header}>Add post</h1>
                 <form>
-                    <Input type="text" label="Title" placeholder="Post title..."/>
+                    <Input reference={inputRef} index={0} type="text" label="Title" placeholder="Post title..." />
                     <div className={styles.add_post_image_container}>
-                        <Input type="text" label="Lesson number" placeholder="Lesson number..."/>
-                        <label className={styles.input_file}>
-                            <p>Image</p>
-                            <span className={styles.input_file_text}>{selectedFile}</span>
-                            <input onChange={showFile} type="file" name="file"/>        
-                            <span className={styles.input_file_btn}>Upload new</span>
-                        </label>
+                        <Input type="text" label="Lesson number" placeholder="Lesson number..." />
+                        <AddImageInput/>
+                    </div>
+                    <div className={styles.textarea_container}>
+                        <Input isTextArea={true} label="Description" placeholder="Add your text"/>
+                        <Input isTextArea={true} label="Text" placeholder="Add your text"/>
+                    </div>
+                    <div className={styles.buttons_block}>
+                        <button>Delete post</button>
+                        <div>
+                            <ButtonSecondary name="Cancel" classType="button_secondary_add_post_cancel"/>
+                            <ButtonSecondary name="Add post" classType="button_secondary_add_post"/>
+                        </div>
                     </div>
                 </form>
             </div>

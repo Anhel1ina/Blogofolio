@@ -12,16 +12,18 @@ import { checkAuth } from '../../../../store/auth/selectors'
 import { useDispatch } from 'react-redux'
 
 import { setOpenAction, setCloseAction } from '../../../../store/burgerMenu/action'
+import { loginAction, logoutAction } from '../../../../store/auth/actions'
 
 
 export const Menu = () => {
     const {isOpened} = useSelector(setMenu)
 
     const dispatch = useDispatch()
-    const setOpenMenu = () => dispatch(setOpenAction())
     const setCloseMenu = () => dispatch(setCloseAction())
 
     const {isLoged} = useSelector(checkAuth)
+    const logout = () => dispatch(logoutAction())
+
     if(!isOpened){
         return null
     }
@@ -51,10 +53,10 @@ export const Menu = () => {
                 {
                     isLoged ? (
                         <RequireAuth>
-                            <MenuButton forMenuClosed={() => setTimeout(setCloseMenu, 100)} title='Log out'/>
+                            <MenuButton toLog={logout} forMenuClosed={() => setTimeout(setCloseMenu, 100)} title='Log out'/>
                         </RequireAuth>
                     ) : (
-                        <MenuButton forMenuClosed={() => setTimeout(setCloseMenu, 100)} title='Sign In'/>
+                        <MenuButton linkTo='auth/signin' forMenuClosed={() => setTimeout(setCloseMenu, 100)} title='Sign In'/>
                     )
                 }
             </div>

@@ -13,7 +13,6 @@
         width: 100%;
         height: 56px;
         border-radius: 2px;
-        border: 0;
         outline: none;
         padding-left: 20px;
         box-sizing: border-box;
@@ -28,6 +27,27 @@
 }
 
 input::placeholder{
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.textarea{
+    width: 100%;
+    border: 2px solid transparent;
+    padding: 18px 20px;
+    outline: none;
+    box-sizing: border-box;
+
+    transition: all ease-in-out .2s;
+    resize: none;
+
+    &:focus{
+        border: 2px solid $medium-gray;
+    }
+}
+
+textarea::placeholder{
     font-family: Inter;
     font-size: 16px;
     font-weight: 400;
