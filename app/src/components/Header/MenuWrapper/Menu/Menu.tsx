@@ -11,8 +11,8 @@ import { setMenu } from '../../../../store/burgerMenu/selectors'
 import { checkAuth } from '../../../../store/auth/selectors'
 import { useDispatch } from 'react-redux'
 
-import { setOpenAction, setCloseAction } from '../../../../store/burgerMenu/action'
-import { loginAction, logoutAction } from '../../../../store/auth/actions'
+import { setCloseAction } from '../../../../store/burgerMenu/action'
+import { logoutAction } from '../../../../store/auth/actions'
 
 
 export const Menu = () => {

@@ -1,6 +1,17 @@
 @import '../../../../helpers/color_variables.module.scss';
 
+
+@keyframes open{
+    0%{
+        left: -236px;
+    }
+    100%{
+        left: 0;
+    }
+}
+
 .menu{
+    animation: open .7s;
     position: fixed;
     height: calc(100vh - 84px);
     width: 236px;
@@ -46,7 +57,6 @@
     }
     
 }
-
 
 .user_style{
     border-top: 1px solid rgba(83, 96, 205, 1);
