@@ -5,10 +5,11 @@ import { useDispatch } from 'react-redux'
 import { ClearTextAction, SearchTextAction } from '../../../store/search/action'
 import { useSelector } from 'react-redux'
 import { searchPosts } from '../../../store/search/selector'
+import { Search } from '../Search/Search'
 
 
 export const HeaderInput = () => {
-    const {searchText} = useSelector(searchPosts)
+    const {forSearch} = useSelector(searchPosts)
     const dispatch = useDispatch()
     const clear = () => dispatch(ClearTextAction(''))
 
@@ -16,13 +17,13 @@ export const HeaderInput = () => {
         dispatch(SearchTextAction(e.currentTarget.value))
     };
 
-
     return (
         <div className={styles.header_input}>
-            <input autoComplete='off' placeholder='Search...' type="text" onInput={inputChange} value={searchText} id="header-input" />
+            <input autoComplete='off' placeholder='Search...' type="text" onInput={inputChange} value={forSearch || ''} id="header-input" />
             <button onClick={clear}>
                 {<DelIcon />}
             </button>
+            <Search/>
         </div>
     )
 }

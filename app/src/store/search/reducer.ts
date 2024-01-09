@@ -8,11 +8,17 @@ export const searchReducer = (state = SearchInitState, action: SearchActionType)
     switch(action.type){
         case 'SEARCH':
             return{
-                searchText: action.searchText
+                ...state,
+                forSearch: action.forSearch
+            }
+        case 'SET_SEARCH':
+            return{
+                ...state,
+                searchText: state.forSearch!
             }
         case 'CLEAR':
             return{
-                searchText: action.searchText
+                searchText: action.searchText!
             }
         default: return state
     }
