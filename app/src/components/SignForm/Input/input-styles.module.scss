@@ -53,6 +53,10 @@ textarea::placeholder{
     font-weight: 400;
 }
 
+.error{
+    border: 2px solid $dislike-color !important;
+}
+
 :global(.dark) .box{
     & p{
         color: rgb(255, 255, 255);

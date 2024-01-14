@@ -23,7 +23,6 @@ export const HeaderInput = () => {
             <button onClick={clear}>
                 {<DelIcon />}
             </button>
-            <Search/>
         </div>
     )
 }

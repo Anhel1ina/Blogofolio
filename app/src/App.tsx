@@ -12,6 +12,7 @@ import { Layout } from './components/Layouts/Layout';
 import { error } from 'console';
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { AddPostPage } from './pages/AddPostPage/AddPostPage';
+import { ActivationPage } from './pages/ActivationPage/ActivationPage';
 
 function App() {
   return (
@@ -22,12 +23,14 @@ function App() {
 
         <Route path='auth'>
           <Route index element={<SignUpPage/>}/>
-          <Route path='signup'>
-            <Route path='success' element={<SuccessPage/>}/>
-          </Route>   
+          <Route path='registrationconfirm' element={<RegistrationConfirmationPage/>}/>
+          <Route path='activate' element={<ActivationPage/>}/>
+          <Route path='success' element={<SuccessPage/>}/>
+          {/* <Route path='signup'>
+            
+          </Route>    */}
           <Route path='signin'>
             <Route index element={<SignInPage/>}/>
-            <Route path='registrationconfirm' element={<RegistrationConfirmationPage/>}/>
             <Route path='forgotpassword' element={<ResetPasswordPage/>}/>
           </Route>
         </Route>

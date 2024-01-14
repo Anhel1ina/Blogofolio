@@ -14,7 +14,7 @@ export const Header = () => {
         <div className={styles.header}>
             <Wrapper/>
             <HeaderInput/>
-            {/* <Search/> */}
+            <Search/>
             {
                 isLoged ? (
                     <User name={userName} abbr={initials}/>

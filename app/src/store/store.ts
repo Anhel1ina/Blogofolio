@@ -10,6 +10,7 @@ import { ThunkAction} from "redux-thunk";
 import { likeReducer } from "./likes/reducer";
 import { searchReducer } from "./search/reducer";
 import { addToFavsReducer } from "./favs/reducer";
+import { signUpReducer } from "./signUp/reducer";
 
 //add all reducers from contexts
 const rootReducer = combineReducers({
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
     posts: postReducer,
     like: likeReducer,
     search: searchReducer,
-    favs: addToFavsReducer
+    favs: addToFavsReducer,
+    signUp: signUpReducer
 })
 
 const store = configureStore({

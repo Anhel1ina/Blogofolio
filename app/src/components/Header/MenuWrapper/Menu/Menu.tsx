@@ -17,6 +17,7 @@ import { logoutAction } from '../../../../store/auth/actions'
 
 export const Menu = () => {
     const {isOpened} = useSelector(setMenu)
+    const {userName, initials} = useSelector(checkAuth)
 
     const dispatch = useDispatch()
     const setCloseMenu = () => dispatch(setCloseAction())
@@ -34,7 +35,7 @@ export const Menu = () => {
                 {
                     <>
                         <RequireAuth>
-                            <User name='Artem Malkin' abbr='AM'/> 
+                            <User name={userName} abbr={initials}/> 
                         </RequireAuth>
                         <NavLink to='/' onClick={() => setTimeout(setCloseMenu, 100)}>
                             <li>Home</li>

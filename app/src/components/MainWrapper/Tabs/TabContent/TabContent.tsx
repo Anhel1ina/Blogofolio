@@ -1,5 +1,5 @@
 import styles from "../tabs-content.module.scss"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { PostImage } from "../../../PostImage/PostImage"
 import { useSelector, useDispatch } from "react-redux"
 import { CloseImageAction } from "../../../../store/postImage/action"
@@ -9,6 +9,7 @@ import { LoadPostAsyncAction } from "../../../../store/posts/action"
 import { AppDispatch } from "../../../../store/store"
 import { AllPosts } from "../AllPosts/AllPosts"
 import { FavoritePosts } from "../FavoritePosts/FavoritePosts"
+import { url } from "inspector"
 
 
 export type Posts = {
@@ -23,7 +24,6 @@ type Props = {
     data_type: number
 }
 
-
 export const TabContent = (props: Props) => {
     const {data_type} = props
     const {amountPosts, page} = useSelector(selectPosts)
@@ -34,7 +34,9 @@ export const TabContent = (props: Props) => {
 
     useEffect(() => {
         dispatch(LoadPostAsyncAction())
+
     }, [dispatch])
+
 
     if (amountPosts.length === 0) {
         return null

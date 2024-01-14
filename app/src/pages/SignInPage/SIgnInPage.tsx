@@ -3,6 +3,7 @@ import { SignForm } from '../../components/SignForm/SignForm'
 import { BackToHome } from '../../components/BackToHome/BackToHome'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
 import { useEffect } from 'react'
+import { SignInForm } from '../../components/SignForm/SignInForm'
 
 type InputType = {
     title: string
@@ -31,8 +32,16 @@ export const SignInPage = () => {
             <div className={styles.page}>
                 <BackToHome/>
                 <PageHeader title="Sign In"/>
-                <SignForm 
+                {/* <SignForm 
                     innerItems={inputs}
+                    underTitle="Don't have an account?"
+                    underLink='Sign Up'
+                    linkTo='/auth'
+                    submitLink='registrationconfirm'
+                    buttonName='Sign In'
+                    forgetLink='forgotpassword'
+                /> */}
+                <SignInForm
                     underTitle="Don't have an account?"
                     underLink='Sign Up'
                     linkTo='/auth'
@@ -44,3 +53,6 @@ export const SignInPage = () => {
         </div>
     )
 }
+
+
+//BEARER token
