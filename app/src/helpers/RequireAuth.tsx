@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import { useSelector } from 'react-redux'
-import { checkAuth } from '../store/auth/selectors'
+import { useAuthState } from '../store/auth/selectors'
 
 
 type Props = {
@@ -8,9 +8,9 @@ type Props = {
 }
 
 export const RequireAuth = ({children}: Props) => {
-    const {isLoged} = useSelector(checkAuth)
+    const signInData = useAuthState()
 
-    if(!isLoged){
+    if(!signInData.isLoged){
         return (
             null
         )

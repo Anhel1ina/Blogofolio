@@ -2,6 +2,7 @@ import { AuthState, AuthAction } from "./types"
 
 export const authInitState: AuthState = {
     isLoged: false,
+    showAuthError: false
 }
 
 export const authReducer = (state = authInitState, action: AuthAction): AuthState => {
@@ -19,6 +20,12 @@ export const authReducer = (state = authInitState, action: AuthAction): AuthStat
                 ...state,
                 token: action.token
             }
+        case 'AUTH_FAILED':
+            return{
+                ...state,
+                isLoged: false,
+                errors: action.errors,
+            }
         case 'SET_EMAIL':
             return {
                 ...state,
@@ -28,6 +35,11 @@ export const authReducer = (state = authInitState, action: AuthAction): AuthStat
             return {
                 ...state,
                 password: action.password
+            }
+        case 'SET_AUTH_ALERT':
+            return {
+                ...state,
+                showAuthError: action.showAuthError
             }
         case 'LOGOUT':
             return {

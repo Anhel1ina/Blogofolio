@@ -35,12 +35,6 @@ export const SignUpForm = ({buttonName, underTitle, underLink, forgetLink, linkT
         }
     }, [formData])
 
-    
-
-    console.log(formData)
-
-
-
     return (
         <form className={styles.sign_form}>
             {
@@ -53,6 +47,7 @@ export const SignUpForm = ({buttonName, underTitle, underLink, forgetLink, linkT
                             }}
                             placeholder='Your name' 
                             type='text'
+                            errorsData={formData}
                             errorType='username'/>
                     {formData.isSignUpSuccess === false && formData.errors?.username && (
                         <p className={styles.error_fields}>
@@ -67,6 +62,7 @@ export const SignUpForm = ({buttonName, underTitle, underLink, forgetLink, linkT
                             }}
                             placeholder='Your email' 
                             type='email'
+                            errorsData={formData}
                             errorType='email'/>
 
                     {formData.isSignUpSuccess === false && formData.errors?.email && (
@@ -81,6 +77,7 @@ export const SignUpForm = ({buttonName, underTitle, underLink, forgetLink, linkT
                             }}
                             placeholder='Your password' 
                             type='password'
+                            errorsData={formData}
                             errorType='password'/>
 
                     {formData.isSignUpSuccess === false && formData.errors?.password && (
@@ -95,6 +92,7 @@ export const SignUpForm = ({buttonName, underTitle, underLink, forgetLink, linkT
                             }}
                             placeholder='Confirm password' 
                             errorType='confirmPassword'
+                            errorsData={formData}
                             type='password'/>
                     {formData.isSignUpSuccess === false && formData.errors?.confirmPassword && (
                             <p className={styles.error_fields}>

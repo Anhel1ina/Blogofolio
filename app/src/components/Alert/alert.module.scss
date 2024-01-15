@@ -1,21 +1,41 @@
+@import '../../helpers/color_variables.module.scss';
+
+@keyframes show{
+    0%{
+        top: -69px;
+    }
+    50%{
+        top: 30px;
+    }
+    100%{
+        top: 0;
+    }
+}
+
 .alert{
-    display: none;
+    display: flex;
     justify-content: space-between;
     box-sizing: border-box;
     padding: 0 23px;
 
     align-items: center;
-    width: 702px;
+    width: 37%;
     height: 69px;
-    background-color: #FFF6EF;
-    color: #E77C40;
-    border: 1px solid rgba(231, 124, 64, 1);
+    background-color: $error-alert-back-color;
+    color: $error-alert-text-color;
+    border: 1px solid $error-alert-border-color;
 
     box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.07);
-    position: absolute;
+    position: fixed;
+
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+
+    animation: show .5s ease-in-out;
 
     & button{
-        color: #E77C40;
+        color: $error-alert-button-color;
         font-family: Inter;
         font-weight: 700;
 
@@ -23,7 +43,7 @@
         aspect-ratio: 1/1;
         padding: 0;
         border-radius: 50%;
-        border: 1px solid rgba(231, 124, 64, 1);
+        border: 1px solid $error-alert-button-color;
         background-color: transparent;
 
         display: flex;
@@ -35,7 +55,7 @@
         transition: all ease-in-out .3s;
 
         &:hover{
-            background-color: rgba(231, 124, 64, 1);
+            background-color: $error-alert-button-color;
             color: white;
         }
     }

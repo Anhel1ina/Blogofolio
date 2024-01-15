@@ -11,6 +11,7 @@ import { likeReducer } from "./likes/reducer";
 import { searchReducer } from "./search/reducer";
 import { addToFavsReducer } from "./favs/reducer";
 import { signUpReducer } from "./signUp/reducer";
+import { activationReducer } from "./activation/reducer";
 
 //add all reducers from contexts
 const rootReducer = combineReducers({
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
     like: likeReducer,
     search: searchReducer,
     favs: addToFavsReducer,
-    signUp: signUpReducer
+    signUp: signUpReducer,
+    activation: activationReducer
 })
 
 const store = configureStore({

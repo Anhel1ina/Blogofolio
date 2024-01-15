@@ -4,7 +4,7 @@ import { Input } from './Input/Input'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../store/store'
-import { checkAuth } from '../../store/auth/selectors'
+import { useAuthState } from '../../store/auth/selectors'
 import { useSelector } from 'react-redux'
 import { getAccessAction, getAuthorized, setSignInEmailAction, setSignInPasswordAction, signInAction } from '../../store/auth/actions'
 
@@ -27,7 +27,8 @@ export const SignInForm = ({buttonName, underTitle, underLink, forgetLink, linkT
     const dispatch = useDispatch<AppDispatch>()
     const [errors, setErrors] = useState('')
 
-    const signInData = useSelector(checkAuth)
+    const signInData = useAuthState()
+
     
     useEffect(() => {
         inputRef.current?.focus()
@@ -39,35 +40,43 @@ export const SignInForm = ({buttonName, underTitle, underLink, forgetLink, linkT
     
     const signIn = async () => {
         await dispatch(signInAction(signInData.email!, signInData.password!))
-        await dispatch(getAccessAction())
-        await dispatch(getAuthorized())
+        // await dispatch(getAccessAction())
+        // await dispatch(getAuthorized())
     }
 
 
     return (
         <form className={styles.sign_form}>
-            <div>
-                {
-                    signInData.isLoged === false && JSON.stringify(signInData.errors)
-                }
-            </div>
             {
                 <>
                     <Input value={signInData.email || ''} 
-                            reference={inputRef} 
                             label="Email" 
                             onChange={(text: string) => {
                                 dispatch(setSignInEmailAction(text))
                             }}
                             placeholder='Your email' 
-                            type='email'/>
+                            type='email'
+                            errorsData={signInData}
+                            errorType='email'/>
+                    {signInData.isLoged === false && signInData.errors?.email && (
+                        <p className={styles.error_fields}>
+                            {JSON.stringify(signInData.errors.email).replace(/^\["(.+)"\]$/, '$1')}
+                        </p>
+                    )}
                     <Input value={signInData.password || ''} 
                             label="Password" 
                             onChange={(text: string) => {
                                 dispatch(setSignInPasswordAction(text))
                             }}
                             placeholder='Your password' 
+                            errorType='password'
+                            errorsData={signInData}
                             type='password'/>
+                    {signInData.isLoged === false && signInData.errors?.password && (
+                        <p className={styles.error_fields}>
+                            {JSON.stringify(signInData.errors.password).replace(/^\["(.+)"\]$/, '$1')}
+                        </p>
+                    )}
                 </>
             }
             {
@@ -79,9 +88,7 @@ export const SignInForm = ({buttonName, underTitle, underLink, forgetLink, linkT
                     null
                 )
             }
-            {/* <Link to={submitLink}> */}
-                <input type="button" onClick={() => signIn()} className={styles.primary_button} disabled={disabled} value={buttonName} />
-            {/* </Link> */}
+            <input type="button" onClick={() => signIn()} className={styles.primary_button} disabled={disabled} value={buttonName} />
             {
                 underTitle && underLink ? (
                     <div className={styles.sign_text}>

@@ -1,3 +1,8 @@
+export type SignInErrors = {
+    email?: string
+    password?: string
+}
+
 export type AuthState = {
     isLoged: boolean
     userName?: string
@@ -7,17 +12,19 @@ export type AuthState = {
     password?: string
 
     token?: string
-    errors?: any
+    errors?: SignInErrors
+    showAuthError?: boolean 
 }
 
 export type AuthAction = {
     type: string
+
     userName?: string
     initials?: string
-
     email?: string
     password?: string
-
     token?: string
-    errors?: any 
+
+    errors?: SignInErrors
+    showAuthError?: boolean 
 }

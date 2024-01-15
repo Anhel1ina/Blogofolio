@@ -8,7 +8,7 @@ import { User } from '../../User/User'
 
 import { useSelector } from 'react-redux'
 import { setMenu } from '../../../../store/burgerMenu/selectors'
-import { checkAuth } from '../../../../store/auth/selectors'
+import { useAuthState } from '../../../../store/auth/selectors'
 import { useDispatch } from 'react-redux'
 
 import { setCloseAction } from '../../../../store/burgerMenu/action'
@@ -17,12 +17,11 @@ import { logoutAction } from '../../../../store/auth/actions'
 
 export const Menu = () => {
     const {isOpened} = useSelector(setMenu)
-    const {userName, initials} = useSelector(checkAuth)
+    const signInData = useAuthState()
 
     const dispatch = useDispatch()
     const setCloseMenu = () => dispatch(setCloseAction())
 
-    const {isLoged} = useSelector(checkAuth)
     const logout = () => dispatch(logoutAction())
 
     if(!isOpened){
@@ -35,7 +34,7 @@ export const Menu = () => {
                 {
                     <>
                         <RequireAuth>
-                            <User name={userName} abbr={initials}/> 
+                            <User name={signInData.userName} abbr={signInData.initials}/> 
                         </RequireAuth>
                         <NavLink to='/' onClick={() => setTimeout(setCloseMenu, 100)}>
                             <li>Home</li>
@@ -52,7 +51,7 @@ export const Menu = () => {
             <div>
                 <ThemeButton/>
                 {
-                    isLoged ? (
+                    signInData.isLoged ? (
                         <RequireAuth>
                             <MenuButton toLog={logout} forMenuClosed={() => setTimeout(setCloseMenu, 100)} title='Log out'/>
                         </RequireAuth>

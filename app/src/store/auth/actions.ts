@@ -1,3 +1,4 @@
+import { isEmailValid } from "../../helpers/inputsValidation"
 import { AppThunk } from "../store"
 import { AuthAction } from "./types"
 
@@ -34,11 +35,41 @@ export const setSignInPasswordAction = (password: string) => {
     }
 }
 
+export const setAuthAlert = (value: boolean): AuthAction => {
+    return{
+        type: 'SET_AUTH_ALERT',
+        showAuthError: value
+    }
+}
+
 // const login = 'majeneg279@tanlanav.com'
 // const passsword = 'qazxswedc123'
 
 export const signInAction = (email: string, password: string): AppThunk => {   
     return async (dispatch, getState) => {
+
+        if(getState().auth.email && !isEmailValid(getState().auth.email!)){
+            dispatch({
+                type: 'AUTH_FAILED',
+                errors: {
+                    email: 'Enter a valid email address',
+                    password: getState().auth.errors?.password
+                }
+            })
+            return
+        }
+
+        if(getState().auth.password && getState().auth.password!.length < 8){
+            dispatch({
+                type: 'AUTH_FAILED',
+                errors: {
+                    email: getState().auth.errors?.email,
+                    password: 'Enter a valid password. Your password must contain at least 8 characters.'
+                }
+            })
+            return
+        }
+
         const request = new Request(
             'https://studapi.teachmeskills.by/auth/jwt/create/',
             {
@@ -56,12 +87,24 @@ export const signInAction = (email: string, password: string): AppThunk => {
         await fetch(request)
             .then(async (res) => {
                 const data = await res.json()
-                return [data, res.status]
+                return [data, res.status.toString()]
             })
             .then(([data, status]) => {
-                if(status === 200){
+                if(status.startsWith('2')){
                     localStorage.setItem('AUTH_REFRESH_TOKEN', data.refresh)
                     dispatch(signInSuccessAction(data.access))
+                    dispatch(getAccessAction())
+                    dispatch(getAuthorized())
+
+                }
+                if(status.startsWith('4')){
+                    dispatch({
+                        type: 'AUTH_FAILED',
+                        errors: data,
+                    })
+                    if(status == 401){
+                        dispatch(setAuthAlert(true))
+                    }
                 }
             })
     } 
@@ -86,10 +129,10 @@ export const getAccessAction = (): AppThunk => {
         await fetch(accessRequest)
             .then(async (res) => {
                 const data = await res.json()
-                return [data, res.status]
+                return [data, res.status.toString()]
             })
             .then(([data, status]) => {
-                if(status === 200){
+                if(status.startsWith('2')){
                     dispatch(signInSuccessAction(data.access))
                 }
             })
@@ -117,10 +160,10 @@ export const getAuthorized = (): AppThunk => {
         await fetch(getRequest)
             .then(async (res) => {
                 const data = await res.json()
-                return [data, res.status]
+                return [data, res.status.toString()]
             })
             .then(([data, status]) => {
-                if(status === 200){
+                if(status.startsWith('2')){
                     dispatch(loginAction(data.username))
                 }
             })

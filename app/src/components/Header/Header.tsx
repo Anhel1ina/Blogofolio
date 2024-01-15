@@ -5,19 +5,19 @@ import { HeaderInput } from './HeaderInput/HeaderInput'
 import { NonAutorized } from './User/NonAutorized/NonAutorized'
 
 import { User } from './User/User'
-import { useSelector } from 'react-redux'
-import { checkAuth } from '../../store/auth/selectors'
+import { useAuthState } from '../../store/auth/selectors'
 
 export const Header = () => {
-    const {userName, initials, isLoged} = useSelector(checkAuth)
+    const signInData = useAuthState()
+
     return (
         <div className={styles.header}>
             <Wrapper/>
             <HeaderInput/>
             <Search/>
             {
-                isLoged ? (
-                    <User name={userName} abbr={initials}/>
+                signInData.isLoged ? (
+                    <User name={signInData.userName} abbr={signInData.initials}/>
                 ) : (
                     <NonAutorized/>
                 )
