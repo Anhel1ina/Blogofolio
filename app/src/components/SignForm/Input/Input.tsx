@@ -43,8 +43,8 @@ export const Input = (props: Props) => {
                 isTextArea ? (
                     <textarea placeholder={placeholder} onInput={getText} value={text} className={styles.textarea}></textarea>
                 ) : (
-                    <input onInput={getText} ref={index === 0 ? reference : null}  value={text} placeholder={placeholder} 
-                    className={`${errorsData?.errors && (errorsData?.errors[errorType as keyof typeof errorsData.errors ] )  ? styles.error : null} ${styles.input}`} type={type}/>
+                    <input onChange={getText} ref={index === 0 ? reference : null}  value={text} placeholder={placeholder} 
+                    className={`${errorsData?.errors && (errorsData?.errors[errorType as keyof typeof errorsData.errors])  ? styles.error : null} ${styles.input}`} type={type}/>
                 )
             }
         </div>

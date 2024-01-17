@@ -41,6 +41,14 @@ export const authReducer = (state = authInitState, action: AuthAction): AuthStat
                 ...state,
                 showAuthError: action.showAuthError
             }
+        case 'SET_CLIENT_ERRORS':
+            return{
+                ...state,
+                errors: {
+                    email: action.email,
+                    password: action.password
+                }
+            }
         case 'LOGOUT':
             return {
                 ...state,

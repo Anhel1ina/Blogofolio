@@ -42,33 +42,25 @@ export const setAuthAlert = (value: boolean): AuthAction => {
     }
 }
 
-// const login = 'majeneg279@tanlanav.com'
-// const passsword = 'qazxswedc123'
 
-export const signInAction = (email: string, password: string): AppThunk => {   
+export const signInAction = (email: string, password: string): AppThunk => {  
     return async (dispatch, getState) => {
 
-        if(getState().auth.email && !isEmailValid(getState().auth.email!)){
+        if((!getState().auth.email || !isEmailValid(getState().auth.email!)) || (!getState().auth.password || getState().auth.password?.length! < 8)){
             dispatch({
                 type: 'AUTH_FAILED',
                 errors: {
-                    email: 'Enter a valid email address',
-                    password: getState().auth.errors?.password
+                    email:  !getState().auth.email ? 'This field is required' : !isEmailValid(getState().auth.email!) ? 
+                            'Enter a valid email address' : 
+                            undefined,
+                    password: !getState().auth.password ? 'This field is required' : getState().auth.password?.length! < 8 ? 
+                            'Enter a valid password. Your password must contain at least 8 characters.' 
+                            : undefined
                 }
             })
             return
         }
 
-        if(getState().auth.password && getState().auth.password!.length < 8){
-            dispatch({
-                type: 'AUTH_FAILED',
-                errors: {
-                    email: getState().auth.errors?.email,
-                    password: 'Enter a valid password. Your password must contain at least 8 characters.'
-                }
-            })
-            return
-        }
 
         const request = new Request(
             'https://studapi.teachmeskills.by/auth/jwt/create/',

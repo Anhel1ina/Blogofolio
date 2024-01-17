@@ -1,6 +1,6 @@
 export type SignInErrors = {
-    email?: string
-    password?: string
+    email: string
+    password: string
 }
 
 export type AuthState = {
@@ -12,7 +12,7 @@ export type AuthState = {
     password?: string
 
     token?: string
-    errors?: SignInErrors
+    errors?: Partial<SignInErrors>
     showAuthError?: boolean 
 }
 
@@ -25,6 +25,6 @@ export type AuthAction = {
     password?: string
     token?: string
 
-    errors?: SignInErrors
+    errors?: Partial<SignInErrors>
     showAuthError?: boolean 
 }

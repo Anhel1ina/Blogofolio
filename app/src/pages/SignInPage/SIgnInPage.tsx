@@ -27,15 +27,6 @@ export const SignInPage = () => {
             <div className={styles.page}>
                 <BackToHome/>
                 <PageHeader title="Sign In"/>
-                {/* <SignForm 
-                    innerItems={inputs}
-                    underTitle="Don't have an account?"
-                    underLink='Sign Up'
-                    linkTo='/auth'
-                    submitLink='registrationconfirm'
-                    buttonName='Sign In'
-                    forgetLink='forgotpassword'
-                /> */}
                 <SignInForm
                     underTitle="Don't have an account?"
                     underLink='Sign Up'

@@ -1,3 +1,4 @@
+import { isEmailValid } from "../../helpers/inputsValidation"
 import { signInAction } from "../auth/actions"
 import { AppThunk } from "../store"
 import { SignUpActionType } from "./types"
@@ -26,13 +27,40 @@ export const sendSignUpAsyncAction = () : AppThunk => {
     
     return async (dispatch, getState) => {
         const formData = getState().signUp
-        if (formData.password !== formData.confirmPassword) {
+
+        if((!formData.email || !isEmailValid(formData.email!)) ||
+        (!formData.password || formData.password?.length! < 8) ||
+        (!formData.username) ||
+        ((!formData.confirmPassword && formData.password) || (formData.confirmPassword && formData.password !== formData.confirmPassword))){
             dispatch({
                 type: 'SIGN_UP_FAILED',
-                payload: 'Password do not match.'
+                payload: {
+                    username: !formData.username ? 'This field is required' : undefined,
+                    email: !formData.email ? 'This field is required' : !isEmailValid(formData.email!) ? 
+                    'Enter a valid email address' : 
+                    undefined,
+                    password: !formData.password ? 'This field is required' : formData.password?.length! < 8 ? 
+                    'Enter a valid password. Your password must contain at least 8 characters.' 
+                    : undefined,
+                    confirmPassword: !formData.confirmPassword && formData.password ? 'Confirm password.' : 
+                    formData.confirmPassword && formData.password !== formData.confirmPassword ? 'Password mismatch! Check your password.' :
+                    undefined
+                }
             })
             return
         }
+        
+        if (formData.password !== formData.confirmPassword) {
+            dispatch({
+                type: 'SIGN_UP_FAILED',
+                payload: {
+                    confirmPassword: 'Password do not match.'
+                }
+            })
+            return
+        }
+
+
         const request = new Request(
             'https://studapi.teachmeskills.by/auth/users/',
             {
@@ -58,9 +86,6 @@ export const sendSignUpAsyncAction = () : AppThunk => {
                     dispatch({
                         type: 'SIGN_UP_SUCCESS'
                     })
-                    //activation firstly
-                    // signInAction(formData.email!, formData.password!)
-                    //auto authorization with sign up  
                 }
                 if (status.startsWith('4')){
                     dispatch({
@@ -69,6 +94,6 @@ export const sendSignUpAsyncAction = () : AppThunk => {
                     })
                 }
             })
-        
+        console.log(getState().signUp.errors)
     }
 }

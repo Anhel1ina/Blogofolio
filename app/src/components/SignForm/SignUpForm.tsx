@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, FormEvent } from 'react'
 import styles from './sign_form.module.scss'
 import { Input } from './Input/Input'
 import { Link, useNavigate } from 'react-router-dom'
@@ -35,8 +35,16 @@ export const SignUpForm = ({buttonName, underTitle, underLink, forgetLink, linkT
         }
     }, [formData])
 
+    const signUp = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        if((e.target as HTMLInputElement)?.type !== 'submit'){
+            return
+        }
+        dispatch(sendSignUpAsyncAction())
+    } 
+
     return (
-        <form className={styles.sign_form}>
+        <form className={styles.sign_form} onClick={signUp}>
             {
                 <>
                     <Input value={formData.username || ''} 
@@ -100,13 +108,6 @@ export const SignUpForm = ({buttonName, underTitle, underLink, forgetLink, linkT
                                 
                             </p>
                     )}
-                    {
-                        formData.confirmPassword !== formData.password && (
-                            <p className={styles.error_fields}>
-                                Password mismatch! Check your password.
-                            </p>
-                        )
-                    }
                 </>
             }
             {
@@ -118,10 +119,7 @@ export const SignUpForm = ({buttonName, underTitle, underLink, forgetLink, linkT
                     null
                 )
             }
-            {/* <Link to={submitLink}> */}
-                <input type="button" onClick={() => dispatch(sendSignUpAsyncAction())} 
-                    className={styles.primary_button} disabled={disabled} value={buttonName} />
-            {/* </Link> */}
+                <input type="submit" className={styles.primary_button} disabled={disabled} value={buttonName} />
             {
                 underTitle && underLink ? (
                     <div className={styles.sign_text}>

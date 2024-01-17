@@ -1,12 +1,11 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, FormEvent } from 'react'
 import styles from './sign_form.module.scss'
 import { Input } from './Input/Input'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../store/store'
 import { useAuthState } from '../../store/auth/selectors'
-import { useSelector } from 'react-redux'
-import { getAccessAction, getAuthorized, setSignInEmailAction, setSignInPasswordAction, signInAction } from '../../store/auth/actions'
+import { setSignInEmailAction, setSignInPasswordAction, signInAction } from '../../store/auth/actions'
 
 
 type Props = {
@@ -20,7 +19,8 @@ type Props = {
     linkTo?: string
 }
 
-export const SignInForm = ({buttonName, underTitle, underLink, forgetLink, linkTo, submitLink, disabled=false}: Props) => {
+
+export const SignInForm = ({buttonName, underTitle, underLink, forgetLink, linkTo, disabled=false}: Props) => {
 
     const inputRef = useRef<HTMLInputElement>(null)
     const navigate = useNavigate()
@@ -37,16 +37,18 @@ export const SignInForm = ({buttonName, underTitle, underLink, forgetLink, linkT
         }
     }, [signInData])
 
-    
-    const signIn = async () => {
-        await dispatch(signInAction(signInData.email!, signInData.password!))
-        // await dispatch(getAccessAction())
-        // await dispatch(getAuthorized())
-    }
-
+    const signIn = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        if((e.target as HTMLInputElement)?.type !== 'submit'){
+            return
+        }
+        dispatch(signInAction(signInData.email!, signInData.password!))
+        dispatch(setSignInEmailAction(''))
+        dispatch(setSignInPasswordAction(''))
+    } 
 
     return (
-        <form className={styles.sign_form}>
+        <form className={styles.sign_form} onClick={signIn}>
             {
                 <>
                     <Input value={signInData.email || ''} 
@@ -88,7 +90,7 @@ export const SignInForm = ({buttonName, underTitle, underLink, forgetLink, linkT
                     null
                 )
             }
-            <input type="button" onClick={() => signIn()} className={styles.primary_button} disabled={disabled} value={buttonName} />
+            <input type="submit" className={styles.primary_button} disabled={disabled} value={buttonName} />
             {
                 underTitle && underLink ? (
                     <div className={styles.sign_text}>

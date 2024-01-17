@@ -15,31 +15,7 @@ type InputType = {
 }
 
 export const SignUpPage = () => {
-    // const inputs: InputType[] = [
-    //     {
-    //         title: 'Name',
-    //         text: 'Your name',
-    //         type: 'text',
-    //     },
-    //     {
-    //         title: 'Email',
-    //         text: 'Your email',
-    //         type: 'email',
-    //     },
-    //     {
-    //         title: 'Password',
-    //         text: 'Your password',
-    //         type: 'password',
-    //     },
-    //     {
-    //         title: 'Confirm password',
-    //         text: 'Confirm password',
-    //         type: 'password'
-
-    //     }
-    // ]
-
-    useEffect(() => window.scrollTo(0, 0))
+    useEffect(() => window.scrollTo(0, 0), [])
 
     return (
         <div className={styles.wrapper}>
@@ -52,14 +28,6 @@ export const SignUpPage = () => {
                     linkTo='signin'
                     submitLink='signup/success'
                     buttonName='Sign Up'/>
-                {/* <SignForm 
-                    innerItems={inputs}
-                    underTitle='Already have an account?'
-                    underLink='Sign In'
-                    linkTo='signin'
-                    submitLink='signup/success'
-                    buttonName='Sign Up'
-                /> */}
             </div>
         </div>
     )
