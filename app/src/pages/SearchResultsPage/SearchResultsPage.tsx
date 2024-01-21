@@ -1,14 +1,16 @@
 import styles from '../sign_in_page.module.scss'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
 import { PostSmallVariant } from '../../components/MainWrapper/PostSmallVariant/PostSmallVariant'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../store/store'
-import { LoadAllPostAsyncAction } from '../../store/posts/action'
+import { LoadAllPostAsyncAction, setPageAction } from '../../store/posts/action'
 import { useSelector } from 'react-redux'
 import { selectPosts } from '../../store/posts/selector'
 import { searchPosts } from '../../store/search/selector'
+import { AllNavigation } from '../../components/AllNavigation/AllNavigation'
+import { getCustomPageCount, getCustomPostPages } from '../../helpers/getPageData'
 
 type Posts = {
     id: number
@@ -19,32 +21,44 @@ type Posts = {
 }
 
 export const SearchResultsPage = () => {
-    const {amountPosts} = useSelector(selectPosts)
+    const {amountPosts, page} = useSelector(selectPosts)
     const {searchText} = useSelector(searchPosts)
+    const dispatch = useDispatch<AppDispatch>()
 
     useEffect(() => {
         dispatch(LoadAllPostAsyncAction())
-    }, [])
-    const dispatch = useDispatch<AppDispatch>()
+        dispatch(setPageAction())
+    }, [dispatch])
+    
+    useEffect(() => {
+        if (amountPosts.length === 0) {
+            return undefined
+        }
+    })
 
+    const searchedPosts = amountPosts.filter((post) => post.title.toLowerCase().includes(searchText.toLowerCase()) || post.description.toLowerCase().includes(searchText.toLowerCase()))
+    const showedSearchedPosts = getCustomPostPages(searchedPosts, page!, 6)
+    let pages: number[] = getCustomPageCount(searchedPosts, 6)
 
-    if (amountPosts.length === 0) {
-        return null
+    
+    const onPage = (page: number) => {
+        dispatch(setPageAction(page))
+        window.scrollTo(0, 0)
     }
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.page}>
                 <PageHeader title={`Search results for '${searchText}'`}/>
-                <div>
+                <div className={styles.page_marg}>
                     {
-                        amountPosts
-                        .filter((post) => post.title.toLowerCase().includes(searchText.toLowerCase()) || post.description.toLowerCase().includes(searchText.toLowerCase()))
+                        showedSearchedPosts
                         .map((post) => (
                             <PostSmallVariant searchRes={true} key={post.id} post={post}/>
                         ))
                     }
                 </div>
+                <AllNavigation onPage={onPage} page={page!} pages={pages}/>
             </div>
         </div>
     )

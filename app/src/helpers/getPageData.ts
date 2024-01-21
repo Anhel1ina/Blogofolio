@@ -19,19 +19,19 @@ export const getPageCount = (count: Posts[]) => {
     return countArr
 }
 
-export const getFavPostPages = (favPosts: Posts[], page: number): Posts[] => {
-    const startIndex = (page - 1) * 12
-    const endIndex = startIndex + 12
+
+export const getCustomPostPages = (favPosts: Posts[], page: number, numOfPostPerPage: number): Posts[] => {
+    const startIndex = (page - 1) * numOfPostPerPage
+    const endIndex = startIndex + numOfPostPerPage
     return favPosts.slice(startIndex, endIndex)
 }
 
-export const getFavPageCount = (count: Posts[]) => {
+export const getCustomPageCount = (count: Posts[], numOfPostPerPage: number) => {
     let countArr: number[] = []
-    if (count.length > 12) {
-        const countOfPages = Math.ceil(count.length / 12)
+    if (count.length > numOfPostPerPage) {
+        const countOfPages = Math.ceil(count.length / numOfPostPerPage)
         countArr = Array.from({ length: countOfPages }, (_, index) => index + 1)
         return countArr
     }
     return [1]
 }
-

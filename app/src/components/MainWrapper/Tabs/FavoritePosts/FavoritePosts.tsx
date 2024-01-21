@@ -10,8 +10,7 @@ import { PostSmallVariant } from '../../PostSmallVariant/PostSmallVariant'
 import { OpenImageAction } from '../../../../store/postImage/action'
 import { AllNavigation } from '../../../AllNavigation/AllNavigation'
 
-import { getFavPageCount, getFavPostPages, getPageCount } from '../../../../helpers/getPageData'
-import { Posts } from '../TabContent/TabContent'
+import { getCustomPageCount, getCustomPostPages} from '../../../../helpers/getPageData'
 
 export const FavoritePosts = () => {
     const { amountPosts, page } = useSelector(selectPosts)
@@ -28,8 +27,8 @@ export const FavoritePosts = () => {
         return data[post.id]?.isAdded
     })
 
-    const showedPosts = getFavPostPages(favoritePosts, page!)
-    let pages: number[] = getFavPageCount(favoritePosts)
+    const showedPosts = getCustomPostPages(favoritePosts, page!, 12)
+    let pages: number[] = getCustomPageCount(favoritePosts, 12)
 
     const onFavPage = (page: number) => {
         dispatch(setPageAction(page))
