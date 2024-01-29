@@ -18,6 +18,8 @@ export type Posts = {
     title: string
     description: string
     image: string
+    likes: string
+    dislikes: string
 }
 
 type Props = {

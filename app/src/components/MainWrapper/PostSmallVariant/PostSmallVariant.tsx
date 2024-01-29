@@ -3,23 +3,22 @@ import { Bookmark } from '../PostBigVariant/Bookmark/Bookmark'
 import { More } from '../PostBigVariant/More/More'
 import { Link } from 'react-router-dom'
 import { LikeDisButtonsWrapper } from '../PostBigVariant/LikeDisButtonsWrapper/LikeDisButtonsWrapper'
+import { Posts } from '../Tabs/TabContent/TabContent'
+import { MoreInnerButtons } from '../PostBigVariant/MoreInnerButtons/MoreInnerButtons'
+import { useMoreState } from '../../../store/more/selectors'
 
-type Post = {
-    id: number
-    date: Date
-    title: string
-    description: string
-    image: string
-}
+
 
 type Props = {
-    post: Post
+    post: Posts
     searchRes?: boolean
     openImage?: () => void
 }
 
 export const PostSmallVariant = (props: Props) => {
     const {post, searchRes = false, openImage} = props
+    const moreState = useMoreState(post.id.toString())
+    const {more} = moreState || {}
     return (
         <div className={`${styles.small_post} ${searchRes ? styles.search_results : null}`} id={post.id.toString()}>
             <div>
@@ -33,11 +32,16 @@ export const PostSmallVariant = (props: Props) => {
             </div>
             <div className={styles.all_buttons}>
                 <div>
-                    <LikeDisButtonsWrapper postId={post.id.toString()}/>
+                    <LikeDisButtonsWrapper likes={post.likes} dislikes={post.dislikes} postId={post.id.toString()}/>
                 </div>
                 <div className={styles.mark_buttons}>
                     <Bookmark postId={post.id.toString()}/>
-                    <More/>
+                    <More postId={post.id.toString()}/>
+                    {
+                        more! ?
+                        <MoreInnerButtons typeOfPost='more_small_post'/> :
+                        null
+                    }
                 </div>
             </div>
         </div>

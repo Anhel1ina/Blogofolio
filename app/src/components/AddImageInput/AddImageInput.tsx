@@ -1,14 +1,28 @@
+import { ActivationStateType } from '../../store/activation/types';
+import { AddPostType } from '../../store/addPost/types';
+import { AuthState } from '../../store/auth/types';
+import { SignUpType } from '../../store/signUp/types';
 import styles from './add_image.module.scss'
+import errorStyle from '../SignForm/Input/input-styles.module.scss'
 import { useState } from 'react';
 
-export const AddImageInput = () => {
+type Props = {
+    onInput: (text: string) => void
+    errorType?: string,
+    errorsData?: SignUpType | AuthState | ActivationStateType | AddPostType
+}
+
+export const AddImageInput = ({onInput, errorType, errorsData}: Props) => {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
     const showFile = (e: React.FormEvent<HTMLInputElement>) => {
+        debugger
         if (e.currentTarget.files) {
             const file = e.currentTarget.files[0]
             file ? setSelectedFile(file) : setSelectedFile(null)
+            onInput && onInput(e.currentTarget.value)
         }
+
     }
 
     const clearFileInput = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -28,8 +42,10 @@ export const AddImageInput = () => {
         <div>
             <label className={styles.input_file}>
             <p>Image</p>
-            <input onChange={showFile} id="file1" type="file"/>
-            <span className={styles.input_file_btn}>Upload new</span>
+            <input value='' onChange={showFile} id="file1" type="file"/>
+            <span className={styles.input_file_btn}>
+                Upload new
+            </span>
             {
                 selectedFile ? (
                     <button type="button" onClick={clearFileInput}>
@@ -42,7 +58,7 @@ export const AddImageInput = () => {
                 )
             }
             </label>
-            <span className={styles.input_file_text}>{selectedFile?.name}</span>
+            <span id='file_text' className={`${styles.input_file_text} ${errorsData?.errors && (errorsData?.errors[errorType as keyof typeof errorsData.errors])  ? errorStyle.error : null} ${styles.input}`}>{selectedFile?.name}</span>
         </div>
     )
 }

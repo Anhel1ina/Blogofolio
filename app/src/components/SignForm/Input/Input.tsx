@@ -5,6 +5,7 @@ import { SignUpType } from '../../../store/signUp/types'
 import { AuthState } from '../../../store/auth/types'
 import { useAuthState } from '../../../store/auth/selectors'
 import { ActivationStateType } from '../../../store/activation/types'
+import { AddPostType, addPostErrorsType } from '../../../store/addPost/types'
 
 type Props = {
     label?: string
@@ -17,7 +18,7 @@ type Props = {
 
     value?: string
     errorType?: string
-    errorsData?: SignUpType | AuthState | ActivationStateType
+    errorsData?: SignUpType | AuthState | ActivationStateType | AddPostType
     onChange?: (text: string) => void
 }
 
@@ -41,7 +42,8 @@ export const Input = (props: Props) => {
             <p>{label}</p>
             {
                 isTextArea ? (
-                    <textarea placeholder={placeholder} onInput={getText} value={text} className={styles.textarea}></textarea>
+                    <textarea placeholder={placeholder} onInput={getText} value={text} 
+                    className={`${styles.textarea} ${errorsData?.errors && (errorsData?.errors[errorType as keyof typeof errorsData.errors])  ? styles.error : null}`}></textarea>
                 ) : (
                     <input onChange={getText} ref={index === 0 ? reference : null}  value={text} placeholder={placeholder} 
                     className={`${errorsData?.errors && (errorsData?.errors[errorType as keyof typeof errorsData.errors])  ? styles.error : null} ${styles.input}`} type={type}/>

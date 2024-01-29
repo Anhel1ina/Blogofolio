@@ -6,9 +6,11 @@ import { AppState } from '../../../../store/store'
 
 type Props = {
     postId: string
+    likes: string
+    dislikes: string
 }
 
-export const LikeDisButtonsWrapper = ({postId}: Props) => {
+export const LikeDisButtonsWrapper = ({postId, likes, dislikes}: Props) => {
     const likeState = useSelector((state: AppState) => state.like[postId])
     const dispatch = useDispatch()
     const {isLiked, isDisliked, setMark} = likeState || {}
@@ -19,8 +21,8 @@ export const LikeDisButtonsWrapper = ({postId}: Props) => {
 
     return (
         <div style={{display: 'flex'}}>
-            <LikeButton isLiked={isLiked} isDisliked={isDisliked} setMark={setMark} like={like} undo={undo}/>
-            <DislikeButton isLiked={isLiked} isDisliked={isDisliked} setMark={setMark} dislike={dislike} undo={undo}/>
+            <LikeButton likes={likes} isLiked={isLiked} isDisliked={isDisliked} setMark={setMark} like={like} undo={undo}/>
+            <DislikeButton dislikes={dislikes} isLiked={isLiked} isDisliked={isDisliked} setMark={setMark} dislike={dislike} undo={undo}/>
         </div>
     )
 }

@@ -94,6 +94,5 @@ export const sendSignUpAsyncAction = () : AppThunk => {
                     })
                 }
             })
-        console.log(getState().signUp.errors)
     }
 }

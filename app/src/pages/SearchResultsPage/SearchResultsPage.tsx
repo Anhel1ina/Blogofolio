@@ -10,7 +10,8 @@ import { useSelector } from 'react-redux'
 import { selectPosts } from '../../store/posts/selector'
 import { searchPosts } from '../../store/search/selector'
 import { AllNavigation } from '../../components/AllNavigation/AllNavigation'
-import { getCustomPageCount, getCustomPostPages } from '../../helpers/getPageData'
+import { getCustomPostPages } from '../../helpers/getPageData'
+import { getPages } from '../../helpers/getPages'
 
 type Posts = {
     id: number
@@ -38,7 +39,7 @@ export const SearchResultsPage = () => {
 
     const searchedPosts = amountPosts.filter((post) => post.title.toLowerCase().includes(searchText.toLowerCase()) || post.description.toLowerCase().includes(searchText.toLowerCase()))
     const showedSearchedPosts = getCustomPostPages(searchedPosts, page!, 6)
-    let pages: number[] = getCustomPageCount(searchedPosts, 6)
+    let pages: string[] = getPages(searchedPosts.length, 6, 6, page!)
 
     
     const onPage = (page: number) => {
@@ -58,7 +59,7 @@ export const SearchResultsPage = () => {
                         ))
                     }
                 </div>
-                <AllNavigation onPage={onPage} page={page!} pages={pages}/>
+                <AllNavigation onPage={onPage} page={page?.toString()!} pages={pages}/>
             </div>
         </div>
     )

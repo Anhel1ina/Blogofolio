@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux'
 import { selectPosts } from '../../store/posts/selector'
 
 type Props = {
-    pages: number[]
-    page: number
+    pages: string[]
+    page: string
     onPage: (page: number) => void
 }
 
@@ -19,7 +19,7 @@ export const BlogNavigation = ({page, pages, onPage}: Props) => {
                     {
                         pages.map(
                             (item) => (
-                                <span key={item} className={page == item ? styles.active : ''} onClick={() => onPage(item)}>{item}</span>
+                                <span key={item} className={page == item ? styles.active : ''} onClick={() => onPage(+item)}>{item}</span>
                             )
                         )
                     }

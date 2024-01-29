@@ -6,17 +6,17 @@ import navStyles from '../MainWrapper/main.module.scss'
 import { on } from 'events'
 
 type Props = {
-    page: number
-    pages: number[]
+    page: string
+    pages: string[]
     onPage: (page: number) => void
 }
 
 export const AllNavigation = ({page, pages, onPage}: Props) => {
     return (
         <div className={navStyles.nav}>
-            <PrevPageButton onPage={onPage} disabled={page === 1 || !pages.length ? true : false}/>
+            <PrevPageButton onPage={onPage} disabled={+page === 1 || !pages.length ? true : false}/>
             <BlogNavigation onPage={onPage} page={page} pages={pages}/>
-            <NextPageButton onPage={onPage} disabled={page === pages.length || !pages.length ? true : false}/>
+            <NextPageButton onPage={onPage} disabled={+page === pages.length || !pages.length ? true : false}/>
         </div>
     )
 }

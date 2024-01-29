@@ -14,7 +14,8 @@ export const searchReducer = (state = SearchInitState, action: SearchActionType)
         case 'SET_SEARCH':
             return{
                 ...state,
-                searchText: state.forSearch!
+                searchText: state.forSearch!,
+                forSearch: ''
             }
         case 'CLEAR':
             return{

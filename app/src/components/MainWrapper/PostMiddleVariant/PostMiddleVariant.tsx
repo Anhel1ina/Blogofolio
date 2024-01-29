@@ -3,22 +3,20 @@ import { Bookmark } from '../PostBigVariant/Bookmark/Bookmark'
 import { More } from '../PostBigVariant/More/More'
 import { Link } from 'react-router-dom'
 import { LikeDisButtonsWrapper } from '../PostBigVariant/LikeDisButtonsWrapper/LikeDisButtonsWrapper'
-
-type Post = {
-    id: number
-    date: Date
-    title: string
-    description: string
-    image: string
-}
+import { Posts } from '../Tabs/TabContent/TabContent'
+import { MoreInnerButtons } from '../PostBigVariant/MoreInnerButtons/MoreInnerButtons'
+import { useMoreState } from '../../../store/more/selectors'
 
 type Props = {
-    post: Post
+    post: Posts
     openImage: (id: number) => void
 }
 
 export const PostMiddleVariant = (props: Props) => {
     const {post, openImage} = props
+    const moreState = useMoreState(post.id.toString())
+    const {more} = moreState || {}
+
     return (
         <div className={styles.middle_post} id={post.id.toString()}>
             <div className={styles.middle_post_img}>
@@ -30,13 +28,17 @@ export const PostMiddleVariant = (props: Props) => {
             </Link>
             <div className={styles.buttons_block}>
                 <div className={styles.buttons_block__inner}>
-                    <LikeDisButtonsWrapper postId={post.id.toString()}/>
+                    <LikeDisButtonsWrapper likes={post.likes} dislikes={post.dislikes} postId={post.id.toString()}/>
                 </div>
                 <div>
                     <Bookmark postId={post.id.toString()}/>
-                    <More/>
+                    <More postId={post.id.toString()}/>
                 </div>
             </div>
+            {
+                more! ?
+                <MoreInnerButtons typeOfPost='more_middle_post'/> : null
+            }
         </div>
     )
 }

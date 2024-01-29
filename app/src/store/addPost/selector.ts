@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import { AppState } from "../store";
 
 
-export const useAuthState = () => {
+export const useAddPostState = () => {
     const selector = useSelector(
-        (globalState: AppState) => globalState.auth
+        (globalState: AppState) => globalState.addPost
     )
     return selector
 }

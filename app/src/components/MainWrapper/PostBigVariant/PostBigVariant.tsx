@@ -4,25 +4,22 @@ import { More } from './More/More'
 import { Link } from 'react-router-dom'
 import { ImageAction } from '../../../store/postImage/types'
 import { LikeDisButtonsWrapper } from './LikeDisButtonsWrapper/LikeDisButtonsWrapper'
+import { Posts } from '../Tabs/TabContent/TabContent'
+import { MoreInnerButtons } from './MoreInnerButtons/MoreInnerButtons'
+import { useMoreState } from '../../../store/more/selectors'
 
 type Props = {
     openImage: (id: number) => ImageAction
     post: Posts
 }
 
-type Posts = {
-    title: string
-    description: string
-    image: string
-    date: Date
-    id: number
-}
-
 export const PostBigVariant = ({post, openImage}: Props) => {
+    const moreState = useMoreState(post.id.toString())
+    const {more} = moreState || {}
+    
     if (!post) {
         return null; 
-    }
-    
+    }    
     return (
         <div className={styles.post} id={post.id.toString()}>
             <>
@@ -37,14 +34,18 @@ export const PostBigVariant = ({post, openImage}: Props) => {
                     <img src={post.image} alt="post" onClick={() => openImage(post.id)}/>
                 </div>
                 <div className={styles.like_dis}>
-                    <LikeDisButtonsWrapper postId={post.id.toString()}/>
+                    <LikeDisButtonsWrapper likes={post.likes} dislikes={post.dislikes} postId={post.id.toString()}/>
                 </div>
                 <div className={`${styles.like_dis} ${styles.dop_buttons}`}>
                     <Bookmark postId={post.id.toString()} />
-                    <More />
+                    <More postId={post.id.toString()} />
+                    {
+                        more! ?
+                        <MoreInnerButtons typeOfPost='more_big_post'/> : null
+                    }
                 </div>
             </>
         </div>
-    );
+    )
 };
 

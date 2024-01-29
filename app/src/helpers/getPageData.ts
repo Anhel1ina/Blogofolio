@@ -7,7 +7,6 @@ export const getPageData = (page: number) => {
     }
 }
 
-
 export const getPageCount = (count: Posts[]) => {
     let countOfPages = 1
     let countArr: number[] = []
@@ -18,7 +17,6 @@ export const getPageCount = (count: Posts[]) => {
     }
     return countArr
 }
-
 
 export const getCustomPostPages = (favPosts: Posts[], page: number, numOfPostPerPage: number): Posts[] => {
     const startIndex = (page - 1) * numOfPostPerPage
@@ -34,4 +32,15 @@ export const getCustomPageCount = (count: Posts[], numOfPostPerPage: number) => 
         return countArr
     }
     return [1]
+}
+
+export const changeImageValue = (arr: Posts[]) => {
+    return arr.map((item) => {
+        const newImage = item.image.replace('480', `${400 + (+item.id)}`)
+        const updatedItem = {
+            ...item,
+            "image": newImage,
+        }
+        return updatedItem
+    })
 }

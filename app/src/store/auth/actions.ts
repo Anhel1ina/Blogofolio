@@ -61,6 +61,13 @@ export const signInAction = (email: string, password: string): AppThunk => {
             return
         }
 
+        //for adding post action
+        // headers: {
+        //     'Accept': 'application/json',
+        //      'Authorization'
+        // },
+        // const formData = new formData
+        //body via new formData
 
         const request = new Request(
             'https://studapi.teachmeskills.by/auth/jwt/create/',
