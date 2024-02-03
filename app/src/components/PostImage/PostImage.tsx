@@ -13,20 +13,19 @@ type Props = {
     dataPosts: Posts[]
 }
 
-export const PostImage = ({closeImage, idOfPost, dataLength, dataPosts}: Props) => {
+export const PostImage = ({closeImage, idOfPost, dataLength, dataPosts }: Props) => {
 
-    const [data, setData] = useState<Posts>()
+    // const [data, setData] = useState<Posts>()
 
-    useEffect(() => {
-        fetch(`https://65670f6864fcff8d730fa806.mockapi.io/posts/${idOfPost}`)
-            .then(res => res.json())
-            .then(res => setData(res))
-    }, [idOfPost])
+    // useEffect(() => {
+    //     fetch(`https://65670f6864fcff8d730fa806.mockapi.io/posts/${idOfPost}`)
+    //         .then(res => res.json())
+    //         .then(res => setData(res))
+    // }, [idOfPost])
 
-    if (!data) {
-        return null
-    }
-    
+    // if (!data) {
+    //     return null
+    // }
     return (
         <div className={styles.post_image_wrapper}>
             <div className={styles.post_image_block}>
@@ -37,9 +36,9 @@ export const PostImage = ({closeImage, idOfPost, dataLength, dataPosts}: Props) 
                 </button>
                 <div className={styles.post_image_inner_content}>
                     <div className={styles.post_image_inner_content_image}>
-                        <img src={data!.image} alt={`post ${idOfPost} image`} />
+                        <img src={dataPosts[idOfPost]!.image} alt={`post ${idOfPost} image`} />
                     </div>
-                    <ButtonsWrapper dataLength={dataLength}/>
+                    <ButtonsWrapper dataLength={dataPosts.length}/>
                 </div>
             </div>
         </div>

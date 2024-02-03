@@ -13,8 +13,8 @@ export const ButtonsWrapper = ({dataLength}: Props) => {
     const {idOfPost} = useSelector(postImage)
     return (
         <div className={styles.buttons_wrapper}>
-            <PrevButton disabled={idOfPost == 1 ? true : false}/>
-            <NextButton disabled={idOfPost == dataLength ? true : false}/>
+            <PrevButton disabled={idOfPost == 0 ? true : false}/>
+            <NextButton disabled={idOfPost == dataLength - 1 ? true : false}/>
         </div>
     )
 }

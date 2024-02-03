@@ -16,7 +16,6 @@ export const NextButton = ({ disabled = false}: Props) => {
         nextImageId = +idOfPost
     }
     const dispatch = useDispatch()
-
     const next = (id: number) => dispatch(NextImageAction(id))
     return (
         <button disabled={disabled} onClick={() => next(nextImageId)}>

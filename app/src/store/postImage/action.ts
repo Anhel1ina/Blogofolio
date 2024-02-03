@@ -11,7 +11,7 @@ export const CloseImageAction = (): ImageAction => ({
 
 export const NextImageAction = (id?: number): ImageAction => ({
     type: 'opened',
-    idOfPost: id ? id + 1 : undefined
+    idOfPost: id! + 1 
 })
 
 export const PrevImageAction = (id?: number): ImageAction => ({

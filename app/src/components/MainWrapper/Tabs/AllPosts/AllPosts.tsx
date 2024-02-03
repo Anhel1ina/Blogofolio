@@ -42,7 +42,6 @@ export const AllPosts = () => {
     const allPosts = changeImageValue(amountPosts)
     const onPageClick = (page: number) => {
         dispatch(LoadPostAsyncAction(page))
-        console.log(page)
         window.scrollTo(0, 0)
     }
 
@@ -53,7 +52,7 @@ export const AllPosts = () => {
             {
                 page === 1 ? (
                     <div className={styles.big_post}>
-                        <PostBigVariant post={allPosts[0]} openImage={() => openImagePost(amountPosts[0].id)} />
+                        <PostBigVariant post={allPosts[0]} openImage={() => openImagePost(0)} />
                     </div>
                 ) : (
                     <div className={styles.middle_posts}>
@@ -61,8 +60,8 @@ export const AllPosts = () => {
                         amountPosts
                         // allPosts
                             .filter((post, index) => index >= 0 && index <= 1)
-                            .map((filteredPost) => (
-                                <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
+                            .map((filteredPost, index) => (
+                                <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(amountPosts.indexOf(filteredPost))} />
                             ))}
                     </div>
                 )
@@ -74,8 +73,8 @@ export const AllPosts = () => {
                         amountPosts
                         // allPosts
                             .filter((post, index) => index >= 1 && index <= 4)
-                            .map((filteredPost) => (
-                                <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
+                            .map((filteredPost, index) => (
+                                <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(amountPosts.indexOf(filteredPost))} />
                             ))}
                     </div>
                 ) : (
@@ -84,8 +83,8 @@ export const AllPosts = () => {
                         amountPosts
                         // allPosts
                             .filter((post, index) => index >= 2 && index <= 5)
-                            .map((filteredPost) => (
-                                <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
+                            .map((filteredPost, index) => (
+                                <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(amountPosts.indexOf(filteredPost))} />
                             ))}
                     </div>
                 )
@@ -97,8 +96,8 @@ export const AllPosts = () => {
                             amountPosts
                             // allPosts
                                 .filter((post, index) => index >= 5)
-                                .map((filteredPost) => (
-                                    <PostSmallVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
+                                .map((filteredPost, index) => (
+                                    <PostSmallVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(amountPosts.indexOf(filteredPost))} />
                                 ))
                         }
                     </div>
@@ -108,8 +107,8 @@ export const AllPosts = () => {
                             amountPosts
                             // allPosts
                                 .filter((post, index) => index > 5)
-                                .map((filteredPost) => (
-                                    <PostSmallVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
+                                .map((filteredPost, index) => (
+                                    <PostSmallVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(amountPosts.indexOf(filteredPost))} />
                                 ))
                         }
                     </div>
@@ -118,7 +117,7 @@ export const AllPosts = () => {
             <AllNavigation onPage={onPageClick} page={page!.toString()} pages={pages}/>
             {
                 isOpened ? (
-                    <PostImage dataPosts={amountPosts} dataLength={amountPosts.length} idOfPost={idOfPost ? idOfPost : 1} closeImage={closeImagePost}/>
+                    <PostImage dataPosts={amountPosts} dataLength={amountPosts.length} idOfPost={idOfPost || idOfPost === 0 ? idOfPost : 1} closeImage={closeImagePost}/>
                 ) : (
                     null
                 )
