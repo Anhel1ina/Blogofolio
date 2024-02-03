@@ -20,9 +20,10 @@ type Props = {
 
     isEdit?: boolean
     addPost?: (e: FormEvent<HTMLFormElement>) => void
+    deletePost?: (e: FormEvent<HTMLInputElement>) => void
 }
 
-export const AddPostForm = ({pageTitle, isDeletePostBlocked=false, addPost, isEdit}: Props) => {
+export const AddPostForm = ({pageTitle, isDeletePostBlocked=false, addPost, deletePost, isEdit}: Props) => {
     const inputRef = useRef<HTMLInputElement>(null)
     const dispatch = useDispatch<AppDispatch>()
     const navigate = useNavigate()
@@ -88,7 +89,7 @@ export const AddPostForm = ({pageTitle, isDeletePostBlocked=false, addPost, isEd
                     )}
                     <div className={styles.add_post_image_container}>
                         <Input value="" type="text" label="Lesson number" placeholder="Lesson number..." />
-                        <AddImageInput value={isEdit ? editPostData.image : ''} onInput={(text: string) => {
+                        <AddImageInput value={isEdit ? editPostData.image : addPostData.image || ''} onInput={(text: string) => {
                                 dispatch(setImageAction(text))
                         }}
                         errorType="image"
@@ -103,7 +104,7 @@ export const AddPostForm = ({pageTitle, isDeletePostBlocked=false, addPost, isEd
                         <Input onChange={(text: string) => {
                                 dispatch(setDescriptionAction(text))
                             }}
-                            value={isEdit ? editPostData.description : addPostData.title || ''}
+                            value={isEdit ? editPostData.description : addPostData.description || ''}
                             isTextArea={true} 
                             label="Description"
                             placeholder="Add your text"
@@ -117,7 +118,7 @@ export const AddPostForm = ({pageTitle, isDeletePostBlocked=false, addPost, isEd
                         <Input value="" isTextArea={true} label="Text" placeholder="Add your text"/>
                     </div>
                     <div className={styles.buttons_block}>
-                        <input type='button' value='Delete post' disabled={isDeletePostBlocked}/>
+                        <input onClick={deletePost} type='button' value='Delete post' disabled={isDeletePostBlocked}/>
                         <div>
                             <ButtonSecondary onClick={cancelPost} buttonType="button" name="Cancel" classType="button_secondary_add_post_cancel"/>
                             <ButtonSecondary buttonType="submit" name={usedPageTitle} classType="button_secondary_add_post"/>

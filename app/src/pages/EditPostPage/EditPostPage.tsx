@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../store/store'
 import { AddPostForm } from '../../components/AddPostForm/AddPostForm'
 import { useEditPostState } from '../../store/edit/selector'
-import { editPostAction, setDescriptionAction, setImageAction, setTitleAction } from '../../store/addPost/action'
+import { deletePostAction, editPostAction, setDescriptionAction, setImageAction, setTitleAction } from '../../store/addPost/action'
 
 export const EditPostPage = () => {
     const dispatch = useDispatch<AppDispatch>()
@@ -24,7 +24,13 @@ export const EditPostPage = () => {
         e.preventDefault()
         dispatch(editPostAction())
     }
+
+    const deletePost = (e: FormEvent<HTMLInputElement>) => {
+        e.preventDefault()
+        dispatch(deletePostAction())
+    }
+
     return (
-        <AddPostForm isEdit={true} addPost={editPost} isDeletePostBlocked={true} pageTitle="Edit post"/>
+        <AddPostForm isEdit={true} deletePost={deletePost} addPost={editPost} isDeletePostBlocked={false} pageTitle="Edit post"/>
     )
 }

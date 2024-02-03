@@ -86,10 +86,6 @@ export const addPostAction = (): AppThunk => {
 export const editPostAction = (): AppThunk => {
     return async (dispatch, getState) => {
         const editPostData = getState().edit
-        // dispatch(setTitleAction(editPostData.title!))
-        // dispatch(setImageAction(editPostData.image!))
-        // dispatch(setDescriptionAction(editPostData.description!))
-
         const addPostData = getState().addPost
         const newId: number = 401 + (+editPostData.postId)
 
@@ -104,7 +100,6 @@ export const editPostAction = (): AppThunk => {
             })
             return
         }
-
 
 
         const request = new Request(
@@ -122,6 +117,37 @@ export const editPostAction = (): AppThunk => {
             }
         )
 
+
+        await fetch(request)
+            .then( async (res) => {
+                const status = res.status.toString()
+                return [ await res.json(), status]
+            })
+            .then(([res, status]) => {
+                if(status.startsWith('2')){
+                    dispatch({
+                        type: 'ADD_POST_SUCCESS'
+                    })
+                }
+                if (status.startsWith('4')){
+                    dispatch({
+                        type: 'ADD_POST_FAILED',
+                        errors: res
+                    })
+                }
+            })
+    }
+}
+
+export const deletePostAction = (): AppThunk => {
+    return async (dispatch, getState) => {
+        const editPostData = getState().edit
+        const request = new Request(
+            `https://65670f6864fcff8d730fa806.mockapi.io/posts/${editPostData.postId}`,
+            {
+                method: 'DELETE',
+            }
+        )
 
         await fetch(request)
             .then( async (res) => {

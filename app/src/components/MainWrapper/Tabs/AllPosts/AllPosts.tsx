@@ -29,7 +29,7 @@ export const AllPosts = () => {
     const [data, setData] = useState<Posts[]>()
 
     useEffect(() => {
-        dispatch(LoadPostAsyncAction())
+        dispatch(LoadPostAsyncAction(page!))
         fetch(`https://65670f6864fcff8d730fa806.mockapi.io/posts`)
             .then(res => res.json())
             .then(res => setData(res))
@@ -42,6 +42,7 @@ export const AllPosts = () => {
     const allPosts = changeImageValue(amountPosts)
     const onPageClick = (page: number) => {
         dispatch(LoadPostAsyncAction(page))
+        console.log(page)
         window.scrollTo(0, 0)
     }
 

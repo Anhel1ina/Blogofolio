@@ -26,7 +26,7 @@ export const MoreInnerButtons = ({ typeOfPost, postId }: Props) => {
     return (
         <div className={`${styles.more_inner_buttons} ${styles[typeOfPost]}`}>
             <div onClick={edit}>Edit</div>
-            <div>Delete</div>
+            <div onClick={edit}>Delete</div>
         </div>
     )
 }

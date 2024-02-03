@@ -17,7 +17,7 @@ export const setPageAction = (page: number = 1): PostAction => ({
 
 ///async action
 
-export const LoadPostAsyncAction = (page: number = 1) : AppThunk => {     
+export const LoadPostAsyncAction = (page: number) : AppThunk => {     
     const {limit} = getPageData(page!)
     const url = new URL('https://65670f6864fcff8d730fa806.mockapi.io/posts')
     const url2 = url

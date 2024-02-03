@@ -36,7 +36,7 @@ export const TabContent = (props: Props) => {
     const closeImagePost = () => dispatch(CloseImageAction())
 
     useEffect(() => {
-        dispatch(LoadPostAsyncAction())
+        dispatch(LoadPostAsyncAction(page!))
 
     }, [dispatch])
 
