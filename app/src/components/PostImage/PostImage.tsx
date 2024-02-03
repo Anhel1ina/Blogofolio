@@ -1,22 +1,19 @@
 import {useEffect, useState} from 'react'
 import styles from './post_image.module.scss'
 import { ButtonsWrapper } from '../PrevNextButtons/ButtonsWrapper'
+import { Posts } from '../MainWrapper/Tabs/TabContent/TabContent'
 
-type Posts = {
-    title: string
-    description: string
-    image: string
-    date: Date
-    id: number
-}
+
 
 type Props = {
     closeImage: () => void
     idOfPost: number
     dataLength: number
+
+    dataPosts: Posts[]
 }
 
-export const PostImage = ({closeImage, idOfPost, dataLength}: Props) => {
+export const PostImage = ({closeImage, idOfPost, dataLength, dataPosts}: Props) => {
 
     const [data, setData] = useState<Posts>()
 
@@ -25,9 +22,11 @@ export const PostImage = ({closeImage, idOfPost, dataLength}: Props) => {
             .then(res => res.json())
             .then(res => setData(res))
     }, [idOfPost])
+
     if (!data) {
         return null
     }
+    
     return (
         <div className={styles.post_image_wrapper}>
             <div className={styles.post_image_block}>
@@ -38,7 +37,7 @@ export const PostImage = ({closeImage, idOfPost, dataLength}: Props) => {
                 </button>
                 <div className={styles.post_image_inner_content}>
                     <div className={styles.post_image_inner_content_image}>
-                        <img src={data.image} alt={`post ${idOfPost} image`} />
+                        <img src={data!.image} alt={`post ${idOfPost} image`} />
                     </div>
                     <ButtonsWrapper dataLength={dataLength}/>
                 </div>

@@ -18,7 +18,7 @@ export const DislikeButton = ({setMark, isLiked, isDisliked, dislike, undo, disl
             <button onClick={setMark && isDisliked  ? undo : dislike} className={`${styles.dislike_button} ${styles.dis_change} ${isDisliked ? styles.set_disliked_post : ''} ${isLiked ? styles.shadow_button : ''}`}>
                 <DislikeButtonIcon/>
             </button>
-            <p>{isDisliked ? +dislikes + 1 : +dislikes}</p>
+            <p>{isDisliked ? +dislikes + 1 : dislikes}</p>
         </div>
     )
 }

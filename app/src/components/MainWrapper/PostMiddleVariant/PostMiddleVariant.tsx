@@ -32,12 +32,12 @@ export const PostMiddleVariant = (props: Props) => {
                 </div>
                 <div>
                     <Bookmark postId={post.id.toString()}/>
-                    <More postId={post.id.toString()}/>
+                    <More postId={post.id.toString()} title={post.title} description={post.description}/>
                 </div>
             </div>
             {
                 more! ?
-                <MoreInnerButtons typeOfPost='more_middle_post'/> : null
+                <MoreInnerButtons postId={post.id.toString()} typeOfPost='more_middle_post'/> : null
             }
         </div>
     )

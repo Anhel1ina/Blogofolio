@@ -38,10 +38,10 @@ export const PostBigVariant = ({post, openImage}: Props) => {
                 </div>
                 <div className={`${styles.like_dis} ${styles.dop_buttons}`}>
                     <Bookmark postId={post.id.toString()} />
-                    <More postId={post.id.toString()} />
+                    <More postId={post.id.toString()} title={post.title} description={post.description} />
                     {
                         more! ?
-                        <MoreInnerButtons typeOfPost='more_big_post'/> : null
+                        <MoreInnerButtons postId={post.id.toString()} typeOfPost='more_big_post'/> : null
                     }
                 </div>
             </>

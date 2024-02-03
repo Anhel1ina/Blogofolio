@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { selectPosts } from "../../../../store/posts/selector"
 import { AppDispatch } from "../../../../store/store"
 
-import { OpenImageAction} from "../../../../store/postImage/action"
+import { CloseImageAction, OpenImageAction} from "../../../../store/postImage/action"
 import { LoadPostAsyncAction } from "../../../../store/posts/action"
 import { PostBigVariant } from "../../PostBigVariant/PostBigVariant"
 import { PostMiddleVariant } from "../../PostMiddleVariant/PostMiddleVariant"
@@ -14,12 +14,17 @@ import { Posts } from "../TabContent/TabContent"
 import { AllNavigation } from "../../../AllNavigation/AllNavigation"
 import { getPages } from "../../../../helpers/getPages"
 import { changeImageValue } from "../../../../helpers/getPageData"
+import { postImage } from "../../../../store/postImage/selectors"
+import { PostImage } from "../../../PostImage/PostImage"
 
 
 export const AllPosts = () => {
     const {amountPosts, page} = useSelector(selectPosts)
+    const {isOpened, idOfPost} = useSelector(postImage) 
+    
     const dispatch = useDispatch<AppDispatch>()
     const openImagePost = (id: number) => dispatch(OpenImageAction(id))
+    const closeImagePost = () => dispatch(CloseImageAction())
 
     const [data, setData] = useState<Posts[]>()
 
@@ -51,7 +56,9 @@ export const AllPosts = () => {
                     </div>
                 ) : (
                     <div className={styles.middle_posts}>
-                        {allPosts
+                        {
+                        amountPosts
+                        // allPosts
                             .filter((post, index) => index >= 0 && index <= 1)
                             .map((filteredPost) => (
                                 <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
@@ -62,7 +69,9 @@ export const AllPosts = () => {
             {
                 page === 1 ? (
                     <div className={styles.middle_posts}>
-                        {allPosts
+                        {
+                        amountPosts
+                        // allPosts
                             .filter((post, index) => index >= 1 && index <= 4)
                             .map((filteredPost) => (
                                 <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
@@ -70,7 +79,9 @@ export const AllPosts = () => {
                     </div>
                 ) : (
                     <div className={styles.middle_posts}>
-                        {allPosts
+                        {
+                        amountPosts
+                        // allPosts
                             .filter((post, index) => index >= 2 && index <= 5)
                             .map((filteredPost) => (
                                 <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
@@ -82,7 +93,8 @@ export const AllPosts = () => {
                 page === 1 ? (
                     <div className={styles.small_posts}>
                         {
-                            allPosts
+                            amountPosts
+                            // allPosts
                                 .filter((post, index) => index >= 5)
                                 .map((filteredPost) => (
                                     <PostSmallVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
@@ -92,7 +104,8 @@ export const AllPosts = () => {
                 ) : (
                     <div className={styles.small_posts}>
                         {
-                            allPosts
+                            amountPosts
+                            // allPosts
                                 .filter((post, index) => index > 5)
                                 .map((filteredPost) => (
                                     <PostSmallVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(filteredPost.id)} />
@@ -102,6 +115,13 @@ export const AllPosts = () => {
                 )
             }
             <AllNavigation onPage={onPageClick} page={page!.toString()} pages={pages}/>
+            {
+                isOpened ? (
+                    <PostImage dataPosts={amountPosts} dataLength={amountPosts.length} idOfPost={idOfPost ? idOfPost : 1} closeImage={closeImagePost}/>
+                ) : (
+                    null
+                )
+            }
         </>
     )
 }

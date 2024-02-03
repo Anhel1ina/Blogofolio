@@ -28,12 +28,27 @@ export const addPostReducer = (state = addPostInitState, action: addPostActionTy
         case 'SET_IMAGE':
             return {
                 ...state,
+                isPostAdded: false,
                 image: action.image!
             }
         case 'SET_DESCRIPTION':
             return {
                 ...state,
                 description: action.description
+            }
+        case 'CANCEL_ERRORS':
+            return {
+                ...state,
+                isPostAdded: false,
+                title: '',
+                image: '',
+                description: '',
+                errors: {}
+            }
+        case 'RESET_POST':
+            return {
+                ...state,
+                isPostAdded: false
             }
         default:
             return state

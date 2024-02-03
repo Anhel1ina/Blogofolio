@@ -78,6 +78,11 @@
         cursor: pointer;
     }
 
+    & > input:disabled{
+        cursor: not-allowed;
+        color: $dark-gray;
+    }
+
     & div > input:first-child {
         margin-right: 24px;
     }

@@ -10,6 +10,7 @@ import { AppDispatch } from "../../../../store/store"
 import { AllPosts } from "../AllPosts/AllPosts"
 import { FavoritePosts } from "../FavoritePosts/FavoritePosts"
 import { url } from "inspector"
+import { PopularPosts } from "../PopularPosts/PopularPosts"
 
 
 export type Posts = {
@@ -29,7 +30,7 @@ type Props = {
 export const TabContent = (props: Props) => {
     const {data_type} = props
     const {amountPosts, page} = useSelector(selectPosts)
-    const {isOpened, idOfPost} = useSelector(postImage)   
+    // const {isOpened, idOfPost} = useSelector(postImage)   
     const dispatch = useDispatch<AppDispatch>()
 
     const closeImagePost = () => dispatch(CloseImageAction())
@@ -53,20 +54,18 @@ export const TabContent = (props: Props) => {
                     data_type === 1 ? (
                         <FavoritePosts/>
                     ) : (
-                        <div>
-                            {/* ПОПУЛЯРНЫЕ ПОСТЫ */}
-                        </div>
+                        <PopularPosts/>
                     )
                 )
             }
             </div>
-            {
+            {/* {
                 isOpened ? (
                     <PostImage dataLength={amountPosts.length} idOfPost={idOfPost ? idOfPost : 1} closeImage={closeImagePost}/>
                 ) : (
                     null
                 )
-            }
+            } */}
         </>
     )
 }

@@ -7,26 +7,29 @@ import { LoadAllPostAsyncAction, LoadFavPosts, setPageAction } from '../../../..
 import { setFavs } from '../../../../store/favs/selector'
 import { PostMiddleVariant } from '../../PostMiddleVariant/PostMiddleVariant'
 import { PostSmallVariant } from '../../PostSmallVariant/PostSmallVariant'
-import { OpenImageAction } from '../../../../store/postImage/action'
+import { CloseImageAction, OpenImageAction } from '../../../../store/postImage/action'
 import { AllNavigation } from '../../../AllNavigation/AllNavigation'
 
 import { getCustomPostPages} from '../../../../helpers/getPageData'
 import { getPages } from '../../../../helpers/getPages'
+import { PostImage } from '../../../PostImage/PostImage'
+import { postImage } from '../../../../store/postImage/selectors'
 
 export const FavoritePosts = () => {
     const { amountPosts, page } = useSelector(selectPosts)
     const data = useSelector(setFavs)
+    const {isOpened, idOfPost} = useSelector(postImage)  
+    
     const dispatch = useDispatch<AppDispatch>()
     const openImagePost = (id: number) => dispatch(OpenImageAction(id))
+    const closeImagePost = () => dispatch(CloseImageAction())
 
     useEffect(() => {
         dispatch(LoadAllPostAsyncAction())
         dispatch(setPageAction())
     }, [dispatch])
 
-    const favoritePosts = amountPosts.filter(post => {
-        return data[post.id]?.isAdded
-    })
+    const favoritePosts = amountPosts.filter(post => data[post.id]?.isAdded)
 
     const showedPosts = getCustomPostPages(favoritePosts, page!, 12)
     let pages: string[] = getPages(favoritePosts.length, 12, 12, page!)
@@ -67,6 +70,13 @@ export const FavoritePosts = () => {
         </div>
         }
         <AllNavigation onPage={onFavPage} page={page?.toString()!} pages={pages}/>
+        {/* {
+                isOpened ? (
+                    <PostImage dataLength={showedPosts.length} idOfPost={idOfPost ? idOfPost : 1} closeImage={closeImagePost}/>
+                ) : (
+                    null
+                )
+        } */}
         </>
     )
 }
