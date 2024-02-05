@@ -40,8 +40,8 @@ export const addPostAction = (): AppThunk => {
             })
             return
         }
-
-        const newId: number = 401 + (+ (await getPostId()))
+        const ids = await getPostId()
+        const newId: number = 401 + (+ids.length)
         const request = new Request(
             'https://65670f6864fcff8d730fa806.mockapi.io/posts',
             {

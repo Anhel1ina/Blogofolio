@@ -1,7 +1,7 @@
 import { PostAction } from "./types"
 import { Posts } from "../../components/MainWrapper/Tabs/TabContent/TabContent"
 import { AppThunk } from "../store"
-import { getPageData } from "../../helpers/getPageData"
+import { getPageData, getPostId } from "../../helpers/getPageData"
 import { AddToFavsType } from "../favs/types"
 
 export const LoadPostAction = (posts: Posts[], page: number = 1): PostAction => ({
@@ -17,12 +17,12 @@ export const setPageAction = (page: number = 1): PostAction => ({
 
 ///async action
 
-export const LoadPostAsyncAction = (page: number) : AppThunk => {     
+export const LoadPostAsyncAction = (page: number, pages?: string[]): AppThunk => {     
     const {limit} = getPageData(page!)
     const url = new URL('https://65670f6864fcff8d730fa806.mockapi.io/posts')
     const url2 = url
-    url2.searchParams.append('page', `${page}`);
-    url2.searchParams.append('limit', `${limit}`);
+    url2.searchParams.append('page', `${page}`)
+    url2.searchParams.append('limit', `${limit}`)
     return (dispatch) => {
         fetch(url2)
             .then(res => res.json())

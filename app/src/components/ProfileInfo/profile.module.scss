@@ -1,0 +1,61 @@
+@import '../../helpers/color_variables.module.scss';
+
+.title{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    cursor: default;
+
+    & > p {
+        font-family: Inter;
+        font-size: 30px;
+        font-weight: 600;
+        color: $dark-mode-color;
+    }
+}
+
+.content{
+    width: 77%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > div{
+        margin-top: 70px;
+        width: 100%;
+        justify-content: flex-start;
+        cursor: default;
+        margin-bottom: 80px;
+
+        & p{
+            font-family: Inter;
+            font-size: 24px;
+            font-weight: 600;
+            color: $dark-mode-color;
+
+            & span{
+                margin-left: 10px;
+                color: $main-color;
+            }
+        }
+    }
+
+    & input {
+        width: 230px;
+        background-color: $main-color;
+        color: rgb(255, 255, 255);
+
+        &:hover {
+            background-color: $main-hover-color;
+        }
+    }
+
+    & div.line{
+        height: 1px;
+        width: 100%;
+        background-color: $medium-gray;
+        margin: 55px 0 0;
+    }
+}

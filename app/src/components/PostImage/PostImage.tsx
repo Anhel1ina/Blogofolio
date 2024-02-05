@@ -1,4 +1,3 @@
-import {useEffect, useState} from 'react'
 import styles from './post_image.module.scss'
 import { ButtonsWrapper } from '../PrevNextButtons/ButtonsWrapper'
 import { Posts } from '../MainWrapper/Tabs/TabContent/TabContent'
@@ -14,18 +13,6 @@ type Props = {
 }
 
 export const PostImage = ({closeImage, idOfPost, dataLength, dataPosts }: Props) => {
-
-    // const [data, setData] = useState<Posts>()
-
-    // useEffect(() => {
-    //     fetch(`https://65670f6864fcff8d730fa806.mockapi.io/posts/${idOfPost}`)
-    //         .then(res => res.json())
-    //         .then(res => setData(res))
-    // }, [idOfPost])
-
-    // if (!data) {
-    //     return null
-    // }
     return (
         <div className={styles.post_image_wrapper}>
             <div className={styles.post_image_block}>
@@ -36,7 +23,7 @@ export const PostImage = ({closeImage, idOfPost, dataLength, dataPosts }: Props)
                 </button>
                 <div className={styles.post_image_inner_content}>
                     <div className={styles.post_image_inner_content_image}>
-                        <img src={dataPosts[idOfPost]!.image} alt={`post ${idOfPost} image`} />
+                        <img src={dataPosts[idOfPost]!.image} alt={`post ${idOfPost}`} />
                     </div>
                     <ButtonsWrapper dataLength={dataPosts.length}/>
                 </div>

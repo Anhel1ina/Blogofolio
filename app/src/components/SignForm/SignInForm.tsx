@@ -25,8 +25,6 @@ export const SignInForm = ({buttonName, underTitle, underLink, forgetLink, linkT
     const inputRef = useRef<HTMLInputElement>(null)
     const navigate = useNavigate()
     const dispatch = useDispatch<AppDispatch>()
-    const [errors, setErrors] = useState('')
-
     const signInData = useAuthState()
 
     
@@ -37,14 +35,23 @@ export const SignInForm = ({buttonName, underTitle, underLink, forgetLink, linkT
         }
     }, [signInData])
 
+    useEffect(() => {
+        if(signInData.isLoged){
+            dispatch(setSignInEmailAction(''))
+            dispatch(setSignInPasswordAction(''))
+            dispatch({
+                type: 'SET_CLIENT_ERRORS',
+                errors: {}
+            })
+        }
+    }, [signInData.isLoged])
+
     const signIn = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if((e.target as HTMLInputElement)?.type !== 'submit'){
             return
         }
         dispatch(signInAction(signInData.email!, signInData.password!))
-        dispatch(setSignInEmailAction(''))
-        dispatch(setSignInPasswordAction(''))
     } 
 
     return (

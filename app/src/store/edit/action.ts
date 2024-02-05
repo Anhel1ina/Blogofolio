@@ -1,5 +1,3 @@
-import { getPostId } from "../../helpers/getPageData"
-import { AppThunk } from "../store"
 import { editPostActionType } from "./types"
 
 

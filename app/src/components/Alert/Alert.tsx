@@ -4,13 +4,15 @@ import styles from './alert.module.scss'
 type Props = {
     showed?: boolean
     errorText: string
+
+    isHide: boolean
     closeAlert: () => void
 }
 
 export const Alert = (props: Props) => {
-    const {showed = true, errorText, closeAlert} = props
+    const {showed = true, errorText, closeAlert, isHide} = props
     return (
-        <div className={`${styles.alert} ${showed ? styles.showed : ''}`}>
+        <div id='alert' className={`${styles.alert} ${showed ? styles.showed : ''} ${isHide ? styles.hide : ''}`}>
             <div className={styles.alert_message}>
                 <AlertIcon/>
                 <p>{errorText!}</p>

@@ -4,13 +4,14 @@ import styles from './bookmark.module.scss'
 import { AppState } from '../../../../store/store'
 import { useDispatch } from 'react-redux'
 import { AddToFavsAction, UndoAddToFavs } from '../../../../store/favs/action'
+import { useAuthState } from '../../../../store/auth/selectors'
 
 type Props = {
-    disabled?: boolean
     postId: string
 }
 
-export const Bookmark = ({disabled = false, postId}: Props) => {
+export const Bookmark = ({postId}: Props) => {
+    const {isLoged} = useAuthState()
     const favState = useSelector((state: AppState) => state.favs[postId])
     const dispatch = useDispatch()
 
@@ -19,7 +20,7 @@ export const Bookmark = ({disabled = false, postId}: Props) => {
     const undo = () => dispatch(UndoAddToFavs(postId))
 
     return (
-        <button onClick={isAdded ? undo : addToFav} className={`${styles.bookmark} ${isAdded ? styles.add_to_favs : ''}`} disabled={disabled}>
+        <button onClick={isAdded ? undo : addToFav} className={`${styles.bookmark} ${isAdded ? styles.add_to_favs : ''}`} disabled={isLoged ? false : true}>
             <BookmarkIcon/>
         </button>
     )

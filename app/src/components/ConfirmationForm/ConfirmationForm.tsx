@@ -6,12 +6,13 @@ import { Link } from 'react-router-dom'
 type MsgType = string
 type Props = {
     msg: MsgType[]
-    submitLink?: string
     disabled?: boolean
     buttonName?: string
+
+    onClick: () => void
 }
 
-export const ConfirmationForm = ({msg, submitLink='/', disabled=false, buttonName='Go to home'}: Props) => {
+export const ConfirmationForm = ({msg, disabled=false, buttonName='Go to home', onClick}: Props) => {
     return (
         <form className={`${styles.sign_form} ${confStyles.confirm_form}`}>
             {msg.map((message, i) => (
@@ -31,24 +32,10 @@ export const ConfirmationForm = ({msg, submitLink='/', disabled=false, buttonNam
                 )
                 
             ))}
-            <Link to={submitLink}>
-                <input type="submit" className={styles.primary_button} disabled={disabled} value={buttonName} />
-            </Link>
+            {/* <Link to={submitLink}> */}
+            <input onClick={onClick} type="submit" className={styles.primary_button} disabled={disabled} value={buttonName} />
+            {/* </Link> */}
         </form>
     )
 }
 
-                // msg.map((message, i) => {
-                //     if (message.includes('@')) {
-                //         const msgPrev = msg[i - 1]
-                //         console.log(msgPrev)
-                //         return (
-                //             <p key={i - 1}>
-                //                 {msgPrev}
-                //                 <span key={i}>{message}</span>
-                //             </p>
-                //         )
-                //     } else {
-                //         return <p key={i}>{message}</p>
-                //     }
-                // })

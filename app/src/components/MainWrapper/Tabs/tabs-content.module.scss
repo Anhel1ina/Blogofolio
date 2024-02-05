@@ -43,3 +43,7 @@
         font-weight: 400;
     }
 }
+
+:global(.dark) .noitems p {
+    color: rgb(255, 255, 255);
+}

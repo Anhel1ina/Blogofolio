@@ -6,9 +6,15 @@ import { NonAutorized } from './User/NonAutorized/NonAutorized'
 
 import { User } from './User/User'
 import { useAuthState } from '../../store/auth/selectors'
+import { ProfileInfo } from '../ProfileInfo/ProfileInfo'
+import { useState } from 'react'
 
 export const Header = () => {
     const signInData = useAuthState()
+    const [profileState, setProfileState] = useState<boolean>(false)
+
+    const open = () => setProfileState(true)
+    const close = () => setProfileState(false)
 
     return (
         <div className={styles.header}>
@@ -17,10 +23,15 @@ export const Header = () => {
             <Search/>
             {
                 signInData.isLoged ? (
-                    <User name={signInData.userName} abbr={signInData.initials}/>
+                    <User onClick={open} name={signInData.userName} abbr={signInData.initials}/>
                 ) : (
                     <NonAutorized/>
                 )
+            }
+            {
+                profileState ? (
+                    <ProfileInfo onClick={close}/>
+                ) : ( null )
             }
         </div>
     )

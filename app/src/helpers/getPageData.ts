@@ -38,8 +38,9 @@ export const getCustomPageCount = (count: Posts[], numOfPostPerPage: number) => 
 export const getPostId = async () => {
     const response = await fetch('https://65670f6864fcff8d730fa806.mockapi.io/posts')
     const data: Posts[] = await response.json()
-    return data.length
+    return data
 }
+
 export const changeImageValue = (arr: Posts[]) => {
     return arr.map((item) => {
         const newImage = item.image.replace('480', `${400 + (+item.id)}`)

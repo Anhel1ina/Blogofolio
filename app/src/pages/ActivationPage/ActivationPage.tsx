@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from '../../components/SignForm/sign_form.module.scss'
 import wrapStyles from '../sign_in_page.module.scss'
@@ -10,25 +10,49 @@ import { AppDispatch } from '../../store/store'
 import { useActivationState } from '../../store/activation/selector'
 import { activateAsyncAction, setActivationAlert, setTokenAction, setUidAction } from '../../store/activation/action'
 import { Alert } from '../../components/Alert/Alert'
+import { setAuthAlert, setSignInEmailAction, setSignInPasswordAction } from '../../store/auth/actions'
+import { useAuthState } from '../../store/auth/selectors'
 
 export const ActivationPage = () => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch<AppDispatch>()
+    const [hide, setHide] = useState<boolean>(false)
+
     const activationData = useActivationState()
     const userData = useSignUpState()
+    const auth = useAuthState()
 
     const activate = () => dispatch(activateAsyncAction())
     const closePage = () => dispatch(setActivationAlert(false))
-    const navigate = useNavigate()
-
-    const dispatch = useDispatch<AppDispatch>()
+    
 
     const inputRef = useRef<HTMLInputElement>(null)
     useEffect(() => {
         inputRef.current?.focus()
     }, [])
 
-    if(activationData.isActivated){
-        navigate('/auth/success')
-    }
+    useEffect(() => {
+        if(activationData.isActivated){
+            dispatch(setSignInEmailAction(userData.email!))
+            dispatch(setSignInPasswordAction(userData.password!))
+            navigate('/auth/success')
+        }
+    }, [activationData.isActivated])
+
+    useEffect(() => {
+        if(auth.showAuthError){
+            setTimeout(() => {
+                dispatch(setAuthAlert(false))
+            }, 4000)
+            setTimeout(() => {
+                setHide(true)
+            }, 3500)
+        }
+        else{
+            setHide(false)
+        }
+    }, [auth.showAuthError, hide])
+
 
     return (
         <div className={wrapStyles.wrapper}>
@@ -37,9 +61,6 @@ export const ActivationPage = () => {
                 <form className={styles.sign_form}>
                 {
                 <>
-                {
-                    activationData.isActivated === false && JSON.stringify(activationData.errors)
-                }
                     <Input reference={inputRef} 
                         value={activationData.uid || ''}
                         placeholder='Enter UID'
@@ -80,7 +101,7 @@ export const ActivationPage = () => {
                 </form>
                 {
                     activationData.showActivationAlert ? (
-                        <Alert closeAlert={closePage} errorText={JSON.stringify(activationData.errors).slice(11, -2)}/>
+                        <Alert isHide={hide} closeAlert={closePage} errorText={JSON.stringify(activationData.errors).slice(11, -2)}/>
                     ) : (
                         null
                     )

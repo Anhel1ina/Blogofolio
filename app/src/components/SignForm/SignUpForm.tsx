@@ -33,7 +33,10 @@ export const SignUpForm = ({buttonName, underTitle, underLink, forgetLink, linkT
         if(formData.isSignUpSuccess){
             navigate('registrationconfirm')
         }
-    }, [formData])
+        else{
+            navigate('/auth')
+        }
+    }, [formData.isSignUpSuccess])
 
     const signUp = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()

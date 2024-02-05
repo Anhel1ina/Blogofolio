@@ -12,7 +12,8 @@ export const authReducer = (state = authInitState, action: AuthAction): AuthStat
                 ...state,
                 isLoged: true,
                 userName: action.userName,
-                initials: action.initials
+                initials: action.initials,
+                email: action.email
                 //add tokens
             }
         case 'AUTH_SUCCESS':
@@ -53,7 +54,6 @@ export const authReducer = (state = authInitState, action: AuthAction): AuthStat
             return {
                 ...state,
                 isLoged: false
-                ///add errors
             }
         default:
             return state

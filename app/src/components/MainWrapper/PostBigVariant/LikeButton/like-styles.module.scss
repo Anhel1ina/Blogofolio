@@ -43,6 +43,14 @@
             transition: all ease-in-out .4s;
         }
     }
+
+    &:disabled{
+        cursor: not-allowed;
+
+        & path{
+            fill: $dark-gray;
+        }
+    }
 }
 
 .shadow_button{

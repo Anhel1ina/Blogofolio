@@ -16,9 +16,18 @@
 
     transition: all ease-in-out .4s;
 
-    &:hover{
+    &:hover:not(:disabled){
         & path{
             fill: $main-hover-color;
+            transition: all ease-in-out .4s;
+        }
+    }
+
+    &:disabled{
+        cursor: not-allowed;
+
+        & path{
+            fill: $dark-gray;
             transition: all ease-in-out .4s;
         }
     }

@@ -4,6 +4,7 @@ import styles from './more.module.scss'
 import { setCloseMoreAction, setOpenMoreAction } from '../../../../store/more/action'
 import { useMoreState } from '../../../../store/more/selectors'
 import { setEditAction } from '../../../../store/edit/action'
+import { useAuthState } from '../../../../store/auth/selectors'
 
 type Props = {
     postId: string
@@ -12,6 +13,7 @@ type Props = {
 }
 
 export const More = ({postId, title, description}: Props) => {
+    const {isLoged} = useAuthState()
     const moreState = useMoreState(postId)
     const {more} = moreState || {}
 
@@ -24,7 +26,7 @@ export const More = ({postId, title, description}: Props) => {
 
     return (
         <>
-            <button onClick={more ? close : open} className={styles.more}>
+            <button disabled={isLoged ? false : true} onClick={more ? close : open} className={styles.more}>
                 <MoreIcon/>
             </button>
         </>
