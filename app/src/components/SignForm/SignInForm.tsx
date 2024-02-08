@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../store/store'
 import { useAuthState } from '../../store/auth/selectors'
 import { setSignInEmailAction, setSignInPasswordAction, signInAction } from '../../store/auth/actions'
+import { setEmailProfile } from '../../store/profile/action'
 
 
 type Props = {
@@ -37,7 +38,7 @@ export const SignInForm = ({buttonName, underTitle, underLink, forgetLink, linkT
 
     useEffect(() => {
         if(signInData.isLoged){
-            dispatch(setSignInEmailAction(''))
+            // dispatch(setSignInEmailAction(''))
             dispatch(setSignInPasswordAction(''))
             dispatch({
                 type: 'SET_CLIENT_ERRORS',

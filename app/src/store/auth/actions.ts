@@ -1,4 +1,5 @@
 import { isEmailValid } from "../../helpers/inputsValidation"
+import { setEmailProfile } from "../profile/action"
 import { setEmailAction } from "../signUp/action"
 import { AppThunk } from "../store"
 import { AuthAction } from "./types"
@@ -165,7 +166,9 @@ export const getAuthorized = (): AppThunk => {
             })
             .then(([data, status]) => {
                 if(status.startsWith('2')){
+                    dispatch(setEmailProfile(data.email))
                     dispatch(loginAction(data.username, data.email))
+                    console.log(data.email)
                 }
             })
     }

@@ -16,11 +16,13 @@ import { getPages } from "../../../../helpers/getPages"
 import { changeImageValue } from "../../../../helpers/getPageData"
 import { postImage } from "../../../../store/postImage/selectors"
 import { PostImage } from "../../../PostImage/PostImage"
+import { useAuthState } from "../../../../store/auth/selectors"
 
 
 export const AllPosts = () => {
     const {amountPosts, page} = useSelector(selectPosts)
     const {isOpened, idOfPost} = useSelector(postImage) 
+
     
     const dispatch = useDispatch<AppDispatch>()
     const openImagePost = (id: number) => dispatch(OpenImageAction(id))

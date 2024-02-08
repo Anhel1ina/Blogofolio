@@ -11,6 +11,7 @@ import { useSignUpState } from '../../store/signUp/selector'
 import { useDispatch } from 'react-redux'
 import { setCheckPasswordAction, setEmailAction, setPasswordAction, setUsernameAction } from '../../store/signUp/action'
 import { AppDispatch } from '../../store/store'
+import { setEmailProfile } from '../../store/profile/action'
 
 export const SuccessPage = () => {
     const message: string[] = ['Email confiremed.', 'Your registration is now completed']
@@ -27,6 +28,7 @@ export const SuccessPage = () => {
 
     const subLink = async () => {
         dispatch(signInAction(auth.email!, auth.password!))
+        dispatch(setEmailProfile(auth.email!))
         dispatch({
             type: 'SIGN_UP_FAILED',
             payload: {}

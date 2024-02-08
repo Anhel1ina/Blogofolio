@@ -16,6 +16,7 @@ import { addPostReducer } from "./addPost/reducer";
 import { moreReducer } from "./more/reducer";
 import { editPostReducer } from "./edit/reducer";
 import { resetPasswordReducer } from "./reset_passwd/reducer";
+import { profileReducer } from "./profile/reducer";
 
 //add all reducers from contexts
 const rootReducer = combineReducers({
@@ -33,7 +34,8 @@ const rootReducer = combineReducers({
     addPost: addPostReducer,
     more: moreReducer,
     edit: editPostReducer,
-    resetPassword: resetPasswordReducer
+    resetPassword: resetPasswordReducer,
+    profile: profileReducer
 })
 
 const store = configureStore({

@@ -1,21 +1,17 @@
-import { useEffect } from 'react'
 import baseStyles from '../PostImage/post_image.module.scss'
 import styles from './profile.module.scss'
 import { ButtonSecondary } from '../ButtonSecondary/ButtonSecondary'
 import { useAuthState } from '../../store/auth/selectors'
+import { useProfileState } from '../../store/profile/selector'
 
 type Props = {
     onClick: () => void
 }
 
-
 export const ProfileInfo = ({onClick}: Props) => {
     const userData = useAuthState()
+    const profileData = useProfileState()
 
-
-        useEffect(() => {
-            console.log(userData)
-        }, [])
     return (
         <div className={baseStyles.post_image_wrapper}>
             <div className={baseStyles.post_image_block}>
@@ -29,7 +25,7 @@ export const ProfileInfo = ({onClick}: Props) => {
                     <div className={styles.content}>
                         <div>
                             <p>Name: <span>{userData.userName}</span></p>
-                            <p>Email: <span>{userData.email}</span></p>
+                            <p>Email: <span>{profileData.email}</span></p>
                         </div>
                         <ButtonSecondary onClick={onClick} name='OK' buttonType='button'/>
                         <div className={styles.line} ></div>
