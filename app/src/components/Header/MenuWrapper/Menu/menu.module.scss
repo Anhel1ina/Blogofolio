@@ -10,8 +10,17 @@
     }
 }
 
+@keyframes closed{
+    0%{
+        left: 0;
+    }
+    100%{
+        left: -236px;
+    }
+}
+
 .menu{
-    animation: open .7s;
+    animation: open .7s ease-in-out;
     position: fixed;
     height: calc(100vh - 84px);
     width: 236px;
@@ -56,6 +65,10 @@
         }
     }
     
+}
+
+.set_close{
+    animation: closed .7s ease-in-out;
 }
 
 .user_style{

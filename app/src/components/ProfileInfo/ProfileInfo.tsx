@@ -1,18 +1,21 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import baseStyles from '../PostImage/post_image.module.scss'
 import styles from './profile.module.scss'
 import { ButtonSecondary } from '../ButtonSecondary/ButtonSecondary'
 import { useAuthState } from '../../store/auth/selectors'
-import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../../store/store'
-import { getAuthorized } from '../../store/auth/actions'
 
 type Props = {
     onClick: () => void
 }
 
+
 export const ProfileInfo = ({onClick}: Props) => {
     const userData = useAuthState()
+
+
+        useEffect(() => {
+            console.log(userData)
+        }, [])
     return (
         <div className={baseStyles.post_image_wrapper}>
             <div className={baseStyles.post_image_block}>

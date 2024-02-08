@@ -13,6 +13,7 @@ import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 import { AddPostPage } from './pages/AddPostPage/AddPostPage';
 import { ActivationPage } from './pages/ActivationPage/ActivationPage';
 import { EditPostPage } from './pages/EditPostPage/EditPostPage';
+import { NewPasswordPage } from './pages/NewPasswordPage/NewPasswordPage';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path='signin'>
             <Route index element={<SignInPage/>}/>
             <Route path='forgotpassword' element={<ResetPasswordPage/>}/>
+            <Route path='newpassword' element={<NewPasswordPage/>}/>
           </Route>
         </Route>
         

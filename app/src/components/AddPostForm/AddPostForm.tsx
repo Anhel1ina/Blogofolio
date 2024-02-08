@@ -38,11 +38,11 @@ export const AddPostForm = ({pageTitle, isDeletePostBlocked=false, addPost, dele
 
 
     useEffect(() => {
-        if(addPostData.isPostAdded){
+        if(addPostData.isPostAdded || addPostData.isPostEdited || addPostData.isPostDeleted){
             navigate('/')
         }
-        dispatch(resetPost())
-        dispatch(cancelErrors())
+        // dispatch(resetPost())
+        // dispatch(cancelErrors())
     }, [addPostData.isPostAdded])
 
     useEffect(() => {

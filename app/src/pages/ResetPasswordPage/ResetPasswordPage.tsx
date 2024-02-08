@@ -2,8 +2,12 @@ import React from 'react'
 import styles from '../sign_in_page.module.scss'
 import { BackToHome } from '../../components/BackToHome/BackToHome'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
-import { SignForm } from '../../components/SignForm/SignForm'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../store/store'
+import { ResetPasswordForm } from '../../components/SignForm/ResetPasswordForm'
+import { useAuthState } from '../../store/auth/selectors'
+import { getAccessAction } from '../../store/auth/actions'
 
 type InputType = {
     title: string
@@ -12,26 +16,21 @@ type InputType = {
 }
 
 export const ResetPasswordPage = () => {
-    const inputs: InputType[] = [
-        {
-            title: 'Email',
-            text: 'Your email',
-            type: 'email'
-        }
-    ]
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        dispatch(getAccessAction())
+    }, [])
 
-    useEffect(() => window.scrollTo(0, 0))
+    const dispatch = useDispatch<AppDispatch>()
+    const auth = useAuthState()
+
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.page}>
                 <BackToHome/>
                 <PageHeader title="Reset password"/>
-                <SignForm 
-                    innerItems={inputs}
-                    buttonName='Reset'
-                    submitLink='/'
-                />
+                <ResetPasswordForm/>
             </div>
         </div>
     )

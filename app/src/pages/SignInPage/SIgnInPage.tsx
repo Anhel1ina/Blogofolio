@@ -8,11 +8,6 @@ import { useAuthState } from '../../store/auth/selectors'
 import { setAuthAlert } from '../../store/auth/actions'
 import { useDispatch } from 'react-redux'
 
-type InputType = {
-    title: string
-    text: string
-    type: string
-}
 
 export const SignInPage = () => {
     useEffect(() => window.scrollTo(0, 0))
@@ -52,7 +47,7 @@ export const SignInPage = () => {
                 />
                 {
                     signInData.showAuthError ? (
-                        <Alert isHide={hide} closeAlert={closePage} errorText={JSON.stringify(signInData.errors).slice(11, -2)}/>
+                        <Alert isError={true} isHide={hide} closeAlert={closePage} errorText={JSON.stringify(signInData.errors).slice(11, -2)}/>
                     ) : (
                         null
                     )

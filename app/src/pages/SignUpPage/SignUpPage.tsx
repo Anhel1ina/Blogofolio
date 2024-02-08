@@ -1,12 +1,8 @@
 import styles from '../sign_in_page.module.scss'
 import { BackToHome } from '../../components/BackToHome/BackToHome'
 import { PageHeader } from '../../components/PageHeader/PageHeader'
-import { SignForm } from '../../components/SignForm/SignForm'
 import { useEffect } from 'react'
 import { SignUpForm } from '../../components/SignForm/SignUpForm'
-import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../../store/store'
-import { setEmailAction, setPasswordAction, setUsernameAction } from '../../store/signUp/action'
 
 type InputType = {
     title: string

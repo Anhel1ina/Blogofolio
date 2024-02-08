@@ -1,7 +1,8 @@
 export type BurgerState = {
-    isOpened: boolean;
+    isOpened?: boolean
+    isHide?: boolean
 }
 
 export type BurgerAction = {
-    type: 'open' | 'close'
+    type: 'open' | 'close' | 'hide'
 }

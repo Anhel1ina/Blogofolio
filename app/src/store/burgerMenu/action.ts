@@ -7,3 +7,7 @@ export const setOpenAction = (): BurgerAction => ({
 export const setCloseAction = (): BurgerAction => ({
     type: 'close'
 })
+
+export const setHideAction = (): BurgerAction => ({
+    type: 'hide'
+})

@@ -1,4 +1,5 @@
 import { AlertIcon } from './AlertIcon'
+import { SuccessIcon } from './SuccessIcon'
 import styles from './alert.module.scss'
 
 type Props = {
@@ -7,20 +8,24 @@ type Props = {
 
     isHide: boolean
     closeAlert: () => void
+
+    isError: boolean
 }
 
 export const Alert = (props: Props) => {
-    const {showed = true, errorText, closeAlert, isHide} = props
+    const {showed = true, errorText, closeAlert, isHide, isError} = props
     return (
-        <div id='alert' className={`${styles.alert} ${showed ? styles.showed : ''} ${isHide ? styles.hide : ''}`}>
+        <div id='alert' className={`${styles.alert} ${isError ? styles.error : styles.success} ${showed ? styles.showed : ''} ${isHide ? styles.hide : ''}`}>
             <div className={styles.alert_message}>
-                <AlertIcon/>
+                {isError ? <AlertIcon/> : <SuccessIcon/>}
                 <p>{errorText!}</p>
             </div>
             <div>
-                <button onClick={() => closeAlert()}>
-                    &#10006;
-                </button>
+                {isError ? (
+                    <button onClick={() => closeAlert()}>
+                        &#10006;
+                    </button>
+                ) : (null)}
             </div>
         </div>
     )

@@ -101,7 +101,7 @@ export const ActivationPage = () => {
                 </form>
                 {
                     activationData.showActivationAlert ? (
-                        <Alert isHide={hide} closeAlert={closePage} errorText={JSON.stringify(activationData.errors).slice(11, -2)}/>
+                        <Alert isError={true} isHide={hide} closeAlert={closePage} errorText={JSON.stringify(activationData.errors).slice(11, -2)}/>
                     ) : (
                         null
                     )

@@ -70,7 +70,8 @@ export const addPostAction = (): AppThunk => {
             .then(([res, status]) => {
                 if(status.startsWith('2')){
                     dispatch({
-                        type: 'ADD_POST_SUCCESS'
+                        type: 'ADD_POST_SUCCESS',
+                        isPostAdded: true
                     })
                 }
                 if (status.startsWith('4')){
@@ -101,7 +102,6 @@ export const editPostAction = (): AppThunk => {
             return
         }
 
-
         const request = new Request(
             `https://65670f6864fcff8d730fa806.mockapi.io/posts/${editPostData.postId}`,
             {
@@ -126,7 +126,8 @@ export const editPostAction = (): AppThunk => {
             .then(([res, status]) => {
                 if(status.startsWith('2')){
                     dispatch({
-                        type: 'ADD_POST_SUCCESS'
+                        type: 'ADD_POST_SUCCESS',
+                        isPostEdited: true
                     })
                 }
                 if (status.startsWith('4')){
@@ -157,7 +158,8 @@ export const deletePostAction = (): AppThunk => {
             .then(([res, status]) => {
                 if(status.startsWith('2')){
                     dispatch({
-                        type: 'ADD_POST_SUCCESS'
+                        type: 'ADD_POST_SUCCESS',
+                        isPostDeleted: true
                     })
                 }
                 if (status.startsWith('4')){

@@ -8,11 +8,18 @@ export const burgerReducer = (state = burgerInitState, action: BurgerAction): Bu
     switch (action.type) {
         case 'open':
             return {
-                isOpened: true
+                isOpened: true,
+                isHide: false
             }
         case 'close':
             return {
+                isHide: false,
                 isOpened: false
+            }
+        case 'hide':
+            return {
+                ...state,
+                isHide: true
             }
         default:
             return state

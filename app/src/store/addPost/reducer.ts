@@ -12,7 +12,9 @@ export const addPostReducer = (state = addPostInitState, action: addPostActionTy
         case 'ADD_POST_SUCCESS':
             return {
                 ...state,
-                isPostAdded: true
+                isPostAdded: action.isPostAdded,
+                isPostEdited: action.isPostEdited,
+                isPostDeleted: action.isPostDeleted
             }
         case 'ADD_POST_FAILED':
             return {
@@ -48,7 +50,9 @@ export const addPostReducer = (state = addPostInitState, action: addPostActionTy
         case 'RESET_POST':
             return {
                 ...state,
-                isPostAdded: false
+                isPostAdded: false,
+                isPostDeleted: false,
+                isPostEdited: false
             }
         default:
             return state

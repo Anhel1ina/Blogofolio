@@ -15,17 +15,6 @@ export const Layout = () => {
                 minHeight: 'calc(100vh - 164px)'
             }
             } >
-                {/* <MainWrapper /> */}
-                {/* <SignInPage/> */}
-                {/* <SignUpPage/> */}
-                {/* <ResetPasswordPage/> */}
-                {/* <NewPasswordPage/> */}
-                {/* <SearchResultsPage/> */}
-
-                {/* <OpenPostPage/> */}
-
-                {/* <SuccessPage/> */}
-                {/* <RegistrationConfirmationPage/> */}
                 <Outlet/>
             </div>
             <Footer />

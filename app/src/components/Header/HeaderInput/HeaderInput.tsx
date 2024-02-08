@@ -2,10 +2,9 @@ import styles from './header_input.module.scss'
 import { DelIcon } from './DelIcon'
 
 import { useDispatch } from 'react-redux'
-import { ClearTextAction, SearchTextAction } from '../../../store/search/action'
+import { ClearTextAction, SearchTextAction, SetSearchTextAction } from '../../../store/search/action'
 import { useSelector } from 'react-redux'
 import { searchPosts } from '../../../store/search/selector'
-import { Search } from '../Search/Search'
 
 
 export const HeaderInput = () => {

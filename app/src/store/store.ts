@@ -15,6 +15,7 @@ import { activationReducer } from "./activation/reducer";
 import { addPostReducer } from "./addPost/reducer";
 import { moreReducer } from "./more/reducer";
 import { editPostReducer } from "./edit/reducer";
+import { resetPasswordReducer } from "./reset_passwd/reducer";
 
 //add all reducers from contexts
 const rootReducer = combineReducers({
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
     activation: activationReducer,
     addPost: addPostReducer,
     more: moreReducer,
-    edit: editPostReducer
+    edit: editPostReducer,
+    resetPassword: resetPasswordReducer
 })
 
 const store = configureStore({

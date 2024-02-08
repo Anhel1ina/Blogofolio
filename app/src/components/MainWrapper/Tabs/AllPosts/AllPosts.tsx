@@ -58,7 +58,6 @@ export const AllPosts = () => {
                     <div className={styles.middle_posts}>
                         {
                         amountPosts
-                        // allPosts
                             .filter((post, index) => index >= 0 && index <= 1)
                             .map((filteredPost, index) => (
                                 <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(amountPosts.indexOf(filteredPost))} />
@@ -71,7 +70,6 @@ export const AllPosts = () => {
                     <div className={styles.middle_posts}>
                         {
                         amountPosts
-                        // allPosts
                             .filter((post, index) => index >= 1 && index <= 4)
                             .map((filteredPost, index) => (
                                 <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(amountPosts.indexOf(filteredPost))} />
@@ -81,7 +79,6 @@ export const AllPosts = () => {
                     <div className={styles.middle_posts}>
                         {
                         amountPosts
-                        // allPosts
                             .filter((post, index) => index >= 2 && index <= 5)
                             .map((filteredPost, index) => (
                                 <PostMiddleVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(amountPosts.indexOf(filteredPost))} />
@@ -94,7 +91,6 @@ export const AllPosts = () => {
                     <div className={styles.small_posts}>
                         {
                             amountPosts
-                            // allPosts
                                 .filter((post, index) => index >= 5)
                                 .map((filteredPost, index) => (
                                     <PostSmallVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(amountPosts.indexOf(filteredPost))} />
@@ -105,7 +101,6 @@ export const AllPosts = () => {
                     <div className={styles.small_posts}>
                         {
                             amountPosts
-                            // allPosts
                                 .filter((post, index) => index > 5)
                                 .map((filteredPost, index) => (
                                     <PostSmallVariant key={filteredPost.id} post={filteredPost} openImage={() => openImagePost(amountPosts.indexOf(filteredPost))} />
