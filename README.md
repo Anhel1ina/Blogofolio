@@ -7,5 +7,5 @@ This app has been created using <a href='https://github.com/facebook/create-reac
 </p>
 <h1 align='left'>How to run the app:</h1>
 <p>1. Clone repository to the working folder</p>
-<p>2. Install npm</p>
+<p>2. Install npm: use 'npm i'</p>
 <p>3. Use 'npm run start' to run the app</p>
